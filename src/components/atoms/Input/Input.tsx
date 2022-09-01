@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 type InputType = {
     readonly id?: string;
     readonly className?: string;
@@ -20,7 +18,6 @@ type InputType = {
         | "radio"
         | "file"
         | "hidden";
-    readonly children?: ReactNode;
     readonly required?: boolean;
     readonly onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
@@ -40,9 +37,7 @@ const Input = (props: InputType) => {
                 type={props.type}
                 required={props.required}
                 onChange={props.onChange}
-            >
-                {props.children}
-            </input>
+            ></input>
         </label>
     );
 };
