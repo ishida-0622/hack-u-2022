@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import Form from "components/atoms/Form/Form";
 import Input from "components/atoms/Input/Input";
-import Span from "components/atoms/Text/Text";
+import Text from "components/atoms/Text/Text";
 import Button from "components/atoms/Button/Button";
 import { css } from "@emotion/react";
 import React from "react";
@@ -56,6 +56,7 @@ const SignupForm = ({
                     type="password"
                     name="password"
                     placeholder="パスワード"
+                    minLength={6}
                     required={true}
                     onChange={passwordOnChange}
                 />
@@ -64,12 +65,13 @@ const SignupForm = ({
                     type="password"
                     name="re-password"
                     placeholder="パスワード(再入力)"
+                    minLength={6}
                     required={true}
                     onChange={repasswordOnChange}
                 />
                 <br />
                 <Button type="submit">
-                    <Span text={buttonText}></Span>
+                    <Text text={buttonText}></Text>
                 </Button>
             </Form>
         </>
