@@ -6,7 +6,7 @@ type LinkType = {
     readonly target?: "_self" | "_blank" | "_top" | "_parent";
     readonly download?: boolean;
     readonly children?: ReactNode;
-    readonly onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+    readonly onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 const Link = (props: LinkType) => {
