@@ -4,7 +4,7 @@ type SpanType = {
     text?: string | number;
 };
 
-const Span = (props: SpanType) => {
+const Text = (props: SpanType) => {
     return (
         <span id={props.id} className={props.className}>
             {props.text}
@@ -12,4 +12,4 @@ const Span = (props: SpanType) => {
     );
 };
 
-export default Span;
+export default Text;
