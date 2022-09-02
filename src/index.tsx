@@ -4,7 +4,8 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import NotFound from "./pages/NotFound/NotFound";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
 import Top from "./pages/Top/Top";
 
 const root = ReactDOM.createRoot(
@@ -14,8 +15,9 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Top />}></Route>
                 <Route path="/login" element={<Login />}></Route>
+                <Route path="/signup" element={<Signup />}></Route>
+                <Route path="/" element={<Top />}></Route>
                 <Route path="*" element={<NotFound />}></Route>
             </Routes>
         </BrowserRouter>
