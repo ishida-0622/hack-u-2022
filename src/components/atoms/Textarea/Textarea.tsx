@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 type TextareaType = {
     readonly className?: string;
     readonly value?: string;
@@ -8,7 +6,6 @@ type TextareaType = {
     readonly maxLength?: number;
     readonly minLength?: number;
     readonly required?: boolean;
-    readonly children?: ReactNode;
     readonly onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
@@ -23,9 +20,7 @@ const Textarea = (props: TextareaType) => {
             minLength={props.minLength}
             onChange={props.onChange}
             required={props.required}
-        >
-            {props.children}
-        </textarea>
+        ></textarea>
     );
 };
 
