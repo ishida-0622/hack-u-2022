@@ -7,7 +7,7 @@ import {
 
 export type postType = {
     message: string;
-    image_url: string;
+    image_url: string | null;
     is_spoiler: boolean;
     /** おすすめする側 */
     recommender: string[];
