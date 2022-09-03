@@ -8,7 +8,7 @@ import {
 import { auth } from "../../firebase/firebaseConfig";
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import LoginForm from "components/template/LoginForm/LoginForm";
+import LoginForm from "components/organisms/LoginForm/LoginForm";
 
 const Login = () => {
     const navigate = useNavigate();
