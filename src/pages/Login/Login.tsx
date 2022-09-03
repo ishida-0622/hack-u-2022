@@ -1,24 +1,15 @@
 /** @jsxImportSource @emotion/react */
-import {
-    signInWithEmailAndPassword,
-    User,
-    AuthErrorCodes,
-    onAuthStateChanged,
-} from "firebase/auth";
-import { auth } from "../../firebase/firebaseConfig";
-import { useEffect, useState } from "react";
+import { signInWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
+import { auth } from "firebaseConfig";
+import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import LoginForm from "components/organisms/LoginForm/LoginForm";
+import useLoginUser from "hooks/useLoginUser";
 
 const Login = () => {
     const navigate = useNavigate();
 
-    const [user, setUser] = useState<User | null>(null);
-    useEffect(() => {
-        onAuthStateChanged(auth, (u) => {
-            setUser(u);
-        });
-    }, []);
+    const [user] = useLoginUser();
 
     const [inputedEmail, setInputedEmail] = useState("");
     const [inputedPassword, setInputedPassword] = useState("");
