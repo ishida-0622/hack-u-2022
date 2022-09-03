@@ -1,23 +1,16 @@
-import {
-    signInWithEmailAndPassword,
-    User,
-    // AuthErrorCodes,  一旦アラート処理していないので
-    onAuthStateChanged,
-} from "firebase/auth";
-import { auth } from "../../firebase/firebaseConfig";
-import { useEffect, useState } from "react";
+import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
+import { auth, db } from "firebaseConfig";
+import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import SignupForm from "components/organisms/SignupForm/SignupForm";
+import useLoginUser from "hooks/useLoginUser";
+import { setDoc, doc } from "firebase/firestore";
+import { userDataType } from "types/userDataType";
 
 const Signup = () => {
     const navigate = useNavigate();
 
-    const [user, setUser] = useState<User | null>(null);
-    useEffect(() => {
-        onAuthStateChanged(auth, (u) => {
-            setUser(u);
-        });
-    }, []);
+    const [user] = useLoginUser();
 
     const [inputedUsername, setInputedUsername] = useState("");
     const [inputedEmail, setInputedEmail] = useState("");
@@ -56,14 +49,31 @@ const Signup = () => {
     };
 
     const signup = (username: string, email: string, pass: string) => {
-        console.log(username); //エラー吐かないように変数を使用
-        signInWithEmailAndPassword(auth, email, pass) //ここでサインアップ処理
-            .then(() => {
-                navigate("/");
+        createUserWithEmailAndPassword(auth, email, pass)
+            .then((u) => {
+                const initUserData: userDataType = {
+                    name: username,
+                    image_url: "",
+                    follows: [],
+                    mutes: [],
+                };
+                setDoc(doc(db, `users/${u.user.uid}`), initUserData).then(
+                    () => {
+                        navigate("/");
+                    }
+                );
             })
             .catch((e) => {
                 const errorCode: string = e.code;
-                alert(errorCode);
+                if (errorCode === AuthErrorCodes.EMAIL_EXISTS) {
+                    alert("そのメールアドレスは使用されています");
+                } else if (errorCode === AuthErrorCodes.INVALID_EMAIL) {
+                    alert("メールアドレスの形式が正しくありません");
+                } else if (errorCode === AuthErrorCodes.WEAK_PASSWORD) {
+                    alert("パスワードは6文字以上で入力してください");
+                } else {
+                    alert(`Error\n${errorCode}`);
+                }
             });
     };
 
