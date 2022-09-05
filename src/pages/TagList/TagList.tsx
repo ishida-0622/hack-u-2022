@@ -3,7 +3,6 @@ import { db } from "firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { css } from "@emotion/react";
 import Default from "components/template/Default/Default";
-// import Span from "components/atoms/Text/Text";
 import Link from "components/atoms/Link/Link";
 import { useEffect, useState } from "react";
 
