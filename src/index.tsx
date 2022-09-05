@@ -18,7 +18,7 @@ root.render(
             <Routes>
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<Signup />}></Route>
-                <Route path="/tag-list" element={<TagList />}></Route>
+                <Route path="/tags" element={<TagList />}></Route>
                 <Route path="/" element={<Top />}></Route>
                 <Route path="*" element={<NotFound />}></Route>
             </Routes>

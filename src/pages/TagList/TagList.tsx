@@ -35,7 +35,7 @@ const TagList = () => {
                     >
                         /
                         <Link
-                            href={"/tags/"+value}
+                            href={"/tags?tag="+value}
                             css={css({
                                 paddingLeft: "5px",
                                 textDecoration: "none",
