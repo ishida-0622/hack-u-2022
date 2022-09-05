@@ -32,7 +32,7 @@ const Top = () => {
                     children={"reset"}
                 />
                 <br />
-                <Text text={txt}></Text>
+                <Text>{txt}</Text>
             </div>
         </Default>
     );
