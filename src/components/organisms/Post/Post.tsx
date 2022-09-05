@@ -18,7 +18,7 @@ const Post = (props: PostType) => {
             css={css({
                 textAlign: "left",
                 width: "50%",
-                margin: "0 auto",
+                margin: "5px auto",
                 border: "solid",
                 borderRadius: 10,
             })}
