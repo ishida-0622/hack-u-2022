@@ -1,13 +1,14 @@
+import { ReactNode } from "react";
 type SpanType = {
     id?: string;
     className?: string;
-    text?: string | number;
+    children?: ReactNode;
 };
 
 const Text = (props: SpanType) => {
     return (
         <span id={props.id} className={props.className}>
-            {props.text}
+            {props.children}
         </span>
     );
 };
