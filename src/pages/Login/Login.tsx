@@ -4,6 +4,7 @@ import { auth } from "firebaseConfig";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import LoginForm from "components/organisms/LoginForm/LoginForm";
+import Default from "components/template/Default/Default";
 import useLoginUser from "hooks/useLoginUser";
 
 const Login = () => {
@@ -49,15 +50,17 @@ const Login = () => {
 
     return (
         <>
-            {user ? (
-                <Navigate to={"/"}></Navigate>
-            ) : (
-                <LoginForm
-                    onSubmit={(e) => handlerSubmitForm(e)}
-                    emailOnChange={(e) => handlerChangeEmail(e)}
-                    passwordOnChange={(e) => handlerChangePassword(e)}
-                />
-            )}
+            <Default>
+                {user ? (
+                    <Navigate to={"/"}></Navigate>
+                ) : (
+                    <LoginForm
+                        onSubmit={(e) => handlerSubmitForm(e)}
+                        emailOnChange={(e) => handlerChangeEmail(e)}
+                        passwordOnChange={(e) => handlerChangePassword(e)}
+                    />
+                )}
+            </Default>
         </>
     );
 };
