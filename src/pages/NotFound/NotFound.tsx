@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import Default from "components/template/Default/Default";
 
 const NotFound = () => {
     return (
-        <>
+        <Default>
             <h1
                 css={css({
                     textAlign: "center",
@@ -18,7 +19,7 @@ const NotFound = () => {
             >
                 お探しのページは見つかりませんでした
             </p>
-        </>
+        </Default>
     );
 };
 

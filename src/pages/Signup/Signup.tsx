@@ -3,6 +3,7 @@ import { auth, db } from "firebaseConfig";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import SignupForm from "components/organisms/SignupForm/SignupForm";
+import Default from "components/template/Default/Default";
 import useLoginUser from "hooks/useLoginUser";
 import { setDoc, doc } from "firebase/firestore";
 import { userDataType } from "types/userDataType";
@@ -79,17 +80,19 @@ const Signup = () => {
 
     return (
         <>
-            {user ? (
-                <Navigate to={"/"}></Navigate>
-            ) : (
-                <SignupForm
-                    onSubmit={(e) => handlerSubmitForm(e)}
-                    usernameOnChange={(e) => handlerChangeUsername(e)}
-                    emailOnChange={(e) => handlerChangeEmail(e)}
-                    passwordOnChange={(e) => handlerChangePassword(e)}
-                    repasswordOnChange={(e) => handlerChangeRepassword(e)}
-                />
-            )}
+            <Default>
+                {user ? (
+                    <Navigate to={"/"}></Navigate>
+                ) : (
+                    <SignupForm
+                        onSubmit={(e) => handlerSubmitForm(e)}
+                        usernameOnChange={(e) => handlerChangeUsername(e)}
+                        emailOnChange={(e) => handlerChangeEmail(e)}
+                        passwordOnChange={(e) => handlerChangePassword(e)}
+                        repasswordOnChange={(e) => handlerChangeRepassword(e)}
+                    />
+                )}
+            </Default>
         </>
     );
 };
