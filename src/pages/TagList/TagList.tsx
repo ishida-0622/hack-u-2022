@@ -15,7 +15,9 @@ const TagList = () => {
     }, []);
     return(
     <>
-        <Default>
+        <Default
+            contents={[["/", "TOP"], ["#", "タグ一覧"]]}
+        >
             <h1
                 css={css({
                     textAlign: "center",

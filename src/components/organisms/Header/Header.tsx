@@ -96,6 +96,9 @@ const HeaderLi = css({
 const HeaderLink = css({
     textDecoration: "none",
     color: "#4b4b4b",
+    '&:hover': {
+        opacity: 0.5,
+    },
 })
 
 export default Header;
