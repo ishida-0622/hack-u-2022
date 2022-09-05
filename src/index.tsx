@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
+import TagList from "./pages/TagList/TagList";
 import Top from "./pages/Top/Top";
 
 const root = ReactDOM.createRoot(
@@ -17,6 +18,7 @@ root.render(
             <Routes>
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<Signup />}></Route>
+                <Route path="/tag-list" element={<TagList />}></Route>
                 <Route path="/" element={<Top />}></Route>
                 <Route path="*" element={<NotFound />}></Route>
             </Routes>
