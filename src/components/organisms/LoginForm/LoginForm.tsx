@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import Form from "components/atoms/Form/Form";
 import Input from "components/atoms/Input/Input";
-import Span from "components/atoms/Text/Text";
+import Text from "components/atoms/Text/Text";
 import Button from "components/atoms/Button/Button";
 import { css } from "@emotion/react";
 
@@ -48,7 +48,7 @@ const LoginForm = ({
                 />
                 <br />
                 <Button type="submit">
-                    <Span text={buttonText}></Span>
+                    <Text>{buttonText}</Text>
                 </Button>
             </Form>
         </>

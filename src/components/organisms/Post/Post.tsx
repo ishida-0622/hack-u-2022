@@ -6,8 +6,8 @@ import { css } from "@emotion/react";
 type PostType = {
     message: string;
     author: string;
-    authorIcon: string | null;
-    image: string | null;
+    authorIcon?: string;
+    image?: string;
     isSpoiler: boolean;
     recommendedBy: string[];
 };
@@ -35,10 +35,10 @@ const Post = (props: PostType) => {
                     width={50}
                     height={50}
                 />
-                <Text text={props.author} />
+                <Text>{props.author}</Text>
             </div>
             <div css={css({ margin: 10 })}>
-                <Text text={props.message} />
+                <Text>{props.message}</Text>
             </div>
             {props.image ? <Image imageUrl={props.image} /> : <></>}
         </div>
