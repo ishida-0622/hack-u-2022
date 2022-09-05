@@ -16,28 +16,27 @@ const Post = (props: PostType) => {
     return (
         <div
             css={css({
+                display: "flex",
                 textAlign: "left",
+                backgroundColor: "white",
                 width: "50%",
                 margin: "5px auto",
                 border: "solid",
                 borderRadius: 10,
             })}
         >
-            <div
+            <Image
                 css={css({
-                    borderBottom: "solid",
-                    borderRadius: "10px 10px 0 0",
+                    borderRadius: "10px",
+                    margin: 0,
                 })}
-            >
-                <Image
-                    css={css({ borderRadius: "10px" })}
-                    imageUrl={props.authorIcon ? props.authorIcon : ""}
-                    width={50}
-                    height={50}
-                />
-                <Text>{props.author}</Text>
-            </div>
-            <div css={css({ margin: 10 })}>
+                imageUrl={props.authorIcon ? props.authorIcon : ""}
+                width={50}
+                height={50}
+            />
+            <div css={css({ margin: 10, padding: 0 })}>
+                <Text>{"@" + props.author}</Text>
+                <br />
                 <Text>{props.message}</Text>
             </div>
             {props.image ? <Image imageUrl={props.image} /> : <></>}
