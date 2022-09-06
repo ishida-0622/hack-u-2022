@@ -15,8 +15,8 @@ const Header = () => {
                 <nav css={HeaderNav}>
                     <ul css={HeaderUl}>
                         <li css={HeaderLi}>
-                            <Link href="#" css={HeaderLink}>
-                                nav1
+                            <Link href="/post-create" css={HeaderLink}>
+                                布教しに行く
                             </Link>
                         </li>
                         <li css={HeaderLi}>
@@ -75,7 +75,7 @@ const HeaderLi = css({
 const HeaderLink = css({
     textDecoration: "none",
     color: "#4b4b4b",
-    '&:hover': {
+    "&:hover": {
         opacity: 0.5,
     },
 });
