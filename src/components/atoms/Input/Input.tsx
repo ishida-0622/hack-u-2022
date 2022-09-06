@@ -14,8 +14,6 @@ type InputType = {
         | "password"
         | "date"
         | "tel"
-        | "checkbox"
-        | "radio"
         | "file"
         | "hidden";
     readonly required?: boolean;
