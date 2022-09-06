@@ -1,6 +1,8 @@
 type TextareaType = {
     readonly className?: string;
     readonly value?: string;
+    readonly rows?: number;
+    readonly cols?: number;
     readonly name?: string;
     readonly placeholder?: string;
     readonly maxLength?: number;
@@ -14,6 +16,8 @@ const Textarea = (props: TextareaType) => {
         <textarea
             className={props.className}
             value={props.value}
+            rows={props.rows}
+            cols={props.cols}
             name={props.name}
             placeholder={props.placeholder}
             maxLength={props.maxLength}
