@@ -23,7 +23,6 @@ const useUserData = (): [userDataType | null, boolean] => {
             setLoad(true);
         };
         f();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
     return [userData, load];
 };
