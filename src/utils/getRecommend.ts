@@ -3,7 +3,9 @@ import { getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "firebaseConfig";
 import { postTypeConverter, postType } from "types/postType";
 
-const getRecommend = (user: User): Promise<postType[]> => {
+const getRecommend = (
+    user: User
+): Promise<{ data: postType; id: string }[]> => {
     return new Promise((resolve, reject) => {
         getDocs(
             query(
@@ -12,7 +14,11 @@ const getRecommend = (user: User): Promise<postType[]> => {
             ).withConverter(postTypeConverter)
         )
             .then((docs) => {
-                resolve(docs.docs.map((v) => v.data()));
+                resolve(
+                    docs.docs.map((v) => {
+                        return { data: v.data(), id: v.id };
+                    })
+                );
             })
             .catch((e) => {
                 reject(e.code);
