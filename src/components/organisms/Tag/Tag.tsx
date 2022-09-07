@@ -6,11 +6,13 @@ import Link from "components/atoms/Link/Link";
 type TagType = {
     className?: string;
     tagName: string;
+    href?: string;
+    onClick?(event: React.MouseEvent<HTMLAnchorElement>): void;
 };
 
 const Tag = (props: TagType) => {
     return (
-        <Link css={TagStyle} href={`/bar?tag=${props.tagName}`}>
+        <Link css={TagStyle} href={props.href} onClick={props.onClick}>
             {"#" + props.tagName}
         </Link>
     );
