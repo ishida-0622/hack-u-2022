@@ -55,17 +55,20 @@ const Foo = () => {
                     )}
                     <div
                         css={css({
-                            width: "50%",
+                            display: "flex",
+                            flexWrap: "wrap",
+                            width: "40%",
                             margin: "0 auto",
                         })}
                     >
                         {tags.length ? (
                             tags.map((val) => (
-                                <Tag
-                                    key={val}
-                                    tagName={val}
-                                    href={`/bar?tag=${val}`}
-                                ></Tag>
+                                <div key={val} css={css({ display: "flex" })}>
+                                    <Tag
+                                        tagName={val}
+                                        href={`/bar?tag=${val}`}
+                                    ></Tag>
+                                </div>
                             ))
                         ) : (
                             <>
