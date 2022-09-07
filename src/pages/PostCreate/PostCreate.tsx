@@ -17,6 +17,7 @@ import SearchResult from "components/organisms/SearchResult/SearchResult";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "firebaseConfig";
 import { postType } from "types/postType";
+import zenkakuToHankaku from "utils/zenkakuToHankaku";
 
 const PostCreate = () => {
     const search = useLocation().search;
@@ -35,7 +36,9 @@ const PostCreate = () => {
 
     const tagSearch = (inputed: string) => {
         const reg = new RegExp("^" + inputed + ".*$");
-        const arr = allTag.filter((val) => val.match(reg));
+        const arr = allTag
+            .filter((val) => val.match(reg))
+            .filter((v) => v !== from);
         setSearchTags(arr.slice(0, Math.min(10, arr.length)));
     };
     useEffect(() => {
@@ -119,18 +122,17 @@ const PostCreate = () => {
                             placeholder="タグを検索"
                             inputOnChange={(e) => {
                                 setSearchBoxValue(e.target.value);
-                                tagSearch(
-                                    e.target.value.replace(
-                                        /[Ａ-Ｚａ-ｚ０-９]/g,
-                                        (s) =>
-                                            String.fromCharCode(
-                                                s.charCodeAt(0) - 0xfee0
-                                            )
-                                    )
-                                );
+                                tagSearch(zenkakuToHankaku(e.target.value));
                             }}
                         />
-                        <div>
+                        <div
+                            css={css({
+                                display: "flex",
+                                flexWrap: "wrap",
+                                width: "40%",
+                                margin: "0 auto",
+                            })}
+                        >
                             {searchTags.map((v) => (
                                 <SearchResult
                                     key={v}
