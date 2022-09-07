@@ -11,8 +11,8 @@ const SearchResult = (props: SearchResultType) => {
     return (
         <div
             css={css({
-                width: "40%",
-                margin: "0 auto",
+                display: "flex",
+                margin: 5,
                 textAlign: "left",
             })}
         >
