@@ -5,14 +5,15 @@ import Link from "components/atoms/Link/Link";
 import useUserData from "hooks/useUserData";
 import { useEffect } from "react";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Button from "components/atoms/Button/Button";
 
 const Top = () => {
+    const navigate = useNavigate();
     const [userData, load] = useUserData();
     useEffect(() => {
         if (!userData) return;
-    });
+    }, [userData]);
     return (
         <Default>
             {!load ? (
@@ -21,12 +22,13 @@ const Top = () => {
                 <Navigate to={"/login"} />
             ) : userData.follows.length === 0 ? (
                 <div css={css({ textAlign: "center" })}>
-                    <h1>推しが登録されていません</h1>
+                    <h1>あなたはまだ推しをフォローしていないようです</h1>
                     <Button
                         css={css({
                             border: "none",
                             borderRadius: 10,
-                            height: 40,
+                            width: "12rem",
+                            height: "3rem",
                             backgroundColor: "#6bb6ff",
                             color: "white",
                             margin: "1%",
@@ -35,6 +37,7 @@ const Top = () => {
                                 cursor: "pointer",
                             },
                         })}
+                        onClick={() => navigate("/follow")}
                     >
                         フォローする
                     </Button>
