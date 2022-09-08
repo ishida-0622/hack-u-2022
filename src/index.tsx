@@ -15,6 +15,8 @@ import MyPostList from "pages/MyPostList/MyPostList";
 import PostEdit from "pages/PostEdit/PostEdit";
 import FollowTag from "pages/FollowTag/FollowTag";
 import Follow from "pages/Follow/Follow";
+import Mypage from "pages/Mypage/Mypage";
+import EditData from "pages/EditData/EditData";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
@@ -26,6 +28,8 @@ root.render(
             <Route path="/" element={<Top />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<Signup />}></Route>
+            <Route path="/mypage" element={<Mypage />}></Route>
+            <Route path="/userdata-edit" element={<EditData />}></Route>
             <Route path="/tags" element={<TagList />}></Route>
             <Route path="/follows" element={<FollowTag />}></Route>
             <Route path="/foo" element={<Foo />}></Route>
