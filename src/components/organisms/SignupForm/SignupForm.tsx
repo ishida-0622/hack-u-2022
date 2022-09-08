@@ -71,7 +71,7 @@ const SignupForm = ({
                 />
                 <br />
                 <Button type="submit">
-                    <Text text={buttonText}></Text>
+                    <Text>{buttonText}</Text>
                 </Button>
             </Form>
         </>

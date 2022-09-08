@@ -7,6 +7,7 @@ import {
 
 export type postType = {
     author: string;
+    author_uid: string;
     author_icon: string | null;
     message: string;
     image_url: string | null;
@@ -22,6 +23,7 @@ export const postTypeConverter: FirestoreDataConverter<postType> = {
         return {
             author: postData.author,
             author_icon: postData.author_icon,
+            author_uid: postData.author_uid,
             message: postData.message,
             image_url: postData.image_url,
             is_spoiler: postData.is_spoiler,
@@ -37,6 +39,7 @@ export const postTypeConverter: FirestoreDataConverter<postType> = {
         return {
             author: data.author,
             author_icon: data.author_icon,
+            author_uid: data.author_uid,
             message: data.message,
             image_url: data.image_url,
             is_spoiler: data.is_spoiler,

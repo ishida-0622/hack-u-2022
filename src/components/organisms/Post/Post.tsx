@@ -2,45 +2,47 @@
 import Text from "components/atoms/Text/Text";
 import Image from "components/atoms/Image/Image";
 import { css } from "@emotion/react";
+import { ReactNode } from "react";
 
 type PostType = {
     message: string;
     author: string;
-    authorIcon: string | null;
-    image: string | null;
+    authorIcon?: string;
+    image?: string;
     isSpoiler: boolean;
     recommendedBy: string[];
+    children?: ReactNode;
 };
 
 const Post = (props: PostType) => {
     return (
         <div
             css={css({
+                display: "flex",
                 textAlign: "left",
+                backgroundColor: "white",
                 width: "50%",
-                margin: "0 auto",
+                margin: "5px auto",
                 border: "solid",
                 borderRadius: 10,
             })}
         >
-            <div
+            <Image
                 css={css({
-                    borderBottom: "solid",
-                    borderRadius: "10px 10px 0 0",
+                    borderRadius: "10px",
+                    margin: 0,
                 })}
-            >
-                <Image
-                    css={css({ borderRadius: "10px" })}
-                    imageUrl={props.authorIcon ? props.authorIcon : ""}
-                    width={50}
-                    height={50}
-                />
-                <Text text={props.author} />
-            </div>
-            <div css={css({ margin: 10 })}>
-                <Text text={props.message} />
+                imageUrl={props.authorIcon ? props.authorIcon : ""}
+                width={50}
+                height={50}
+            />
+            <div css={css({ margin: 10, padding: 0 })}>
+                <Text>{"@" + props.author}</Text>
+                <br />
+                <Text>{props.message}</Text>
             </div>
             {props.image ? <Image imageUrl={props.image} /> : <></>}
+            {props.children}
         </div>
     );
 };

@@ -1,13 +1,15 @@
+import { ReactNode } from "react";
 type SpanType = {
     id?: string;
     className?: string;
-    text?: string | number;
+    onClick?(event: React.MouseEvent<HTMLSpanElement>): void;
+    children?: ReactNode;
 };
 
 const Text = (props: SpanType) => {
     return (
-        <span id={props.id} className={props.className}>
-            {props.text}
+        <span id={props.id} className={props.className} onClick={props.onClick}>
+            {props.children}
         </span>
     );
 };
