@@ -5,9 +5,17 @@ import { css } from "@emotion/react";
 import Default from "components/template/Default/Default";
 import Link from "components/atoms/Link/Link";
 import { useEffect, useState } from "react";
+import Input from "components/atoms/Input/Input";
+import Button from "components/atoms/Button/Button";
+import Text from "components/atoms/Text/Text";
+import addTag from "utils/addTag";
+import addFollow from "utils/addFollow";
+import useLoginUser from "hooks/useLoginUser";
 
 const TagList = () => {
+    const [newTag, setNewTag] = useState("");
     const [tags, setTags] = useState<string[]>([]);
+    const [user, load] = useLoginUser();
     useEffect(() => {
         taglist().then((val) => {
             setTags(val);
@@ -39,7 +47,7 @@ const TagList = () => {
                         >
                             /
                             <Link
-                                href={"/foo?tag=" + value}
+                                href={"/bar?tag=" + value}
                                 css={css({
                                     paddingLeft: "5px",
                                     textDecoration: "none",
@@ -50,6 +58,41 @@ const TagList = () => {
                         </li>
                     ))}
                 </ul>
+                <div
+                    css={css({
+                        textAlign: "center",
+                        width: "100%",
+                        position: "fixed",
+                        bottom: 80,
+                    })}
+                >
+                    <Text>新しいタグを追加</Text>
+                    <br />
+                    <Input
+                        type="text"
+                        value={newTag}
+                        placeholder="タグ名を入力"
+                        onChange={(e) => setNewTag(e.target.value)}
+                    />
+                    <Button
+                        onClick={() => {
+                            if (window.confirm(`${newTag}を追加しますか?`)) {
+                                addTag(newTag).then(() => {
+                                    if (
+                                        window.confirm(
+                                            `${newTag}をフォローしますか?`
+                                        ) &&
+                                        load
+                                    ) {
+                                        addFollow(user!, newTag);
+                                    }
+                                });
+                            }
+                        }}
+                    >
+                        追加
+                    </Button>
+                </div>
             </Default>
         </>
     );
