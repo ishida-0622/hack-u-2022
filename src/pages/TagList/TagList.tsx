@@ -40,9 +40,10 @@ const TagList = () => {
                 <ul>
                     {tags.map((value) => (
                         <li
+                            key={value}
                             css={css({
                                 display: "inline-block",
-                                padding: "0 10px",
+                                // padding: "0 10px",
                             })}
                         >
                             /
