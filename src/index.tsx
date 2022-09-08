@@ -10,6 +10,11 @@ import TagList from "pages/TagList/TagList";
 import Top from "pages/Top/Top";
 import Foo from "pages/Foo/Foo";
 import Bar from "pages/Bar/Bar";
+import PostCreate from "pages/PostCreate/PostCreate";
+import MyPostList from "pages/MyPostList/MyPostList";
+import PostEdit from "pages/PostEdit/PostEdit";
+import FollowTag from "pages/FollowTag/FollowTag";
+import Follow from "pages/Follow/Follow";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
@@ -22,9 +27,13 @@ root.render(
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<Signup />}></Route>
             <Route path="/tags" element={<TagList />}></Route>
+            <Route path="/follows" element={<FollowTag />}></Route>
             <Route path="/foo" element={<Foo />}></Route>
             <Route path="/bar" element={<Bar />}></Route>
-            <Route path="/edit" element={<EditData />}></Route>
+            <Route path="/post-create" element={<PostCreate />}></Route>
+            <Route path="/my-posts" element={<MyPostList />}></Route>
+            <Route path="/post-edit" element={<PostEdit />}></Route>
+            <Route path="/follow" element={<Follow />}></Route>
             <Route path="*" element={<NotFound />}></Route>
         </Routes>
     </BrowserRouter>

@@ -9,19 +9,19 @@ const Header = () => {
             <header css={HeaderMain}>
                 <h1 css={HeaderH1}>
                     <Link href="/" css={HeaderLink}>
-                        SAMPLE
+                        WAIFU sharing
                     </Link>
                 </h1>
                 <nav css={HeaderNav}>
                     <ul css={HeaderUl}>
                         <li css={HeaderLi}>
-                            <Link href="#" css={HeaderLink}>
-                                nav1
+                            <Link href="/post-create" css={HeaderLink}>
+                                布教する
                             </Link>
                         </li>
                         <li css={HeaderLi}>
-                            <Link href="#" css={HeaderLink}>
-                                nav2
+                            <Link href="/foo" css={HeaderLink}>
+                                布教される
                             </Link>
                         </li>
                         <li css={HeaderLi}>
@@ -75,7 +75,7 @@ const HeaderLi = css({
 const HeaderLink = css({
     textDecoration: "none",
     color: "#4b4b4b",
-    '&:hover': {
+    "&:hover": {
         opacity: 0.5,
     },
 });

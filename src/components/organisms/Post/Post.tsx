@@ -2,6 +2,7 @@
 import Text from "components/atoms/Text/Text";
 import Image from "components/atoms/Image/Image";
 import { css } from "@emotion/react";
+import { ReactNode } from "react";
 
 type PostType = {
     message: string;
@@ -10,6 +11,7 @@ type PostType = {
     image?: string;
     isSpoiler: boolean;
     recommendedBy: string[];
+    children?: ReactNode;
 };
 
 const Post = (props: PostType) => {
@@ -40,6 +42,7 @@ const Post = (props: PostType) => {
                 <Text>{props.message}</Text>
             </div>
             {props.image ? <Image imageUrl={props.image} /> : <></>}
+            {props.children}
         </div>
     );
 };
