@@ -48,7 +48,7 @@ const TagList = () => {
                         >
                             /
                             <Link
-                                href={"/bar?tag=" + value}
+                                href={"/recommended-message?tag=" + value}
                                 css={css({
                                     paddingLeft: "5px",
                                     textDecoration: "none",
