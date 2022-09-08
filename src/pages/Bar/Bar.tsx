@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import Post from "components/organisms/Post/Post";
+// import Post from "components/organisms/Post/Post";
 import {
     getDocs,
     query,
@@ -19,6 +19,9 @@ import addFollow from "utils/addFollow";
 import { userDataConverter } from "types/userDataType";
 import Default from "components/template/Default/Default";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
+import Text from "components/atoms/Text/Text";
+import Modal from "react-modal";
+import Link from "components/atoms/Link/Link";
 
 const Bar = () => {
     const navigate = useNavigate();
@@ -27,6 +30,7 @@ const Bar = () => {
     const tag = new URLSearchParams(search).get("tag");
     const [isFollow, setIsFollow] = useState(false);
     const [posts, setPosts] = useState<postType[] | null>(null);
+    const [open, setOpen] = useState<string | null>(null);
     // const [follows, setFollows] = useState<Set<string>>(new Set());
     // const [mutes, setMutes] = useState<Set<string>>(new Set());
     useEffect(() => {
@@ -79,28 +83,123 @@ const Bar = () => {
                             が好きな人からの布教メッセージ
                         </h1>
                         {posts.length === 0 ? <h2>投稿がありません</h2> : <></>}
-                        <section>
-                            {posts.map((val, i) => {
-                                return (
-                                    <Post
-                                        key={i}
-                                        message={val.message}
-                                        author={val.author}
-                                        authorIcon={
-                                            val.author_icon
-                                                ? val.author_icon
-                                                : undefined
-                                        }
-                                        image={
-                                            val.image_url
-                                                ? val.image_url
-                                                : undefined
-                                        }
-                                        isSpoiler={val.is_spoiler}
-                                        recommendedBy={val.recommended_by}
-                                    />
-                                );
-                            })}
+                        <section
+                            css={css({ display: "blok", marginBottom: 80 })}
+                        >
+                            {posts.map((val, i) => (
+                                <div
+                                    key={val.message + i.toString()}
+                                    css={css({
+                                        display: "flex",
+                                        textAlign: "left",
+                                        backgroundColor: "white",
+                                        width: "50%",
+                                        margin: "5px auto",
+                                        border: "solid",
+                                        borderRadius: 10,
+                                        padding: "1%",
+                                    })}
+                                >
+                                    <Text
+                                        css={css({
+                                            wordWrap: "break-word",
+                                            minWidth: 0,
+                                        })}
+                                    >
+                                        {val.message.length >= 200
+                                            ? val.message.substring(0, 200) +
+                                              `.....残り${
+                                                  val.message.length - 200
+                                              }文字`
+                                            : val.message}
+                                        {val.message.length >= 200 ? (
+                                            <>
+                                                <Link
+                                                    href=""
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setOpen(
+                                                            val.message +
+                                                                i.toString()
+                                                        );
+                                                    }}
+                                                >
+                                                    {" 読む "}
+                                                </Link>
+                                                <Modal
+                                                    isOpen={
+                                                        open ===
+                                                        val.message +
+                                                            i.toString()
+                                                    }
+                                                    onRequestClose={() =>
+                                                        setOpen(null)
+                                                    }
+                                                    css={css({
+                                                        textAlign: "center",
+                                                        width: "50%",
+                                                        height: "75%",
+                                                        margin: "10% auto",
+                                                        border: "solid",
+                                                        backgroundColor: "#fff",
+                                                        padding: "2%",
+                                                        overflow: "auto",
+                                                    })}
+                                                >
+                                                    <Text
+                                                        css={css({
+                                                            wordWrap:
+                                                                "break-word",
+                                                        })}
+                                                    >
+                                                        {val.message}
+                                                    </Text>
+                                                    <br />
+                                                    <Button
+                                                        css={css({
+                                                            marginTop: "3%",
+                                                            width: "5rem",
+                                                            height: "2rem",
+                                                            border: "none",
+                                                            borderRadius: 5,
+                                                            backgroundColor:
+                                                                "#6bb6ff",
+                                                            color: "white",
+                                                            ":hover": {
+                                                                cursor: "pointer",
+                                                            },
+                                                        })}
+                                                        onClick={() =>
+                                                            setOpen(null)
+                                                        }
+                                                    >
+                                                        閉じる
+                                                    </Button>
+                                                </Modal>
+                                            </>
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </Text>
+                                </div>
+                                // <Post
+                                //     key={i}
+                                //     message={val.message}
+                                //     author={val.author}
+                                //     authorIcon={
+                                //         val.author_icon
+                                //             ? val.author_icon
+                                //             : undefined
+                                //     }
+                                //     image={
+                                //         val.image_url
+                                //             ? val.image_url
+                                //             : undefined
+                                //     }
+                                //     isSpoiler={val.is_spoiler}
+                                //     recommendedBy={val.recommended_by}
+                                // />
+                            ))}
                         </section>
                         <div
                             css={css({
