@@ -13,6 +13,7 @@ import addFollow from "utils/addFollow";
 import useLoginUser from "hooks/useLoginUser";
 
 const TagList = () => {
+    document.title = "タグ一覧";
     const [newTag, setNewTag] = useState("");
     const [tags, setTags] = useState<string[]>([]);
     const [user, load] = useLoginUser();

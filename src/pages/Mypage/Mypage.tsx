@@ -5,27 +5,34 @@ import Image from "components/atoms/Image/Image";
 import Default from "components/template/Default/Default";
 
 const Mypage = () => {
+    document.title = "マイページ";
     const [userData] = useUserData();
     return (
-        <Default>
+        <Default
+            contents={[
+                ["/", "TOP"],
+                ["/#", "マイページ"],
+            ]}
+        >
             <p
                 css={css({
-                    textAlign : "center",
+                    textAlign: "center",
                 })}
             >
                 {userData?.name}
             </p>
             <div>
-            <Image
-                css={css({
-                    display: "block",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                })}
-                imageUrl={userData?.image_url ? userData.image_url : ""}
-                width={100}
-                height={100}
-            /></div>
+                <Image
+                    css={css({
+                        display: "block",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                    })}
+                    imageUrl={userData?.image_url ? userData.image_url : ""}
+                    width={100}
+                    height={100}
+                />
+            </div>
         </Default>
     );
 };

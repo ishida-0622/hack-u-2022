@@ -11,6 +11,7 @@ import Button from "components/atoms/Button/Button";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
 
 const MyPostList = () => {
+    document.title = "あなたの投稿";
     const navigate = useNavigate();
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
@@ -33,7 +34,12 @@ const MyPostList = () => {
     }, [user]);
 
     return (
-        <Default>
+        <Default
+            contents={[
+                ["/", "TOP"],
+                ["/#", "投稿一覧"],
+            ]}
+        >
             {!load ? (
                 <NowLoading />
             ) : !user ? (

@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import Default from "components/template/Default/Default";
 
 const NotFound = () => {
+    document.title = "Not Found";
     return (
         <Default>
             <h1
