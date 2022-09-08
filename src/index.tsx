@@ -10,6 +10,7 @@ import TagList from "pages/TagList/TagList";
 import Top from "pages/Top/Top";
 import Foo from "pages/Foo/Foo";
 import Bar from "pages/Bar/Bar";
+import EditData from "pages/EditData/EditData";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
@@ -24,6 +25,7 @@ root.render(
             <Route path="/tags" element={<TagList />}></Route>
             <Route path="/foo" element={<Foo />}></Route>
             <Route path="/bar" element={<Bar />}></Route>
+            <Route path="/edit" element={<EditData />}></Route>
             <Route path="*" element={<NotFound />}></Route>
         </Routes>
     </BrowserRouter>
