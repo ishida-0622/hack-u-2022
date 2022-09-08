@@ -86,8 +86,9 @@ const RecommendedMessage = () => {
                 <>
                     <div css={postsStyle}>
                         <h1>
-                            「{tag}」<br />
-                            が好きな人からの布教メッセージ
+                            「{tag}」が
+                            <br />
+                            好きな人からの布教メッセージ
                         </h1>
                         {posts.length === 0 ? <h2>投稿がありません</h2> : <></>}
                         <section

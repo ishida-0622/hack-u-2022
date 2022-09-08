@@ -223,6 +223,7 @@ const Follow = () => {
                                     ) {
                                         addFollow(user, newTag);
                                     }
+                                    setNewTag("");
                                 });
                             }}
                         >
