@@ -9,7 +9,7 @@ const Header = () => {
             <header css={HeaderMain}>
                 <h1 css={HeaderH1}>
                     <Link href="/" css={HeaderLink}>
-                        SAMPLE
+                        WAIFU sharing
                     </Link>
                 </h1>
                 <nav css={HeaderNav}>
