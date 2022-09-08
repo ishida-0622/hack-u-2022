@@ -4,6 +4,7 @@ import Default from "components/template/Default/Default";
 import getFollows from "utils/getFollow";
 import FollowsForm from "components/organisms/FollowsForm/FollowsForm";
 import useLoginUser from "hooks/useLoginUser";
+import unFollow from "utils/unFollow";
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Link from "components/atoms/Link/Link";
@@ -18,12 +19,29 @@ const FollowTag = () => {
         });
     }, [user]);
 
+    const handlerOnUnfollowClick= (tag: string) => {
+        if(!user || !tags) return;
+        let checkFlg = window.confirm('フォローを解除してもよろしいですか？');
+        if(!checkFlg){
+            return;
+        }
+        unFollow(user, tags, [tag]);
+    };
+
+    const handlerOnAddClick = (tag: string) => {
+        window.location.href = "/post-create?tags="+tag;
+    }
+
+    const handlerOnEditClick = (tag: string) => {
+        window.location.href = "/my-posts?tags="+tag;
+    }
+
     return (
         <>
             <Default
                 contents={[
                     ["/", "TOP"],
-                    ["#", "タグ一覧"],
+                    ["#", "推し一覧"],
                 ]}
             >
                 {!load ? (
@@ -44,7 +62,13 @@ const FollowTag = () => {
                         ) : (
                             <>
                                 {tags.map((tag) => (
-                                    <FollowsForm key={tag} tag={tag} />
+                                    <FollowsForm
+                                    key={tag}
+                                    tag={tag}
+                                    onUnfollowClick={() => handlerOnUnfollowClick(tag)}
+                                    onAddClick={() => handlerOnAddClick(tag)}
+                                    onEditClick={() => handlerOnEditClick(tag)}
+                                    />
                                 ))}
                             </>
                         )}

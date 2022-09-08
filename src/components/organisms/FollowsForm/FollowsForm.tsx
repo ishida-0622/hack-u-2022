@@ -24,19 +24,27 @@ const FollowsForm = (props: FollowsFormType) => {
                     </Link>
                 </div>
                 <div>
-                    <Button onClick={props.onAddClick}>
+                    <Button
+                        onClick={props.onAddClick}
+                        value={props.tag}>
                         おすすめを新規追加する
                     </Button>
                 </div>
             </div>
             <div css={css({ display: "inline-block" })}>
                 <div>
-                    <Button onClick={props.onUnfollowClick}>
+                    <Button
+                        onClick={props.onUnfollowClick}
+                        value={props.tag}
+                    >
                         フォローを解除する
                     </Button>
                 </div>
                 <div>
-                    <Button onClick={props.onEditClick}>
+                    <Button
+                        onClick={props.onEditClick}
+                        value={props.tag}
+                    >
                         おすすめを編集する
                     </Button>
                 </div>
