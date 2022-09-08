@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Default from "components/template/Default/Default";
 import Form from "components/atoms/Form/Form";
 import Textarea from "components/atoms/Textarea/Textarea";
@@ -23,6 +23,7 @@ import NowLoading from "components/atoms/NowLoading/NowLoading";
 const PostCreate = () => {
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
+    const navigate = useNavigate();
     const [from, setFrom] = useState<string | null>(null);
     const [to, setTo] = useState<string[]>([]);
     const [userData] = useUserData();
@@ -215,7 +216,10 @@ const PostCreate = () => {
                             bottom: 80,
                         })}
                     >
-                        <Button css={buttonStyle} onClick={() => setFrom(null)}>
+                        <Button
+                            css={buttonStyle}
+                            onClick={() => (tag ? navigate(-1) : setFrom(null))}
+                        >
                             戻る
                         </Button>
                         <Button
