@@ -15,6 +15,7 @@ import Button from "components/atoms/Button/Button";
 import SearchBox from "components/molecules/SearchBox/SearchBox";
 import SearchResult from "components/organisms/SearchResult/SearchResult";
 import useAllTags from "hooks/useAllTags";
+import NowLoading from "components/atoms/NowLoading/NowLoading";
 
 const PostEdit = () => {
     const navigate = useNavigate();
@@ -79,7 +80,7 @@ const PostEdit = () => {
     return (
         <Default>
             {!load ? (
-                <h2 css={css({ textAlign: "center" })}>Now Loading...</h2>
+                <NowLoading />
             ) : !user ? (
                 <Navigate to={"/login"} />
             ) : !postId ? (
