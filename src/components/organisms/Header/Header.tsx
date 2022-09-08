@@ -20,7 +20,7 @@ const Header = () => {
                             </Link>
                         </li>
                         <li css={HeaderLi}>
-                            <Link href="/foo" css={HeaderLink}>
+                            <Link href="/recommended-tags" css={HeaderLink}>
                                 布教される
                             </Link>
                         </li>
