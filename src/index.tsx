@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import Top from "./pages/Top/Top";
+import MuteList from "pages/Mute/Mutes";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
@@ -15,6 +16,7 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Routes>
+                <Route path="/mutes" element={<MuteList />}></Route>
                 <Route path="/login" element={<Login />}></Route>
                 <Route path="/signup" element={<Signup />}></Route>
                 <Route path="/" element={<Top />}></Route>
