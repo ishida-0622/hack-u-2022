@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Default from "components/template/Default/Default";
-import Link from "components/atoms/Link/Link";
 import useUserData from "hooks/useUserData";
 import { useEffect } from "react";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
@@ -9,6 +8,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Button from "components/atoms/Button/Button";
 
 const Top = () => {
+    document.title = "WAIFU sharing";
     const navigate = useNavigate();
     const [userData, load] = useUserData();
     useEffect(() => {
@@ -46,14 +46,72 @@ const Top = () => {
                 <div
                     css={css({
                         textAlign: "center",
+                        display: "block",
                     })}
                 >
-                    <Link href="/post-create">布教する</Link>
-                    <Link href="/foo">布教される</Link>
+                    <Button
+                        css={ButtonStyle}
+                        onClick={() => navigate("/post-create")}
+                    >
+                        布教する
+                    </Button>
+                    <Button
+                        css={ButtonStyle}
+                        onClick={() => navigate("/recommended-tags")}
+                    >
+                        布教される
+                    </Button>
+                    <Button
+                        css={ButtonStyle}
+                        onClick={() => navigate("/follow")}
+                    >
+                        フォローする
+                    </Button>
+                    <br />
+                    <Button
+                        css={ButtonStyle2}
+                        onClick={() => navigate("/tags")}
+                    >
+                        タグ一覧
+                    </Button>
+                    <Button
+                        css={ButtonStyle2}
+                        onClick={() => navigate("/follows")}
+                    >
+                        推し一覧
+                    </Button>
                 </div>
             )}
         </Default>
     );
 };
+
+const ButtonStyle = css({
+    border: "none",
+    borderRadius: 10,
+    width: "12rem",
+    height: "3rem",
+    backgroundColor: "#6bb6ff",
+    color: "white",
+    margin: "10% 1% 0 1%",
+    fontSize: "1.5rem",
+    ":hover": {
+        cursor: "pointer",
+    },
+});
+
+const ButtonStyle2 = css({
+    border: "none",
+    borderRadius: 10,
+    width: "12rem",
+    height: "3rem",
+    backgroundColor: "#6bb6ff",
+    color: "white",
+    margin: "1% 1%",
+    fontSize: "1.5rem",
+    ":hover": {
+        cursor: "pointer",
+    },
+});
 
 export default Top;
