@@ -23,7 +23,7 @@ import Text from "components/atoms/Text/Text";
 import Modal from "react-modal";
 import Link from "components/atoms/Link/Link";
 
-const Bar = () => {
+const RecommendedMessage = () => {
     const navigate = useNavigate();
     const [user, load] = useLoginUser();
     const search = useLocation().search;
@@ -238,7 +238,9 @@ const Bar = () => {
                                     color: "white",
                                     margin: "0 0 0 1%",
                                 })}
-                                onClick={() => navigate(`/foo?tag=${tag}`)}
+                                onClick={() =>
+                                    navigate(`/recommended-tags?tag=${tag}`)
+                                }
                             >{`「${tag}」が好きな人へのおすすめへ`}</Button>
                         </div>
                     </div>
@@ -252,4 +254,4 @@ const postsStyle = css({
     textAlign: "center",
 });
 
-export default Bar;
+export default RecommendedMessage;
