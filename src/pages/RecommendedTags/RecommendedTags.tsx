@@ -12,7 +12,7 @@ import Text from "components/atoms/Text/Text";
 import Button from "components/atoms/Button/Button";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
 
-const Foo = () => {
+const RecommendedTags = () => {
     const navigate = useNavigate();
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
@@ -70,7 +70,7 @@ const Foo = () => {
                                 <div key={val} css={css({ display: "flex" })}>
                                     <Tag
                                         tagName={val}
-                                        href={`/bar?tag=${val}`}
+                                        href={`/recommended-message?tag=${val}`}
                                     ></Tag>
                                 </div>
                             ))
@@ -94,4 +94,4 @@ const style = css({
     textAlign: "center",
 });
 
-export default Foo;
+export default RecommendedTags;
