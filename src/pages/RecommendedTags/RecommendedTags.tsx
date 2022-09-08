@@ -81,13 +81,32 @@ const RecommendedTags = () => {
                                 </div>
                             ))
                         ) : (
-                            <>
+                            <div
+                                css={css({
+                                    display: "inline",
+                                    margin: "0 auto",
+                                })}
+                            >
                                 <Text>まだおすすめがありません</Text>
                                 <br />
-                                <Button onClick={() => navigate(-1)}>
+                                <Button
+                                    css={css({
+                                        marginTop: "3%",
+                                        width: "9rem",
+                                        height: "2rem",
+                                        border: "none",
+                                        borderRadius: 5,
+                                        backgroundColor: "#6bb6ff",
+                                        color: "white",
+                                        ":hover": {
+                                            cursor: "pointer",
+                                        },
+                                    })}
+                                    onClick={() => navigate(-1)}
+                                >
                                     前のページに戻る
                                 </Button>
-                            </>
+                            </div>
                         )}
                     </div>
                 </div>
