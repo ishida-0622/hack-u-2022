@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import useLoginUser from "hooks/useLoginUser";
 import Default from "components/template/Default/Default";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
 import { postType } from "types/postType";
@@ -12,6 +12,8 @@ import NowLoading from "components/atoms/NowLoading/NowLoading";
 
 const MyPostList = () => {
     const navigate = useNavigate();
+    const search = useLocation().search;
+    const tag = new URLSearchParams(search).get("tag");
     const [user, load] = useLoginUser();
     const [posts, setPosts] = useState<{ data: postType; id: string }[] | null>(
         null
@@ -19,9 +21,15 @@ const MyPostList = () => {
     useEffect(() => {
         if (!user) return;
         const f = async () => {
-            setPosts(await getRecommend(user));
+            const docs = await getRecommend(user);
+            if (tag) {
+                setPosts(docs.filter((val) => val.data.recommender === tag));
+            } else {
+                setPosts(docs);
+            }
         };
         f();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user]);
 
     return (
@@ -34,7 +42,7 @@ const MyPostList = () => {
                 <NowLoading />
             ) : posts.length ? (
                 <div css={css({ textAlign: "center" })}>
-                    <h2>あなたの投稿</h2>
+                    <h2>あなたの{tag ? `「${tag}」を布教した` : ""}投稿</h2>
                     {posts.map((post) => {
                         return (
                             <div
