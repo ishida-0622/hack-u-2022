@@ -8,6 +8,7 @@ import Default from "components/template/Default/Default";
 import useLoginUser from "hooks/useLoginUser";
 
 const Login = () => {
+    document.title = "Login";
     const navigate = useNavigate();
 
     const [user] = useLoginUser();

@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import Link from "components/atoms/Link/Link";
 
 const FollowTag = () => {
+    document.title = "推し一覧";
     const [user, load] = useLoginUser();
     const [tags, setTags] = useState<string[] | null>(null);
     useEffect(() => {

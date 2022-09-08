@@ -20,6 +20,7 @@ import addTag from "utils/addTag";
 Modal.setAppElement("#root");
 
 const Follow = () => {
+    document.title = "推しフォロー";
     const [user, load] = useLoginUser();
     const [userData, userDataLoad] = useUserData();
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -90,7 +91,12 @@ const Follow = () => {
     };
 
     return (
-        <Default>
+        <Default
+            contents={[
+                ["/", "TOP"],
+                ["/#", "推しフォロー"],
+            ]}
+        >
             {!load || !userDataLoad || !tagLoad ? (
                 <NowLoading />
             ) : !user ? (

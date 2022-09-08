@@ -24,6 +24,7 @@ import Modal from "react-modal";
 import Link from "components/atoms/Link/Link";
 
 const RecommendedMessage = () => {
+    document.title = "布教メッセージ";
     const navigate = useNavigate();
     const [user, load] = useLoginUser();
     const search = useLocation().search;
@@ -68,7 +69,13 @@ const RecommendedMessage = () => {
     }, [user]);
 
     return (
-        <Default>
+        <Default
+            contents={[
+                ["/", "TOP"],
+                ["/recommended-tags", "布教される"],
+                ["#", "布教メッセージ"],
+            ]}
+        >
             {!load ? (
                 <NowLoading />
             ) : !user ? (

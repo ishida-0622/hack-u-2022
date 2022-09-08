@@ -18,6 +18,7 @@ import useAllTags from "hooks/useAllTags";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
 
 const PostEdit = () => {
+    document.title = "投稿編集";
     const navigate = useNavigate();
     const search = useLocation().search;
     const postId = new URLSearchParams(search).get("id");
@@ -78,7 +79,13 @@ const PostEdit = () => {
     };
 
     return (
-        <Default>
+        <Default
+            contents={[
+                ["/", "TOP"],
+                ["/my-posts", "投稿一覧"],
+                ["/#", "投稿編集"],
+            ]}
+        >
             {!load ? (
                 <NowLoading />
             ) : !user ? (

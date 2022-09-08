@@ -9,6 +9,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { userDataType } from "types/userDataType";
 
 const Signup = () => {
+    document.title = "SignUp";
     const navigate = useNavigate();
 
     const [user] = useLoginUser();

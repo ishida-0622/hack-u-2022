@@ -13,6 +13,7 @@ import Button from "components/atoms/Button/Button";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
 
 const RecommendedTags = () => {
+    document.title = "布教される";
     const navigate = useNavigate();
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
@@ -44,7 +45,12 @@ const RecommendedTags = () => {
     }, [userData]);
 
     return (
-        <Default>
+        <Default
+            contents={[
+                ["/", "TOP"],
+                ["#", "布教される"],
+            ]}
+        >
             {!load || tags === null ? (
                 <NowLoading />
             ) : (
