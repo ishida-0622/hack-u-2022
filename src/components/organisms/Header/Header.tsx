@@ -16,12 +16,12 @@ const Header = () => {
                     <ul css={HeaderUl}>
                         <li css={HeaderLi}>
                             <Link href="/post-create" css={HeaderLink}>
-                                布教しに行く
+                                布教する
                             </Link>
                         </li>
                         <li css={HeaderLi}>
-                            <Link href="#" css={HeaderLink}>
-                                nav2
+                            <Link href="/foo" css={HeaderLink}>
+                                布教される
                             </Link>
                         </li>
                         <li css={HeaderLi}>

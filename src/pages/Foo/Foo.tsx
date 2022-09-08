@@ -10,13 +10,14 @@ import Default from "components/template/Default/Default";
 import Tag from "components/organisms/Tag/Tag";
 import Text from "components/atoms/Text/Text";
 import Button from "components/atoms/Button/Button";
+import NowLoading from "components/atoms/NowLoading/NowLoading";
 
 const Foo = () => {
     const navigate = useNavigate();
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
     const [userData, load] = useUserData();
-    const [tags, setTags] = useState<string[]>([]);
+    const [tags, setTags] = useState<string[] | null>(null);
     useEffect(() => {
         if (!userData) return;
         getDocs(
@@ -44,14 +45,17 @@ const Foo = () => {
 
     return (
         <Default>
-            {!load ? (
-                <h2 css={css({ textAlign: "center" })}>Now Loading...</h2>
+            {!load || tags === null ? (
+                <NowLoading />
             ) : (
                 <div css={style}>
                     {!tag ? (
                         <h1>あなたへのおすすめ</h1>
                     ) : (
-                        <h1>{tag}が好きな人へのおすすめ</h1>
+                        <h1>
+                            「{tag}」<br />
+                            が好きな人へのおすすめ
+                        </h1>
                     )}
                     <div
                         css={css({

@@ -18,6 +18,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "firebaseConfig";
 import { postType } from "types/postType";
 import zenkakuToHankaku from "utils/zenkakuToHankaku";
+import NowLoading from "components/atoms/NowLoading/NowLoading";
 
 const PostCreate = () => {
     const search = useLocation().search;
@@ -78,7 +79,7 @@ const PostCreate = () => {
     return (
         <Default>
             {!load ? (
-                <h2 css={css({ textAlign: "center" })}>Now Loading...</h2>
+                <NowLoading />
             ) : !user ? (
                 <Navigate to={"/login"}></Navigate>
             ) : !from ? (

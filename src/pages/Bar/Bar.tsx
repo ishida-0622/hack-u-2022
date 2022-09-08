@@ -18,6 +18,7 @@ import useLoginUser from "hooks/useLoginUser";
 import addFollow from "utils/addFollow";
 import { userDataConverter } from "types/userDataType";
 import Default from "components/template/Default/Default";
+import NowLoading from "components/atoms/NowLoading/NowLoading";
 
 const Bar = () => {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Bar = () => {
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
     const [isFollow, setIsFollow] = useState(false);
-    const [posts, setPosts] = useState<postType[]>([]);
+    const [posts, setPosts] = useState<postType[] | null>(null);
     // const [follows, setFollows] = useState<Set<string>>(new Set());
     // const [mutes, setMutes] = useState<Set<string>>(new Set());
     useEffect(() => {
@@ -65,15 +66,19 @@ const Bar = () => {
     return (
         <Default>
             {!load ? (
-                <h2 css={css({ textAlign: "center" })}>Now Loading...</h2>
+                <NowLoading />
             ) : !user ? (
                 <Navigate to={"/login"}></Navigate>
-            ) : !tag ? (
+            ) : !tag || posts === null ? (
                 <></>
             ) : (
                 <>
                     <div css={postsStyle}>
-                        <h1>{tag}が好きな人からの布教メッセージ</h1>
+                        <h1>
+                            「{tag}」<br />
+                            が好きな人からの布教メッセージ
+                        </h1>
+                        {posts.length === 0 ? <h2>投稿がありません</h2> : <></>}
                         <section>
                             {posts.map((val, i) => {
                                 return (

@@ -8,6 +8,7 @@ import { postType } from "types/postType";
 import getRecommend from "utils/getRecommend";
 import Post from "components/organisms/Post/Post";
 import Button from "components/atoms/Button/Button";
+import NowLoading from "components/atoms/NowLoading/NowLoading";
 
 const MyPostList = () => {
     const navigate = useNavigate();
@@ -26,11 +27,11 @@ const MyPostList = () => {
     return (
         <Default>
             {!load ? (
-                <h2 css={css({ textAlign: "center" })}>Now Loading...</h2>
+                <NowLoading />
             ) : !user ? (
                 <Navigate to={"/login"}></Navigate>
             ) : posts === null ? (
-                <h2 css={css({ textAlign: "center" })}>Now Loading...</h2>
+                <NowLoading />
             ) : posts.length ? (
                 <div css={css({ textAlign: "center" })}>
                     <h2>あなたの投稿</h2>
