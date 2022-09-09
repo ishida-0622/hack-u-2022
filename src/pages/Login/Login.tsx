@@ -74,9 +74,4 @@ const Login = () => {
     );
 };
 
-const style = css({
-    // textAlign: "center",
-    // borderRadius: "30px",
-})
-
 export default Login;
