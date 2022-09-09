@@ -6,6 +6,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import LoginForm from "components/organisms/LoginForm/LoginForm";
 import Default from "components/template/Default/Default";
 import useLoginUser from "hooks/useLoginUser";
+import { css } from "@emotion/react";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -55,6 +56,7 @@ const Login = () => {
                     <Navigate to={"/"}></Navigate>
                 ) : (
                     <LoginForm
+                        css={style}
                         onSubmit={(e) => handlerSubmitForm(e)}
                         emailOnChange={(e) => handlerChangeEmail(e)}
                         passwordOnChange={(e) => handlerChangePassword(e)}
@@ -64,5 +66,10 @@ const Login = () => {
         </>
     );
 };
+
+const style = css({
+    // textAlign: "center",
+    // borderRadius: "30px",
+})
 
 export default Login;

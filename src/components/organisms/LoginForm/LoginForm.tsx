@@ -37,6 +37,9 @@ const LoginForm = ({
                     placeholder="メールアドレス"
                     required={true}
                     onChange={emailOnChange}
+                    css={({
+                        borderRadius: "30px",
+                    })}
                 />
                 <br />
                 <Input
