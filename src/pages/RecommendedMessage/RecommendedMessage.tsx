@@ -22,6 +22,7 @@ import NowLoading from "components/atoms/NowLoading/NowLoading";
 import Text from "components/atoms/Text/Text";
 import Modal from "react-modal";
 import Link from "components/atoms/Link/Link";
+import Image from "components/atoms/Image/Image";
 
 const RecommendedMessage = () => {
     document.title = "布教メッセージ";
@@ -244,6 +245,22 @@ const RecommendedMessage = () => {
                                             )}
                                         </Text>
                                     )}
+                                    {val.image_url ? (
+                                        <Image
+                                            css={css({
+                                                width: "8rem",
+                                                height: "auto",
+                                                margin: "0 0 0 auto",
+                                            })}
+                                            imageUrl={
+                                                val.image_url
+                                                    ? val.image_url
+                                                    : undefined
+                                            }
+                                        />
+                                    ) : (
+                                        <></>
+                                    )}
                                 </div>
                                 // <Post
                                 //     key={i}
@@ -320,7 +337,7 @@ const postsStyle = css({
 const modalStyle = css({
     textAlign: "center",
     width: "50%",
-    maxHeight: "75%",
+    maxHeight: "60%",
     margin: "10% auto",
     border: "solid",
     backgroundColor: "#fff",
