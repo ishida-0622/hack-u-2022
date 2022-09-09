@@ -19,6 +19,7 @@ import { db } from "firebaseConfig";
 import { postType } from "types/postType";
 import zenkakuToHankaku from "utils/zenkakuToHankaku";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
+import ImageInput from "components/atoms/ImageInput/ImageInput";
 
 const PostCreate = () => {
     document.title = "布教する";
@@ -36,6 +37,7 @@ const PostCreate = () => {
     const [follows, setFollows] = useState<string[]>([]);
     const [inputedMessage, setInputedMessage] = useState("");
     const [isSpoiler, setIsSpoiler] = useState(false);
+    const [image, setImage] = useState<string | null>(null);
 
     const tagSearch = (inputed: string) => {
         const reg = new RegExp("^" + inputed + ".*$");
@@ -64,7 +66,7 @@ const PostCreate = () => {
             author_uid: user.uid,
             author_icon: userData.image_url,
             message: inputedMessage,
-            image_url: null,
+            image_url: image,
             is_spoiler: isSpoiler,
             recommender: from,
             recommended_by: to,
@@ -241,6 +243,7 @@ const PostCreate = () => {
                 <div
                     css={css({
                         textAlign: "center",
+                        marginBottom: 80,
                     })}
                 >
                     <h2>
@@ -271,6 +274,23 @@ const PostCreate = () => {
                         >
                             ネタバレ有り
                         </CheckBox>
+                        <ImageInput
+                            resultImageUrl={image}
+                            onChange={(e) => {
+                                const files = e.currentTarget.files;
+                                if (!files || files.length === 0) return;
+                                const file = files[0];
+                                if (file.size > 1024 ** 2) {
+                                    alert("サイズが大きすぎます");
+                                    return;
+                                }
+                                const reader = new FileReader();
+                                reader.onload = (e) => {
+                                    setImage(e.target?.result as string);
+                                };
+                                reader.readAsDataURL(file);
+                            }}
+                        />
                         <div
                             css={css({
                                 width: "100%",
