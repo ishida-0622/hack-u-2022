@@ -99,14 +99,14 @@ const TagList = () => {
                                     height: "14rem",
                                     margin: "10% auto",
                                     border: "solid",
-                                    // borderColor: "white",
                                     backgroundColor: "#fff",
                                 })}
                             >
                                 <h2>タグの追加</h2>
                                 <Text>
-                                    <Text css={css({ color: "red" })}>※</Text>
                                     表記ゆれ防止のため、正式名称での入力を推奨しています
+                                    <br />
+                                    また、「 / 」は使うことができません
                                 </Text>
                                 <br />
                                 <Input
