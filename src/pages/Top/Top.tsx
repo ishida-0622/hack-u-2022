@@ -6,11 +6,13 @@ import { useEffect } from "react";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
 import { Navigate, useNavigate } from "react-router-dom";
 import Button from "components/atoms/Button/Button";
+import useLoginUser from "hooks/useLoginUser";
 
 const Top = () => {
     document.title = "WAIFU sharing";
     const navigate = useNavigate();
-    const [userData, load] = useUserData();
+    const [userData] = useUserData();
+    const [user, load] = useLoginUser();
     useEffect(() => {
         if (!userData) return;
     }, [userData]);
@@ -18,8 +20,10 @@ const Top = () => {
         <Default>
             {!load ? (
                 <NowLoading />
-            ) : !userData ? (
+            ) : !user ? (
                 <Navigate to={"/login"} />
+            ) : !userData ? (
+                <NowLoading />
             ) : userData.follows.length === 0 ? (
                 <div css={css({ textAlign: "center" })}>
                     <h1>あなたはまだ推しをフォローしていないようです</h1>
@@ -68,6 +72,12 @@ const Top = () => {
                         フォローする
                     </Button>
                     <br />
+                    <Button
+                        css={ButtonStyle2}
+                        onClick={() => navigate("/my-posts")}
+                    >
+                        投稿一覧
+                    </Button>
                     <Button
                         css={ButtonStyle2}
                         onClick={() => navigate("/tags")}

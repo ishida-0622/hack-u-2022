@@ -22,11 +22,11 @@ Modal.setAppElement("#root");
 const Follow = () => {
     document.title = "推しフォロー";
     const [user, load] = useLoginUser();
-    const [userData, userDataLoad] = useUserData();
+    const [userData] = useUserData();
     const [modalIsOpen, setIsOpen] = useState(false);
     const [newTag, setNewTag] = useState("");
     const [follows, setFollows] = useState<Set<string>>(new Set());
-    const [allTag, tagLoad] = useAllTags();
+    const [allTag] = useAllTags();
     const [searchBoxValue, setSearchBoxValue] = useState("");
     const [searchResult, setSearchResult] = useState<string[]>([]);
 
@@ -97,7 +97,7 @@ const Follow = () => {
                 ["/#", "推しフォロー"],
             ]}
         >
-            {!load || !userDataLoad || !tagLoad ? (
+            {!load ? (
                 <NowLoading />
             ) : !user ? (
                 <Navigate to={"/login"} />

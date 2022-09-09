@@ -3,7 +3,7 @@ import { db } from "firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { postTypeConverter } from "types/postType";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import { css } from "@emotion/react";
 import useUserData from "hooks/useUserData";
 import Default from "components/template/Default/Default";
@@ -11,13 +11,15 @@ import Tag from "components/organisms/Tag/Tag";
 import Text from "components/atoms/Text/Text";
 import Button from "components/atoms/Button/Button";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
+import useLoginUser from "hooks/useLoginUser";
 
 const RecommendedTags = () => {
     document.title = "布教される";
     const navigate = useNavigate();
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
-    const [userData, load] = useUserData();
+    const [user, load] = useLoginUser();
+    const [userData] = useUserData();
     const [tags, setTags] = useState<string[] | null>(null);
     useEffect(() => {
         if (!userData) return;
@@ -51,7 +53,11 @@ const RecommendedTags = () => {
                 ["#", "布教される"],
             ]}
         >
-            {!load || tags === null ? (
+            {!load ? (
+                <NowLoading />
+            ) : !user ? (
+                <Navigate to={"/login"} />
+            ) : tags === null ? (
                 <NowLoading />
             ) : (
                 <div css={style}>
