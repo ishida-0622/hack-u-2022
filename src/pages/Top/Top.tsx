@@ -55,14 +55,14 @@ const Top = () => {
                         display: "block",
                     })}
                 >
-                <div>
-                <Image
-                        imageUrl={icon}
-                        width={"30%"}
-                        height={"auto"}
-                        alt={"WAIFU sharing"}
-                    />
-                </div>
+                    <div>
+                        <Image
+                            imageUrl={icon}
+                            width={"30%"}
+                            height={"auto"}
+                            alt={"WAIFU sharing"}
+                        />
+                    </div>
 
                     <Button
                         css={ButtonStyle}
@@ -128,7 +128,7 @@ const ButtonStyle2 = css({
     height: "2.5rem",
     backgroundColor: "skyblue",
     color: "white",
-    margin: "0.5% 1%",
+    margin: "0.5% 1% 0 1%",
     fontSize: "1.3rem",
     ":hover": {
         cursor: "pointer",
