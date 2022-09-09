@@ -124,7 +124,7 @@ const MyPostList = () => {
                                                         border: "none",
                                                         borderRadius: 5,
                                                         backgroundColor:
-                                                            "#6bb6ff",
+                                                            "skyblue",
                                                         color: "white",
                                                         ":hover": {
                                                             cursor: "pointer",

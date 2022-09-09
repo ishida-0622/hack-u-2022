@@ -114,7 +114,7 @@ const PostCreate = () => {
                             borderRadius: 10,
                             width: "12rem",
                             height: "3rem",
-                            backgroundColor: "#6bb6ff",
+                            // backgroundColor: "#6bb6ff",
                             color: "white",
                             // margin: "1%",
                             fontSize: "1.5rem",
@@ -365,7 +365,7 @@ const buttonStyle = css({
     border: "none",
     borderRadius: 10,
     height: 40,
-    backgroundColor: "#6bb6ff",
+    // backgroundColor: "#6bb6ff",
     color: "white",
     margin: "1%",
 });

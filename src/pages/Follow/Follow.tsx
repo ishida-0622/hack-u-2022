@@ -57,7 +57,7 @@ const Follow = () => {
                         margin: "0 0 0 auto",
                         border: "none",
                         borderRadius: 5,
-                        backgroundColor: "#6bb6ff",
+                        // backgroundColor: "skyblue",
                         color: "white",
                         ":hover": {
                             cursor: "pointer",
@@ -126,7 +126,7 @@ const Follow = () => {
                             >
                                 <Text
                                     css={css({
-                                        color: "#6bb6ff",
+                                        color: "skyblue",
                                         width: "70%",
                                     })}
                                 >
@@ -189,7 +189,7 @@ const Follow = () => {
                                 height: "2rem",
                                 border: "none",
                                 borderRadius: 5,
-                                backgroundColor: "#6bb6ff",
+                                // backgroundColor: "skyblue",
                                 color: "white",
                                 ":hover": {
                                     cursor: "pointer",
@@ -206,7 +206,7 @@ const Follow = () => {
                                 height: "2rem",
                                 border: "none",
                                 borderRadius: 5,
-                                backgroundColor: "#6bb6ff",
+                                // backgroundColor: "skyblue",
                                 color: "white",
                                 ":hover": {
                                     cursor: "pointer",

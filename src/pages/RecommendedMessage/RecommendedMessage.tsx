@@ -154,7 +154,7 @@ const RecommendedMessage = () => {
                                                         border: "none",
                                                         borderRadius: 5,
                                                         backgroundColor:
-                                                            "#6bb6ff",
+                                                            "skyblue",
                                                         color: "white",
                                                         ":hover": {
                                                             cursor: "pointer",
@@ -226,7 +226,7 @@ const RecommendedMessage = () => {
                                                                 border: "none",
                                                                 borderRadius: 5,
                                                                 backgroundColor:
-                                                                    "#6bb6ff",
+                                                                    "skyblue",
                                                                 color: "white",
                                                                 ":hover": {
                                                                     cursor: "pointer",
@@ -293,7 +293,7 @@ const RecommendedMessage = () => {
                                     border: "none",
                                     borderRadius: 10,
                                     height: 50,
-                                    backgroundColor: "#6bb6ff",
+                                    // backgroundColor: "skyblue",
                                     color: "white",
                                     margin: "0 1% 0 0",
                                 })}
@@ -314,7 +314,7 @@ const RecommendedMessage = () => {
                                     border: "none",
                                     borderRadius: 10,
                                     height: 50,
-                                    backgroundColor: "#6bb6ff",
+                                    // backgroundColor: "skyblue",
                                     color: "white",
                                     margin: "0 0 0 1%",
                                 })}

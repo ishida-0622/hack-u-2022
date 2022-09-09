@@ -17,7 +17,7 @@ const SearchResult = (props: SearchResultType) => {
             })}
         >
             <Link
-                css={css({ textAlign: "left", color: "#6bb6ff" })}
+                css={css({ textAlign: "left", color: "skyblue" })}
                 onClick={props.onClick}
                 href=""
             >

@@ -28,7 +28,7 @@ const FollowsForm = (props: FollowsFormType) => {
                         <Link
                             css={css({
                                 float: "left",
-                                color: "#6bb6ff",
+                                color: "skyblue",
                                 backgroundColor: "white",
                                 margin: "5px",
                                 padding: 5,

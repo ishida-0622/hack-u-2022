@@ -50,7 +50,7 @@ const AddTagModalWindow = (props: { isOpen: boolean }) => {
                     height: "2rem",
                     border: "none",
                     borderRadius: 5,
-                    backgroundColor: "#6bb6ff",
+                    // backgroundColor: "#6bb6ff",
                     color: "white",
                     ":hover": {
                         cursor: "pointer",
@@ -67,7 +67,7 @@ const AddTagModalWindow = (props: { isOpen: boolean }) => {
                     height: "2rem",
                     border: "none",
                     borderRadius: 5,
-                    backgroundColor: "#6bb6ff",
+                    // backgroundColor: "#6bb6ff",
                     color: "white",
                     ":hover": {
                         cursor: "pointer",

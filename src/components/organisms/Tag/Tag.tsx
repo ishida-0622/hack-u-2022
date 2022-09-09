@@ -19,7 +19,7 @@ const Tag = (props: TagType) => {
 };
 
 const TagStyle = css({
-    color: "#6bb6ff",
+    color: "skyblue",
     backgroundColor: "white",
     margin: "5px",
     padding: 5,

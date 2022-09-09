@@ -43,7 +43,7 @@ const Top = () => {
                             borderRadius: 10,
                             width: "12rem",
                             height: "3rem",
-                            backgroundColor: "#6bb6ff",
+                            // backgroundColor: "#6bb6ff",
                             color: "white",
                             // margin: "1%",
                             fontSize: "1.5rem",

@@ -123,7 +123,7 @@ const TagList = () => {
                                         height: "2rem",
                                         border: "none",
                                         borderRadius: 5,
-                                        backgroundColor: "#6bb6ff",
+                                        // backgroundColor: "#6bb6ff",
                                         color: "white",
                                         ":hover": {
                                             cursor: "pointer",
@@ -140,7 +140,7 @@ const TagList = () => {
                                         height: "2rem",
                                         border: "none",
                                         borderRadius: 5,
-                                        backgroundColor: "#6bb6ff",
+                                        // backgroundColor: "#6bb6ff",
                                         color: "white",
                                         ":hover": {
                                             cursor: "pointer",

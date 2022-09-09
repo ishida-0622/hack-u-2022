@@ -227,7 +227,7 @@ const buttonStyle = css({
     border: "none",
     borderRadius: 10,
     height: 40,
-    backgroundColor: "#6bb6ff",
+    // backgroundColor: "#6bb6ff",
     color: "white",
     margin: "1%",
 });
