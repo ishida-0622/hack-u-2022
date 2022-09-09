@@ -21,6 +21,7 @@ import zenkakuToHankaku from "utils/zenkakuToHankaku";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
 
 const PostCreate = () => {
+    document.title = "布教する";
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
     const navigate = useNavigate();
@@ -71,6 +72,7 @@ const PostCreate = () => {
         addDoc(collection(db, "posts"), post)
             .then(() => {
                 alert("投稿しました");
+                window.location.reload();
             })
             .catch((e) => {
                 alert("投稿に失敗しました\n" + e.code);
@@ -78,7 +80,12 @@ const PostCreate = () => {
     };
 
     return (
-        <Default>
+        <Default
+            contents={[
+                ["/", "TOP"],
+                ["/#", "布教する"],
+            ]}
+        >
             {!load ? (
                 <NowLoading />
             ) : !user ? (
@@ -226,7 +233,7 @@ const PostCreate = () => {
                             css={buttonStyle}
                             onClick={() => setTo(selectedTags)}
                         >
-                            決定
+                            次へ
                         </Button>
                     </div>
                 </div>
@@ -236,7 +243,11 @@ const PostCreate = () => {
                         textAlign: "center",
                     })}
                 >
-                    <h2>「{from}」の布教メッセージを入力</h2>
+                    <h2>
+                        「{from}」の
+                        <br />
+                        布教メッセージを入力
+                    </h2>
                     <Form>
                         <label>
                             <Textarea
@@ -245,7 +256,9 @@ const PostCreate = () => {
                                 rows={8}
                                 cols={50}
                                 maxLength={10000}
-                                placeholder={"最大10,000文字"}
+                                placeholder={
+                                    "○○が××なので△△です！\n特に□□系が好きな人におすすめ！"
+                                }
                                 onChange={(e) =>
                                     setInputedMessage(e.target.value)
                                 }

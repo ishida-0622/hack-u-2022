@@ -8,6 +8,8 @@ type ButtonType = {
     readonly type?: "submit" | "reset" | "button";
     readonly children?: ReactNode;
     readonly onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    readonly onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+    readonly onMouseOver?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const Button = (props: ButtonType) => {
@@ -19,6 +21,8 @@ const Button = (props: ButtonType) => {
             value={props.value}
             disabled={props.disabled}
             onClick={props.onClick}
+            onFocus={props.onFocus}
+            onMouseOver={props.onMouseOver}
         >
             {props.children}
         </button>
