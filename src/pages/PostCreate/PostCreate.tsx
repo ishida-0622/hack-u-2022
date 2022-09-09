@@ -34,7 +34,7 @@ const PostCreate = () => {
     const [searchTags, setSearchTags] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [searchBoxValue, setSearchBoxValue] = useState("");
-    const [follows, setFollows] = useState<string[]>([]);
+    const [follows, setFollows] = useState<string[] | null>(null);
     const [inputedMessage, setInputedMessage] = useState("");
     const [isSpoiler, setIsSpoiler] = useState(false);
     const [image, setImage] = useState<string | null>(null);
@@ -46,6 +46,7 @@ const PostCreate = () => {
             .filter((v) => v !== from);
         setSearchTags(arr.slice(0, Math.min(10, arr.length)));
     };
+
     useEffect(() => {
         if (!userData) return;
         setFollows(userData.follows.sort());
@@ -56,6 +57,16 @@ const PostCreate = () => {
         setTo([]);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        if (allTag.length === 0) return;
+        if (tag) {
+            setSearchTags(allTag.filter((v) => v !== tag));
+        } else {
+            setSearchTags(allTag);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [allTag]);
 
     const postCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -92,6 +103,8 @@ const PostCreate = () => {
                 <NowLoading />
             ) : !user ? (
                 <Navigate to={"/login"}></Navigate>
+            ) : !follows ? (
+                <NowLoading />
             ) : follows.length === 0 ? (
                 <div css={css({ textAlign: "center" })}>
                     <h1>あなたはまだ推しをフォローしていないようです</h1>

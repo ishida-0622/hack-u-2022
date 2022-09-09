@@ -199,7 +199,18 @@ const MyPostList = () => {
                     })}
                 </div>
             ) : (
-                <h2>まだ投稿していません</h2>
+                <div css={css({ textAlign: "center" })}>
+                    <h1>まだ投稿していません</h1>
+                    <Button
+                        css={css({
+                            width: "10rem",
+                            height: "2rem",
+                        })}
+                        onClick={() => navigate(-1)}
+                    >
+                        前のページに戻る
+                    </Button>
+                </div>
             )}
         </Default>
     );

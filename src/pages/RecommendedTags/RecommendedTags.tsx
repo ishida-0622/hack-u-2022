@@ -20,11 +20,11 @@ const RecommendedTags = () => {
     const tag = new URLSearchParams(search).get("tag");
     const [user, load] = useLoginUser();
     const [userData] = useUserData();
-    const [tags, setTags] = useState<string[] | null>(null);
+    const [tags, setTags] = useState<string[] | null | undefined>(null);
     useEffect(() => {
         if (!userData) return;
         if (userData.follows.length === 0) {
-            setTags([]);
+            setTags(undefined);
             return;
         }
         getDocs(
@@ -63,7 +63,7 @@ const RecommendedTags = () => {
                 <Navigate to={"/login"} />
             ) : tags === null ? (
                 <NowLoading />
-            ) : tags.length === 0 ? (
+            ) : tags === undefined ? (
                 <div css={css({ textAlign: "center" })}>
                     <h1>あなたはまだ推しをフォローしていないようです</h1>
                     <Button
