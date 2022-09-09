@@ -3,7 +3,7 @@ import Link from "components/atoms/Link/Link";
 import { css } from "@emotion/react";
 import logout from "utils/logout";
 
-const Header = () => {
+const Header = ({ notNav = false }: { notNav?: boolean }) => {
     return (
         <>
             <header css={HeaderMain}>
@@ -12,29 +12,33 @@ const Header = () => {
                         WAIFU sharing
                     </Link>
                 </h1>
-                <nav css={HeaderNav}>
-                    <ul css={HeaderUl}>
-                        <li css={HeaderLi}>
-                            <Link href="/post-create" css={HeaderLink}>
-                                布教する
-                            </Link>
-                        </li>
-                        <li css={HeaderLi}>
-                            <Link href="/recommended-tags" css={HeaderLink}>
-                                布教される
-                            </Link>
-                        </li>
-                        <li css={HeaderLi}>
-                            <Link
-                                href="#"
-                                css={HeaderLink}
-                                onClick={() => logout()}
-                            >
-                                Logout
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
+                {notNav ? (
+                    <></>
+                ) : (
+                    <nav css={HeaderNav}>
+                        <ul css={HeaderUl}>
+                            <li css={HeaderLi}>
+                                <Link href="/post-create" css={HeaderLink}>
+                                    布教する
+                                </Link>
+                            </li>
+                            <li css={HeaderLi}>
+                                <Link href="/recommended-tags" css={HeaderLink}>
+                                    布教される
+                                </Link>
+                            </li>
+                            <li css={HeaderLi}>
+                                <Link
+                                    href="#"
+                                    css={HeaderLink}
+                                    onClick={() => logout()}
+                                >
+                                    Logout
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
+                )}
             </header>
         </>
     );
