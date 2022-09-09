@@ -22,6 +22,7 @@ import NowLoading from "components/atoms/NowLoading/NowLoading";
 import Text from "components/atoms/Text/Text";
 import Modal from "react-modal";
 import Link from "components/atoms/Link/Link";
+import Image from "components/atoms/Image/Image";
 
 const RecommendedMessage = () => {
     document.title = "布教メッセージ";
@@ -108,87 +109,158 @@ const RecommendedMessage = () => {
                                         padding: "1%",
                                     })}
                                 >
-                                    <Text
-                                        css={css({
-                                            wordWrap: "break-word",
-                                            minWidth: 0,
-                                        })}
-                                    >
-                                        {val.message.length >= 200
-                                            ? val.message.substring(0, 200) +
-                                              `.....残り${
-                                                  val.message.length - 200
-                                              }文字`
-                                            : val.message}
-                                        {val.message.length >= 200 ? (
-                                            <>
-                                                <Link
-                                                    href=""
-                                                    onClick={(e) => {
-                                                        e.preventDefault();
-                                                        setOpen(
-                                                            val.message +
-                                                                i.toString()
-                                                        );
-                                                    }}
-                                                >
-                                                    {" 読む "}
-                                                </Link>
-                                                <Modal
-                                                    isOpen={
-                                                        open ===
+                                    {val.is_spoiler ? (
+                                        <Text
+                                            css={css({
+                                                wordWrap: "break-word",
+                                                minWidth: 0,
+                                            })}
+                                        >
+                                            <Link
+                                                href=""
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    setOpen(
                                                         val.message +
                                                             i.toString()
-                                                    }
-                                                    onRequestClose={() =>
-                                                        setOpen(null)
-                                                    }
+                                                    );
+                                                }}
+                                            >
+                                                {"ネタバレメッセージを読む"}
+                                            </Link>
+                                            <Modal
+                                                isOpen={
+                                                    open ===
+                                                    val.message + i.toString()
+                                                }
+                                                onRequestClose={() =>
+                                                    setOpen(null)
+                                                }
+                                                css={modalStyle}
+                                            >
+                                                <Text
                                                     css={css({
-                                                        textAlign: "center",
-                                                        width: "50%",
-                                                        height: "75%",
-                                                        margin: "10% auto",
-                                                        border: "solid",
-                                                        backgroundColor: "#fff",
-                                                        padding: "2%",
-                                                        overflow: "auto",
+                                                        wordWrap: "break-word",
                                                     })}
                                                 >
-                                                    <Text
-                                                        css={css({
-                                                            wordWrap:
-                                                                "break-word",
-                                                        })}
+                                                    {val.message}
+                                                </Text>
+                                                <br />
+                                                <Button
+                                                    css={css({
+                                                        marginTop: "3%",
+                                                        width: "5rem",
+                                                        height: "2rem",
+                                                        border: "none",
+                                                        borderRadius: 5,
+                                                        backgroundColor:
+                                                            "#6bb6ff",
+                                                        color: "white",
+                                                        ":hover": {
+                                                            cursor: "pointer",
+                                                        },
+                                                    })}
+                                                    onClick={() =>
+                                                        setOpen(null)
+                                                    }
+                                                >
+                                                    閉じる
+                                                </Button>
+                                            </Modal>
+                                        </Text>
+                                    ) : (
+                                        <Text
+                                            css={css({
+                                                wordWrap: "break-word",
+                                                minWidth: 0,
+                                            })}
+                                        >
+                                            {val.message.length >= 200
+                                                ? val.message.substring(
+                                                      0,
+                                                      200
+                                                  ) +
+                                                  `.....残り${
+                                                      val.message.length - 200
+                                                  }文字`
+                                                : val.message}
+                                            {val.message.length >= 200 ? (
+                                                <>
+                                                    <Link
+                                                        href=""
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            setOpen(
+                                                                val.message +
+                                                                    i.toString()
+                                                            );
+                                                        }}
                                                     >
-                                                        {val.message}
-                                                    </Text>
-                                                    <br />
-                                                    <Button
-                                                        css={css({
-                                                            marginTop: "3%",
-                                                            width: "5rem",
-                                                            height: "2rem",
-                                                            border: "none",
-                                                            borderRadius: 5,
-                                                            backgroundColor:
-                                                                "#6bb6ff",
-                                                            color: "white",
-                                                            ":hover": {
-                                                                cursor: "pointer",
-                                                            },
-                                                        })}
-                                                        onClick={() =>
+                                                        {" 読む "}
+                                                    </Link>
+                                                    <Modal
+                                                        isOpen={
+                                                            open ===
+                                                            val.message +
+                                                                i.toString()
+                                                        }
+                                                        onRequestClose={() =>
                                                             setOpen(null)
                                                         }
+                                                        css={modalStyle}
                                                     >
-                                                        閉じる
-                                                    </Button>
-                                                </Modal>
-                                            </>
-                                        ) : (
-                                            <></>
-                                        )}
-                                    </Text>
+                                                        <Text
+                                                            css={css({
+                                                                wordWrap:
+                                                                    "break-word",
+                                                            })}
+                                                        >
+                                                            {val.message}
+                                                        </Text>
+                                                        <br />
+                                                        <Button
+                                                            css={css({
+                                                                marginTop: "3%",
+                                                                width: "5rem",
+                                                                height: "2rem",
+                                                                border: "none",
+                                                                borderRadius: 5,
+                                                                backgroundColor:
+                                                                    "#6bb6ff",
+                                                                color: "white",
+                                                                ":hover": {
+                                                                    cursor: "pointer",
+                                                                },
+                                                            })}
+                                                            onClick={() =>
+                                                                setOpen(null)
+                                                            }
+                                                        >
+                                                            閉じる
+                                                        </Button>
+                                                    </Modal>
+                                                </>
+                                            ) : (
+                                                <></>
+                                            )}
+                                        </Text>
+                                    )}
+                                    {val.image_url ? (
+                                        <Image
+                                            css={css({
+                                                width: "8rem",
+                                                height: "auto",
+                                                margin: "0 0 0 auto",
+                                            })}
+                                            imageUrl={
+                                                val.image_url
+                                                    ? val.image_url
+                                                    : undefined
+                                            }
+                                        />
+                                    ) : (
+                                        <></>
+                                    )}
                                 </div>
                                 // <Post
                                 //     key={i}
@@ -260,6 +332,17 @@ const RecommendedMessage = () => {
 
 const postsStyle = css({
     textAlign: "center",
+});
+
+const modalStyle = css({
+    textAlign: "center",
+    width: "50%",
+    maxHeight: "60%",
+    margin: "10% auto",
+    border: "solid",
+    backgroundColor: "#fff",
+    padding: "2%",
+    overflow: "auto",
 });
 
 export default RecommendedMessage;
