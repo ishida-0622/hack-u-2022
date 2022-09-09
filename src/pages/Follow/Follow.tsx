@@ -124,10 +124,18 @@ const Follow = () => {
                                 key={tag}
                                 css={css({ display: "flex", margin: "5px 0" })}
                             >
-                                <Text css={css({ color: "#6bb6ff" })}>
+                                <Text
+                                    css={css({
+                                        color: "#6bb6ff",
+                                        width: "70%",
+                                    })}
+                                >
                                     #{tag}
                                 </Text>
-                                <FollowButton tag={tag} />
+                                <FollowButton
+                                    tag={tag}
+                                    css={css({ height: "1.6rem" })}
+                                />
                             </div>
                         ))}
                     </div>
