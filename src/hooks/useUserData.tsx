@@ -5,12 +5,16 @@ import { db } from "firebaseConfig";
 import useLoginUser from "hooks/useLoginUser";
 
 const useUserData = (): [userDataType | null, boolean] => {
-    const [user] = useLoginUser();
+    const [user, loginLoad] = useLoginUser();
     const [userData, setUserData] = useState<userDataType | null>(null);
     const [load, setLoad] = useState(false);
     useLayoutEffect(() => {
         const f = async () => {
-            if (!user) return;
+            if (!loginLoad) return;
+            setLoad(true);
+            if (!user) {
+                return;
+            }
             setUserData(
                 (
                     await getDoc(
@@ -20,7 +24,6 @@ const useUserData = (): [userDataType | null, boolean] => {
                     )
                 ).data()!
             );
-            setLoad(true);
         };
         f();
     }, [user]);
