@@ -20,12 +20,13 @@ import addTag from "utils/addTag";
 Modal.setAppElement("#root");
 
 const Follow = () => {
+    document.title = "推しフォロー";
     const [user, load] = useLoginUser();
-    const [userData, userDataLoad] = useUserData();
+    const [userData] = useUserData();
     const [modalIsOpen, setIsOpen] = useState(false);
     const [newTag, setNewTag] = useState("");
     const [follows, setFollows] = useState<Set<string>>(new Set());
-    const [allTag, tagLoad] = useAllTags();
+    const [allTag] = useAllTags();
     const [searchBoxValue, setSearchBoxValue] = useState("");
     const [searchResult, setSearchResult] = useState<string[]>([]);
 
@@ -90,8 +91,13 @@ const Follow = () => {
     };
 
     return (
-        <Default>
-            {!load || !userDataLoad || !tagLoad ? (
+        <Default
+            contents={[
+                ["/", "TOP"],
+                ["/#", "推しフォロー"],
+            ]}
+        >
+            {!load ? (
                 <NowLoading />
             ) : !user ? (
                 <Navigate to={"/login"} />
@@ -118,10 +124,18 @@ const Follow = () => {
                                 key={tag}
                                 css={css({ display: "flex", margin: "5px 0" })}
                             >
-                                <Text css={css({ color: "#6bb6ff" })}>
+                                <Text
+                                    css={css({
+                                        color: "#6bb6ff",
+                                        width: "70%",
+                                    })}
+                                >
                                     #{tag}
                                 </Text>
-                                <FollowButton tag={tag} />
+                                <FollowButton
+                                    tag={tag}
+                                    css={css({ height: "1.6rem" })}
+                                />
                             </div>
                         ))}
                     </div>
@@ -217,6 +231,7 @@ const Follow = () => {
                                     ) {
                                         addFollow(user, newTag);
                                     }
+                                    setNewTag("");
                                 });
                             }}
                         >

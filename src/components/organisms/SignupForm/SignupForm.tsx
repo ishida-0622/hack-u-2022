@@ -35,14 +35,29 @@ const SignupForm = ({
                 action={action}
                 onSubmit={onSubmit}
             >
-                <h1>Signup</h1>
+                <h1
+                    css={css({
+                        fontSize: "40px",
+                    })}
+                >Signup</h1>
                 <Input
                     type="text"
                     name="username"
                     placeholder="ユーザーネーム(ID)"
                     required={true}
                     onChange={usernameOnChange}
-                />
+                    css={css({
+                        fontSize: "16px",
+                        width: "400px",
+                        height: "46px",
+                        borderRadius: "10px",
+                        marginBottom: "10px",
+                        border: "gray",
+                        ":focus": {
+                            outline: "solid 5px skyblue",
+                        },
+                    })}
+                    />
                 <br />
                 <Input
                     type="email"
@@ -50,7 +65,18 @@ const SignupForm = ({
                     placeholder="メールアドレス"
                     required={true}
                     onChange={emailOnChange}
-                />
+                    css={css({
+                        fontSize: "16px",
+                        width: "400px",
+                        height: "46px",
+                        borderRadius: "10px",
+                        marginBottom: "10px",
+                        border: "gray",
+                        ":focus": {
+                            outline: "solid 5px skyblue",
+                        },
+                    })}
+                    />
                 <br />
                 <Input
                     type="password"
@@ -59,7 +85,18 @@ const SignupForm = ({
                     minLength={6}
                     required={true}
                     onChange={passwordOnChange}
-                />
+                    css={css({
+                        fontSize: "16px",
+                        width: "400px",
+                        height: "46px",
+                        borderRadius: "10px",
+                        marginBottom: "10px",
+                        border: "gray",
+                        ":focus": {
+                            outline: "solid 5px skyblue",
+                        },
+                    })}
+                    />
                 <br />
                 <Input
                     type="password"
@@ -68,9 +105,37 @@ const SignupForm = ({
                     minLength={6}
                     required={true}
                     onChange={repasswordOnChange}
+                    css={css({
+                        fontSize: "16px",
+                        width: "400px",
+                        height: "46px",
+                        borderRadius: "10px",
+                        marginBottom: "10px",
+                        border: "gray",
+                        ":focus": {
+                            outline: "solid 5px skyblue",
+                        },
+                    })}
                 />
                 <br />
-                <Button type="submit">
+                <Button
+                type="submit"
+                css={css({
+                    border: "none",
+                    outline: "none",
+                    width: "200px",
+                    height: "46px",
+                    fontSize: "24px",
+                    color: "#ffffff",
+                    ":hover": {
+                        cursor: "pointer",
+                        opacity: "0.8",
+                    },
+                    background: "skyblue",
+                    borderRadius: "30px",
+                    marginBottom: "10px",
+                })}
+                >
                     <Text>{buttonText}</Text>
                 </Button>
             </Form>

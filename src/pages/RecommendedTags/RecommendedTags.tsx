@@ -3,7 +3,7 @@ import { db } from "firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { postTypeConverter } from "types/postType";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Navigate } from "react-router-dom";
 import { css } from "@emotion/react";
 import useUserData from "hooks/useUserData";
 import Default from "components/template/Default/Default";
@@ -11,12 +11,15 @@ import Tag from "components/organisms/Tag/Tag";
 import Text from "components/atoms/Text/Text";
 import Button from "components/atoms/Button/Button";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
+import useLoginUser from "hooks/useLoginUser";
 
-const Foo = () => {
+const RecommendedTags = () => {
+    document.title = "布教される";
     const navigate = useNavigate();
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
-    const [userData, load] = useUserData();
+    const [user, load] = useLoginUser();
+    const [userData] = useUserData();
     const [tags, setTags] = useState<string[] | null>(null);
     useEffect(() => {
         if (!userData) return;
@@ -44,8 +47,17 @@ const Foo = () => {
     }, [userData]);
 
     return (
-        <Default>
-            {!load || tags === null ? (
+        <Default
+            contents={[
+                ["/", "TOP"],
+                ["#", "布教される"],
+            ]}
+        >
+            {!load ? (
+                <NowLoading />
+            ) : !user ? (
+                <Navigate to={"/login"} />
+            ) : tags === null ? (
                 <NowLoading />
             ) : (
                 <div css={style}>
@@ -61,7 +73,7 @@ const Foo = () => {
                         css={css({
                             display: "flex",
                             flexWrap: "wrap",
-                            width: "40%",
+                            width: "50%",
                             margin: "0 auto",
                         })}
                     >
@@ -70,18 +82,37 @@ const Foo = () => {
                                 <div key={val} css={css({ display: "flex" })}>
                                     <Tag
                                         tagName={val}
-                                        href={`/bar?tag=${val}`}
+                                        href={`/recommended-message?tag=${val}`}
                                     ></Tag>
                                 </div>
                             ))
                         ) : (
-                            <>
+                            <div
+                                css={css({
+                                    display: "inline",
+                                    margin: "0 auto",
+                                })}
+                            >
                                 <Text>まだおすすめがありません</Text>
                                 <br />
-                                <Button onClick={() => navigate(-1)}>
+                                <Button
+                                    css={css({
+                                        marginTop: "3%",
+                                        width: "9rem",
+                                        height: "2rem",
+                                        border: "none",
+                                        borderRadius: 5,
+                                        backgroundColor: "#6bb6ff",
+                                        color: "white",
+                                        ":hover": {
+                                            cursor: "pointer",
+                                        },
+                                    })}
+                                    onClick={() => navigate(-1)}
+                                >
                                     前のページに戻る
                                 </Button>
-                            </>
+                            </div>
                         )}
                     </div>
                 </div>
@@ -94,4 +125,4 @@ const style = css({
     textAlign: "center",
 });
 
-export default Foo;
+export default RecommendedTags;

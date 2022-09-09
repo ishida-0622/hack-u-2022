@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import Link from "components/atoms/Link/Link";
 
 const FollowTag = () => {
+    document.title = "推し一覧";
     const [user, load] = useLoginUser();
     const [tags, setTags] = useState<string[] | null>(null);
     useEffect(() => {
@@ -19,22 +20,22 @@ const FollowTag = () => {
         });
     }, [user]);
 
-    const handlerOnUnfollowClick= (tag: string) => {
-        if(!user || !tags) return;
-        let checkFlg = window.confirm('フォローを解除してもよろしいですか？');
-        if(!checkFlg){
+    const handlerOnUnfollowClick = (tag: string) => {
+        if (!user || !tags) return;
+        let checkFlg = window.confirm("フォローを解除してもよろしいですか？");
+        if (!checkFlg) {
             return;
         }
         unFollow(user, tags, [tag]);
     };
 
     const handlerOnAddClick = (tag: string) => {
-        window.location.href = "/post-create?tags="+tag;
-    }
+        window.location.href = "/post-create?tag=" + tag;
+    };
 
     const handlerOnEditClick = (tag: string) => {
-        window.location.href = "/my-posts?tags="+tag;
-    }
+        window.location.href = "/my-posts?tag=" + tag;
+    };
 
     return (
         <>
@@ -63,11 +64,17 @@ const FollowTag = () => {
                             <>
                                 {tags.map((tag) => (
                                     <FollowsForm
-                                    key={tag}
-                                    tag={tag}
-                                    onUnfollowClick={() => handlerOnUnfollowClick(tag)}
-                                    onAddClick={() => handlerOnAddClick(tag)}
-                                    onEditClick={() => handlerOnEditClick(tag)}
+                                        key={tag}
+                                        tag={tag}
+                                        onUnfollowClick={() =>
+                                            handlerOnUnfollowClick(tag)
+                                        }
+                                        onAddClick={() =>
+                                            handlerOnAddClick(tag)
+                                        }
+                                        onEditClick={() =>
+                                            handlerOnEditClick(tag)
+                                        }
                                     />
                                 ))}
                             </>
