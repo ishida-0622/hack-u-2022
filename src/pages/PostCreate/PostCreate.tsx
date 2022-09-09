@@ -99,22 +99,31 @@ const PostCreate = () => {
                     })}
                 >
                     <h2>どの推しを布教しますか?</h2>
-                    {follows.map((val) => (
-                        <Tag
-                            key={val}
-                            tagName={val}
-                            href={""}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                if (!from) {
-                                    setFrom(val);
-                                    setSearchTags(
-                                        allTag.filter((v) => v !== val)
-                                    );
-                                }
-                            }}
-                        />
-                    ))}
+                    <div
+                        css={css({
+                            display: "flex",
+                            flexWrap: "wrap",
+                            width: "50%",
+                            margin: "0 auto",
+                        })}
+                    >
+                        {follows.map((val) => (
+                            <Tag
+                                key={val}
+                                tagName={val}
+                                href={""}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    if (!from) {
+                                        setFrom(val);
+                                        setSearchTags(
+                                            allTag.filter((v) => v !== val)
+                                        );
+                                    }
+                                }}
+                            />
+                        ))}
+                    </div>
                 </div>
             ) : !to.length ? (
                 <div
