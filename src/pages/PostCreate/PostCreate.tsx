@@ -19,8 +19,10 @@ import { db } from "firebaseConfig";
 import { postType } from "types/postType";
 import zenkakuToHankaku from "utils/zenkakuToHankaku";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
+import ImageInput from "components/atoms/ImageInput/ImageInput";
 
 const PostCreate = () => {
+    document.title = "布教する";
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
     const navigate = useNavigate();
@@ -35,6 +37,7 @@ const PostCreate = () => {
     const [follows, setFollows] = useState<string[]>([]);
     const [inputedMessage, setInputedMessage] = useState("");
     const [isSpoiler, setIsSpoiler] = useState(false);
+    const [image, setImage] = useState<string | null>(null);
 
     const tagSearch = (inputed: string) => {
         const reg = new RegExp("^" + inputed + ".*$");
@@ -63,7 +66,7 @@ const PostCreate = () => {
             author_uid: user.uid,
             author_icon: userData.image_url,
             message: inputedMessage,
-            image_url: null,
+            image_url: image,
             is_spoiler: isSpoiler,
             recommender: from,
             recommended_by: to,
@@ -71,6 +74,7 @@ const PostCreate = () => {
         addDoc(collection(db, "posts"), post)
             .then(() => {
                 alert("投稿しました");
+                window.location.reload();
             })
             .catch((e) => {
                 alert("投稿に失敗しました\n" + e.code);
@@ -78,7 +82,12 @@ const PostCreate = () => {
     };
 
     return (
-        <Default>
+        <Default
+            contents={[
+                ["/", "TOP"],
+                ["/#", "布教する"],
+            ]}
+        >
             {!load ? (
                 <NowLoading />
             ) : !user ? (
@@ -90,22 +99,31 @@ const PostCreate = () => {
                     })}
                 >
                     <h2>どの推しを布教しますか?</h2>
-                    {follows.map((val) => (
-                        <Tag
-                            key={val}
-                            tagName={val}
-                            href={""}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                if (!from) {
-                                    setFrom(val);
-                                    setSearchTags(
-                                        allTag.filter((v) => v !== val)
-                                    );
-                                }
-                            }}
-                        />
-                    ))}
+                    <div
+                        css={css({
+                            display: "flex",
+                            flexWrap: "wrap",
+                            width: "50%",
+                            margin: "0 auto",
+                        })}
+                    >
+                        {follows.map((val) => (
+                            <Tag
+                                key={val}
+                                tagName={val}
+                                href={""}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    if (!from) {
+                                        setFrom(val);
+                                        setSearchTags(
+                                            allTag.filter((v) => v !== val)
+                                        );
+                                    }
+                                }}
+                            />
+                        ))}
+                    </div>
                 </div>
             ) : !to.length ? (
                 <div
@@ -226,7 +244,7 @@ const PostCreate = () => {
                             css={buttonStyle}
                             onClick={() => setTo(selectedTags)}
                         >
-                            決定
+                            次へ
                         </Button>
                     </div>
                 </div>
@@ -234,9 +252,14 @@ const PostCreate = () => {
                 <div
                     css={css({
                         textAlign: "center",
+                        marginBottom: 80,
                     })}
                 >
-                    <h2>「{from}」の布教メッセージを入力</h2>
+                    <h2>
+                        「{from}」の
+                        <br />
+                        布教メッセージを入力
+                    </h2>
                     <Form>
                         <label>
                             <Textarea
@@ -245,7 +268,9 @@ const PostCreate = () => {
                                 rows={8}
                                 cols={50}
                                 maxLength={10000}
-                                placeholder={"最大10,000文字"}
+                                placeholder={
+                                    "○○が××なので△△です！\n特に□□系が好きな人におすすめ！"
+                                }
                                 onChange={(e) =>
                                     setInputedMessage(e.target.value)
                                 }
@@ -258,6 +283,23 @@ const PostCreate = () => {
                         >
                             ネタバレ有り
                         </CheckBox>
+                        <ImageInput
+                            resultImageUrl={image}
+                            onChange={(e) => {
+                                const files = e.currentTarget.files;
+                                if (!files || files.length === 0) return;
+                                const file = files[0];
+                                if (file.size > 1024 ** 2) {
+                                    alert("サイズが大きすぎます");
+                                    return;
+                                }
+                                const reader = new FileReader();
+                                reader.onload = (e) => {
+                                    setImage(e.target?.result as string);
+                                };
+                                reader.readAsDataURL(file);
+                            }}
+                        />
                         <div
                             css={css({
                                 width: "100%",
