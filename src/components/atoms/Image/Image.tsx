@@ -1,6 +1,6 @@
 type ImageType = {
     className?: string;
-    imageUrl: string;
+    imageUrl: string | undefined;
     alt?: string;
     width?: number;
     height?: number;
