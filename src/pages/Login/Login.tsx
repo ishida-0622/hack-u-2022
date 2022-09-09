@@ -6,6 +6,9 @@ import { Navigate, useNavigate } from "react-router-dom";
 import LoginForm from "components/organisms/LoginForm/LoginForm";
 import Default from "components/template/Default/Default";
 import useLoginUser from "hooks/useLoginUser";
+import Link from "components/atoms/Link/Link";
+import Text from "components/atoms/Text/Text";
+import { css } from "@emotion/react";
 
 const Login = () => {
     document.title = "Login";
@@ -51,15 +54,21 @@ const Login = () => {
 
     return (
         <>
-            <Default>
+            <Default notNav={true}>
                 {user ? (
                     <Navigate to={"/"}></Navigate>
                 ) : (
-                    <LoginForm
-                        onSubmit={(e) => handlerSubmitForm(e)}
-                        emailOnChange={(e) => handlerChangeEmail(e)}
-                        passwordOnChange={(e) => handlerChangePassword(e)}
-                    />
+                    <div css={css({ textAlign: "center" })}>
+                        <LoginForm
+                            onSubmit={(e) => handlerSubmitForm(e)}
+                            emailOnChange={(e) => handlerChangeEmail(e)}
+                            passwordOnChange={(e) => handlerChangePassword(e)}
+                        />
+                        <Text>
+                            アカウントをお持ちでない方は
+                            <Link href="/signup">こちら</Link>
+                        </Text>
+                    </div>
                 )}
             </Default>
         </>

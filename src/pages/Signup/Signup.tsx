@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
 import { auth, db } from "firebaseConfig";
 import { useState } from "react";
@@ -7,6 +8,9 @@ import Default from "components/template/Default/Default";
 import useLoginUser from "hooks/useLoginUser";
 import { setDoc, doc } from "firebase/firestore";
 import { userDataType } from "types/userDataType";
+import Text from "components/atoms/Text/Text";
+import Link from "components/atoms/Link/Link";
+import { css } from "@emotion/react";
 
 const Signup = () => {
     document.title = "SignUp";
@@ -81,17 +85,25 @@ const Signup = () => {
 
     return (
         <>
-            <Default>
+            <Default notNav={true}>
                 {user ? (
                     <Navigate to={"/"}></Navigate>
                 ) : (
-                    <SignupForm
-                        onSubmit={(e) => handlerSubmitForm(e)}
-                        usernameOnChange={(e) => handlerChangeUsername(e)}
-                        emailOnChange={(e) => handlerChangeEmail(e)}
-                        passwordOnChange={(e) => handlerChangePassword(e)}
-                        repasswordOnChange={(e) => handlerChangeRepassword(e)}
-                    />
+                    <div css={css({ textAlign: "center" })}>
+                        <SignupForm
+                            onSubmit={(e) => handlerSubmitForm(e)}
+                            usernameOnChange={(e) => handlerChangeUsername(e)}
+                            emailOnChange={(e) => handlerChangeEmail(e)}
+                            passwordOnChange={(e) => handlerChangePassword(e)}
+                            repasswordOnChange={(e) =>
+                                handlerChangeRepassword(e)
+                            }
+                        />
+                        <Text>
+                            アカウントをお持ちの方は
+                            <Link href="/login">こちら</Link>
+                        </Text>
+                    </div>
                 )}
             </Default>
         </>
