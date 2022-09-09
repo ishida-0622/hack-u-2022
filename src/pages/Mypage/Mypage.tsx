@@ -12,41 +12,36 @@ const Mypage = () => {
     const [user, load] = useLoginUser();
     const [userData] = useUserData();
     return (
-        <Default
-            contents={[
-                ["/", "TOP"],
-                ["/#", "マイページ"],
-            ]}
-        >
-            {!load ? (
-                <NowLoading />
-            ) : !user ? (
-                <Navigate to={"/login"} />
-            ) : (
-                <>
-                    <p
-                        css={css({
-                            textAlign: "center",
-                        })}
-                    >
+        <Default>
+            <h2>
+                登録情報
+            </h2>
+
+            <div
+                css={css({
+                        display: "block",
+                        margin: "0 auto",
+                        width: "200px",
+                        height: "100px",
+                    })}
+            >
+                <div
+                    css={css({
+                        addingTop: "10px",
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        fontSize: "25px",
+                    })}
+                >
+                    <Image
+                        imageUrl={userData?.image_url ? userData.image_url : ""}
+                        width={100}
+                        height={100}
+                    />
                         {userData?.name}
-                    </p>
-                    <div>
-                        <Image
-                            css={css({
-                                display: "block",
-                                marginLeft: "auto",
-                                marginRight: "auto",
-                            })}
-                            imageUrl={
-                                userData?.image_url ? userData.image_url : ""
-                            }
-                            width={100}
-                            height={100}
-                        />
-                    </div>
-                </>
-            )}
+                </div>
+            </div>
+
         </Default>
     );
 };
