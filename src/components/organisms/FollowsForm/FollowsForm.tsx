@@ -24,9 +24,7 @@ const FollowsForm = (props: FollowsFormType) => {
                 })}
             >
                 <tr>
-                    <th
-                        colSpan={3}
-                    >
+                    <th colSpan={3}>
                         <Link
                             css={css({
                                 float: "left",
@@ -38,7 +36,9 @@ const FollowsForm = (props: FollowsFormType) => {
                                 // borderColor: "#258fb8",
                                 borderRadius: 10,
                             })}
-                            href={"/bar?tag=" + props.tag} target="_blank">
+                            href={"/bar?tag=" + props.tag}
+                            target="_blank"
+                        >
                             #{props.tag}
                         </Link>
                     </th>
@@ -58,12 +58,14 @@ const FollowsForm = (props: FollowsFormType) => {
                             onClick={props.onUnfollowClick}
                             value={props.tag}
                         >
-                            フォローを<br></br>解除する
+                            フォローを
+                            <br />
+                            解除する
                         </button>
                     </td>
                     <td
                         css={css({
-                             display: "block",
+                            display: "block",
                             marginLeft: "auto",
                             marginRight: "auto",
                         })}
@@ -75,8 +77,11 @@ const FollowsForm = (props: FollowsFormType) => {
                                 marginRight: "auto",
                             })}
                             onClick={props.onAddClick}
-                            value={props.tag}>
-                            おすすめを<br></br>新規追加する
+                            value={props.tag}
+                        >
+                            おすすめを
+                            <br />
+                            新規追加する
                         </Button>
                     </td>
                     <td>
@@ -86,14 +91,15 @@ const FollowsForm = (props: FollowsFormType) => {
                                 marginLeft: "auto",
                                 marginRight: "auto",
                             })}
-                            onClick={props.onUnfollowClick}
+                            onClick={props.onEditClick}
                             value={props.tag}
                         >
-                            おすすめを<br></br>編集する
+                            おすすめを
+                            <br />
+                            編集する
                         </Button>
                     </td>
                 </tr>
-
             </table>
         </>
     );
