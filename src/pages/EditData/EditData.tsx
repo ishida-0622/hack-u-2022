@@ -20,6 +20,7 @@ const EditData = () => {
     //     setIcon(userData.image_url)
     // }, [userData])
 
+    
     const submit = () => {
         updateDoc(doc(db, "users/uid"), {}).then(() => {
             alert("正常に更新しました")
