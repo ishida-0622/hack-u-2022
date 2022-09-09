@@ -36,8 +36,7 @@ const FollowsForm = (props: FollowsFormType) => {
                                 // borderColor: "#258fb8",
                                 borderRadius: 10,
                             })}
-                            href={"/bar?tag=" + props.tag}
-                            target="_blank"
+                            href={"/recommended-message?tag=" + props.tag}
                         >
                             #{props.tag}
                         </Link>
