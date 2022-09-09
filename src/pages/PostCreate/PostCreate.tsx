@@ -92,6 +92,28 @@ const PostCreate = () => {
                 <NowLoading />
             ) : !user ? (
                 <Navigate to={"/login"}></Navigate>
+            ) : follows.length === 0 ? (
+                <div css={css({ textAlign: "center" })}>
+                    <h1>あなたはまだ推しをフォローしていないようです</h1>
+                    <Button
+                        css={css({
+                            border: "none",
+                            borderRadius: 10,
+                            width: "12rem",
+                            height: "3rem",
+                            backgroundColor: "#6bb6ff",
+                            color: "white",
+                            // margin: "1%",
+                            fontSize: "1.5rem",
+                            ":hover": {
+                                cursor: "pointer",
+                            },
+                        })}
+                        onClick={() => navigate("/follow")}
+                    >
+                        フォローする
+                    </Button>
+                </div>
             ) : !from ? (
                 <div
                     css={css({

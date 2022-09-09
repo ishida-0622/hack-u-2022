@@ -4,7 +4,7 @@ import Default from "components/template/Default/Default";
 import Image from "components/atoms/Image/Image";
 import icon from "images/icon_trans.png";
 import useUserData from "hooks/useUserData";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
 import { Navigate, useNavigate } from "react-router-dom";
 import Button from "components/atoms/Button/Button";
@@ -15,9 +15,9 @@ const Top = () => {
     const navigate = useNavigate();
     const [userData] = useUserData();
     const [user, load] = useLoginUser();
-    useEffect(() => {
-        if (!userData) return;
-    }, [userData]);
+    // useEffect(() => {
+    //     if (!userData) return;
+    // }, [userData]);
     return (
         <Default>
             {!load ? (
@@ -28,7 +28,15 @@ const Top = () => {
                 <NowLoading />
             ) : userData.follows.length === 0 ? (
                 <div css={css({ textAlign: "center" })}>
-                    <h1>あなたはまだ推しをフォローしていないようです</h1>
+                    <div>
+                        <Image
+                            imageUrl={icon}
+                            width={"25%"}
+                            height={"auto"}
+                            alt={"WAIFU sharing"}
+                        />
+                    </div>
+                    <h2>あなたはまだ推しをフォローしていないようです</h2>
                     <Button
                         css={css({
                             border: "none",
@@ -37,7 +45,7 @@ const Top = () => {
                             height: "3rem",
                             backgroundColor: "#6bb6ff",
                             color: "white",
-                            margin: "1%",
+                            // margin: "1%",
                             fontSize: "1.5rem",
                             ":hover": {
                                 cursor: "pointer",
