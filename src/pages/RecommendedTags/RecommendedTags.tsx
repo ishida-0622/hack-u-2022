@@ -73,7 +73,7 @@ const RecommendedTags = () => {
                         css={css({
                             display: "flex",
                             flexWrap: "wrap",
-                            width: "40%",
+                            width: "50%",
                             margin: "0 auto",
                         })}
                     >
