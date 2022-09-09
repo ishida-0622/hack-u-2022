@@ -8,24 +8,34 @@ const Mypage = () => {
     const [userData] = useUserData();
     return (
         <Default>
-            <p
+            <h2>
+                登録情報
+            </h2>
+
+            <div
                 css={css({
-                    textAlign : "center",
-                })}
+                        display: "block",
+                        margin: "0 auto",
+                        width: "200px",
+                        height: "100px",
+                    })}
             >
-                {userData?.name}
-            </p>
-            <div>
-            <Image
-                css={css({
-                    display: "block",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                })}
-                imageUrl={userData?.image_url ? userData.image_url : ""}
-                width={100}
-                height={100}
-            /></div>
+                <div
+                    css={css({
+                        addingTop: "10px",
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                        fontSize: "25px",
+                    })}
+                >
+                    <Image
+                        imageUrl={userData?.image_url ? userData.image_url : ""}
+                        width={100}
+                        height={100}
+                    />
+                        {userData?.name}
+                </div>
+            </div>
         </Default>
     );
 };

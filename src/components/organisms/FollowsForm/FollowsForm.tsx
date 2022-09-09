@@ -14,41 +14,87 @@ type FollowsFormType = {
 const FollowsForm = (props: FollowsFormType) => {
     return (
         <>
-            <div
+            <table
                 className={props.className}
-                css={css({ display: "inline-block" })}
+                css={css({
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    marginBottom: "20px",
+                    maxWidth: "350px",
+                })}
             >
-                <div>
-                    <Link href={"/bar?tag=" + props.tag} target="_blank">
-                        #{props.tag}
-                    </Link>
-                </div>
-                <div>
-                    <Button
-                        onClick={props.onAddClick}
-                        value={props.tag}>
-                        おすすめを新規追加する
-                    </Button>
-                </div>
-            </div>
-            <div css={css({ display: "inline-block" })}>
-                <div>
-                    <Button
-                        onClick={props.onUnfollowClick}
-                        value={props.tag}
+                <tr>
+                    <th
+                        colSpan={3}
                     >
-                        フォローを解除する
-                    </Button>
-                </div>
-                <div>
-                    <Button
-                        onClick={props.onEditClick}
-                        value={props.tag}
+                        <Link
+                            css={css({
+                                float: "left",
+                                color: "#6bb6ff",
+                                backgroundColor: "white",
+                                margin: "5px",
+                                padding: 5,
+                                border: "solid",
+                                // borderColor: "#258fb8",
+                                borderRadius: 10,
+                            })}
+                            href={"/bar?tag=" + props.tag} target="_blank">
+                            #{props.tag}
+                        </Link>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <button
+                            css={css({
+                                display: "block",
+                                marginLeft: "10px",
+                                marginRight: "auto",
+                                color: "#FFFFFF",
+                                backgroundColor: "#FF4F50",
+                                borderRadius: 10,
+                                border: "none",
+                            })}
+                            onClick={props.onUnfollowClick}
+                            value={props.tag}
+                        >
+                            フォローを<br></br>解除する
+                        </button>
+                    </td>
+                    <td
+                        css={css({
+                             display: "block",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                        })}
                     >
-                        おすすめを編集する
-                    </Button>
-                </div>
-            </div>
+                        <Button
+                            css={css({
+                                display: "block",
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                            })}
+                            onClick={props.onAddClick}
+                            value={props.tag}>
+                            おすすめを<br></br>新規追加する
+                        </Button>
+                    </td>
+                    <td>
+                        <Button
+                            css={css({
+                                display: "block",
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                            })}
+                            onClick={props.onUnfollowClick}
+                            value={props.tag}
+                        >
+                            おすすめを<br></br>編集する
+                        </Button>
+                    </td>
+                </tr>
+
+            </table>
         </>
     );
 };

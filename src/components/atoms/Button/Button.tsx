@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import React, { ReactNode } from "react";
 
 type ButtonType = {
@@ -23,9 +25,18 @@ const Button = (props: ButtonType) => {
             onClick={props.onClick}
             onFocus={props.onFocus}
             onMouseOver={props.onMouseOver}
+            css={css({
+                border: "none",
+                borderRadius: 10,
+                backgroundColor: "skyblue",
+                color: "white",
+                ":hover": {
+                    cursor: "pointer",
+                },
+            })}
         >
-            {props.children}
-        </button>
+            { props.children }
+        </button >
     );
 };
 
