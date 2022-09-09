@@ -57,7 +57,7 @@ const Follow = () => {
                         margin: "0 0 0 auto",
                         border: "none",
                         borderRadius: 5,
-                        // backgroundColor: "skyblue",
+                        backgroundColor: "skyblue",
                         color: "white",
                         ":hover": {
                             cursor: "pointer",
@@ -69,12 +69,22 @@ const Follow = () => {
                                   backgroundColor: "red",
                               },
                           })
-                        : css({}),
+                        : css({
+                              ":hover": {
+                                  backgroundColor: "#6bb6ff",
+                              },
+                          }),
                 ]}
                 onClick={() => {
                     if (isFollow) {
-                        unFollow(user!, Array.from(follows), [props.tag]);
-                        follows.delete(props.tag);
+                        if (
+                            window.confirm(
+                                "フォローを解除してもよろしいですか？"
+                            )
+                        ) {
+                            unFollow(user!, Array.from(follows), [props.tag]);
+                            follows.delete(props.tag);
+                        }
                     } else {
                         addFollow(user!, props.tag);
                         follows.add(props.tag);
