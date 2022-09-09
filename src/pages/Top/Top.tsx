@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Default from "components/template/Default/Default";
+import Image from "components/atoms/Image/Image";
+import icon from "images/icon_trans.png";
 import useUserData from "hooks/useUserData";
 import { useEffect } from "react";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
@@ -53,6 +55,15 @@ const Top = () => {
                         display: "block",
                     })}
                 >
+                <div>
+                <Image
+                        imageUrl={icon}
+                        width={"30%"}
+                        height={"auto"}
+                        alt={"WAIFU sharing"}
+                    />
+                </div>
+
                     <Button
                         css={ButtonStyle}
                         onClick={() => navigate("/post-create")}
@@ -65,13 +76,13 @@ const Top = () => {
                     >
                         布教される
                     </Button>
+                    <br />
                     <Button
-                        css={ButtonStyle}
+                        css={ButtonStyle2}
                         onClick={() => navigate("/follow")}
                     >
                         フォローする
                     </Button>
-                    <br />
                     <Button
                         css={ButtonStyle2}
                         onClick={() => navigate("/my-posts")}
@@ -101,9 +112,9 @@ const ButtonStyle = css({
     borderRadius: 10,
     width: "12rem",
     height: "3rem",
-    backgroundColor: "#6bb6ff",
+    backgroundColor: "skyblue",
     color: "white",
-    margin: "10% 1% 0 1%",
+    margin: "0 1%",
     fontSize: "1.5rem",
     ":hover": {
         cursor: "pointer",
@@ -113,12 +124,12 @@ const ButtonStyle = css({
 const ButtonStyle2 = css({
     border: "none",
     borderRadius: 10,
-    width: "12rem",
-    height: "3rem",
-    backgroundColor: "#6bb6ff",
+    width: "10rem",
+    height: "2.5rem",
+    backgroundColor: "skyblue",
     color: "white",
-    margin: "1% 1%",
-    fontSize: "1.5rem",
+    margin: "0.5% 1%",
+    fontSize: "1.3rem",
     ":hover": {
         cursor: "pointer",
     },
