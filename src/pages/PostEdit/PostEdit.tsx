@@ -16,6 +16,7 @@ import SearchBox from "components/molecules/SearchBox/SearchBox";
 import SearchResult from "components/organisms/SearchResult/SearchResult";
 import useAllTags from "hooks/useAllTags";
 import NowLoading from "components/atoms/NowLoading/NowLoading";
+import ImageInput from "components/atoms/ImageInput/ImageInput";
 
 const PostEdit = () => {
     document.title = "投稿編集";
@@ -30,6 +31,7 @@ const PostEdit = () => {
     const [to, setTo] = useState<string[]>([]);
     const [searchBoxValue, setSearchBoxValue] = useState("");
     const [searchTags, setSearchTags] = useState<string[]>([]);
+    const [image, setImage] = useState<string | null>(null);
 
     useEffect(() => {
         const f = async () => {
@@ -115,6 +117,23 @@ const PostEdit = () => {
                         >
                             ネタバレ有り
                         </CheckBox>
+                        <ImageInput
+                            resultImageUrl={image}
+                            onChange={(e) => {
+                                const files = e.currentTarget.files;
+                                if (!files || files.length === 0) return;
+                                const file = files[0];
+                                if (file.size > 1024 ** 2) {
+                                    alert("サイズが大きすぎます");
+                                    return;
+                                }
+                                const reader = new FileReader();
+                                reader.onload = (e) => {
+                                    setImage(e.target?.result as string);
+                                };
+                                reader.readAsDataURL(file);
+                            }}
+                        />
                         <div>
                             <h3>
                                 「{post.recommender}」は
