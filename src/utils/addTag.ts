@@ -5,12 +5,12 @@ import { allTagConverter } from "types/allTagsType";
 import { tagType } from "types/tagType";
 
 const addTag = (tag: string): Promise<void> => {
-    const replaceTag = zenkakuToHankaku(tag);
+    const replacedTag = zenkakuToHankaku(tag);
     return new Promise((resolve, reject) => {
         getDoc(doc(db, "all_tags/all").withConverter(allTagConverter))
             .then((val) => {
                 updateDoc(val.ref, {
-                    tags: val.data()!.tags.concat([replaceTag]),
+                    tags: val.data()!.tags.concat([replacedTag]),
                 })
                     .then(() => {
                         const setData: tagType = {
@@ -19,7 +19,7 @@ const addTag = (tag: string): Promise<void> => {
                         setDoc(
                             doc(
                                 db,
-                                `tags/${replaceTag}/followers/${replaceTag}`
+                                `tags/${replacedTag}/followers/${replacedTag}`
                             ),
                             setData
                         )
