@@ -9,7 +9,11 @@ const addFollow = (user: User, tag: string): Promise<void> => {
         getDoc(doc(db, `users/${user.uid}`).withConverter(userDataConverter))
             .then((res) => {
                 const follows = res.data()?.follows;
-                follows!.push(tag);
+                if (!follows) {
+                    reject("follows not found");
+                    return;
+                }
+                follows.push(tag);
                 const updateData = {
                     follows: follows,
                 };
@@ -21,7 +25,11 @@ const addFollow = (user: User, tag: string): Promise<void> => {
                                 `tags/${tag}/followers/${tag}`
                             ).withConverter(tagConverter)
                         ).then((res) => {
-                            const followers = res.data()!.followers;
+                            const followers = res.data()?.followers;
+                            if (!followers) {
+                                reject("followers not found");
+                                return;
+                            }
                             followers.push(user.uid);
                             updateDoc(doc(db, `tags/${tag}/followers/${tag}`), {
                                 followers: followers,
