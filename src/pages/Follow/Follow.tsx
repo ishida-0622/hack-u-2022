@@ -13,9 +13,7 @@ import useUserData from "hooks/useUserData";
 import unFollow from "utils/unFollow";
 import Link from "components/atoms/Link/Link";
 import Modal from "react-modal";
-import Input from "components/atoms/Input/Input";
-import Button from "components/atoms/Button/Button";
-import addTag from "utils/addTag";
+import AddTagModalWindow from "components/organisms/AddTagModalWindow/AddTagModalWindow";
 
 Modal.setAppElement("#root");
 
@@ -24,14 +22,15 @@ const Follow = () => {
     const [user, load] = useLoginUser();
     const [userData] = useUserData();
     const [modalIsOpen, setIsOpen] = useState(false);
-    const [newTag, setNewTag] = useState("");
     const [follows, setFollows] = useState<Set<string>>(new Set());
     const [allTag] = useAllTags();
     const [searchBoxValue, setSearchBoxValue] = useState("");
     const [searchResult, setSearchResult] = useState<string[]>([]);
 
     useEffect(() => {
-        if (allTag.length > 0) setSearchResult(allTag);
+        if (allTag.length > 0) {
+            setSearchResult(allTag.slice(0, Math.min(10, allTag.length)));
+        }
     }, [allTag]);
 
     useEffect(() => {
@@ -164,90 +163,14 @@ const Follow = () => {
                             </Link>
                         </Text>
                     </div>
-                    <Modal
+                    <AddTagModalWindow
                         isOpen={modalIsOpen}
-                        onRequestClose={() => setIsOpen(false)}
-                        css={css({
-                            textAlign: "center",
-                            width: "50%",
-                            height: "14rem",
-                            margin: "10% auto",
-                            border: "solid",
-                            // borderColor: "white",
-                            backgroundColor: "#fff",
-                        })}
-                    >
-                        <h2>タグの追加</h2>
-                        <Text>
-                            {/* <Text css={css({ color: "red" })}>※</Text> */}
-                            表記ゆれ防止のため、正式名称での入力を推奨しています
-                            <br />
-                            また、「 / 」は使うことができません
-                        </Text>
-                        <br />
-                        <Input
-                            type="text"
-                            value={newTag}
-                            onChange={(e) => setNewTag(e.target.value)}
-                            placeholder={"推しを入力"}
-                        />
-                        <br />
-                        <Button
-                            css={css({
-                                margin: 10,
-                                width: "5rem",
-                                height: "2rem",
-                                border: "none",
-                                borderRadius: 5,
-                                // backgroundColor: "skyblue",
-                                color: "white",
-                                ":hover": {
-                                    cursor: "pointer",
-                                },
-                            })}
-                            onClick={() => setIsOpen(false)}
-                        >
-                            キャンセル
-                        </Button>
-                        <Button
-                            css={css({
-                                margin: 10,
-                                width: "5rem",
-                                height: "2rem",
-                                border: "none",
-                                borderRadius: 5,
-                                // backgroundColor: "skyblue",
-                                color: "white",
-                                ":hover": {
-                                    cursor: "pointer",
-                                },
-                            })}
-                            onClick={() => {
-                                if (newTag === "") {
-                                    alert("入力してください");
-                                    return;
-                                }
-                                if (newTag.includes("/")) {
-                                    alert("「/」は使えません");
-                                    return;
-                                }
-                                addTag(newTag).then(() => {
-                                    alert("追加しました");
-                                    allTag.push(newTag);
-                                    if (
-                                        window.confirm(
-                                            `「${newTag}」をフォローしますか?`
-                                        )
-                                    ) {
-                                        addFollow(user, newTag);
-                                    }
-                                    setNewTag("");
-                                });
-                            }}
-                        >
-                            追加
-                        </Button>
-                    </Modal>
+                        setIsOpen={setIsOpen}
+                        func={(tag: string) => {
+                            allTag.push(tag);
+                            tagSearch(searchBoxValue);
+                        }}
+                    />
                 </div>
             )}
         </Default>
