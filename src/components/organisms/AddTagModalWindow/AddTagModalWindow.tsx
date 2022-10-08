@@ -1,9 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
-import useLoginUser from "hooks/useLoginUser";
 import { css } from "@emotion/react";
 import Text from "components/atoms/Text/Text";
-import addFollow from "utils/addFollow";
 import Modal from "react-modal";
 import Input from "components/atoms/Input/Input";
 import Button from "components/atoms/Button/Button";
@@ -11,24 +9,23 @@ import addTag from "utils/addTag";
 
 Modal.setAppElement("#root");
 
-const AddTagModalWindow = (props: { isOpen: boolean }) => {
-    const [user] = useLoginUser();
-    const [modalIsOpen, setIsOpen] = useState(props.isOpen);
+/**
+ * タグを追加するモーダルウィンドウ
+ * @param props func -> 追加時にタグを引数にして発火する関数
+ * @returns モーダルウィンドウ
+ */
+const AddTagModalWindow = (props: {
+    isOpen: boolean;
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    func?: (tag: string) => void;
+}) => {
     const [newTag, setNewTag] = useState("");
 
     return (
         <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={() => setIsOpen(false)}
-            css={css({
-                textAlign: "center",
-                width: "50%",
-                height: "12rem",
-                margin: "10% auto",
-                border: "solid",
-                // borderColor: "white",
-                backgroundColor: "#fff",
-            })}
+            isOpen={props.isOpen}
+            onRequestClose={() => props.setIsOpen(false)}
+            css={modalStyle}
         >
             <h2>タグの追加</h2>
             <Text>
@@ -43,36 +40,11 @@ const AddTagModalWindow = (props: { isOpen: boolean }) => {
                 placeholder={"推しを入力"}
             />
             <br />
-            <Button
-                css={css({
-                    margin: 10,
-                    width: "5rem",
-                    height: "2rem",
-                    border: "none",
-                    borderRadius: 5,
-                    // backgroundColor: "#6bb6ff",
-                    color: "white",
-                    ":hover": {
-                        cursor: "pointer",
-                    },
-                })}
-                onClick={() => setIsOpen(false)}
-            >
+            <Button css={buttonStyle} onClick={() => props.setIsOpen(false)}>
                 キャンセル
             </Button>
             <Button
-                css={css({
-                    margin: 10,
-                    width: "5rem",
-                    height: "2rem",
-                    border: "none",
-                    borderRadius: 5,
-                    // backgroundColor: "#6bb6ff",
-                    color: "white",
-                    ":hover": {
-                        cursor: "pointer",
-                    },
-                })}
+                css={buttonStyle}
                 onClick={() => {
                     if (newTag === "") {
                         alert("入力してください");
@@ -84,11 +56,8 @@ const AddTagModalWindow = (props: { isOpen: boolean }) => {
                     }
                     addTag(newTag).then(() => {
                         alert("追加しました");
-                        if (
-                            window.confirm(`「${newTag}」をフォローしますか?`)
-                        ) {
-                            addFollow(user!, newTag);
-                        }
+                        setNewTag("");
+                        if (props.func) props.func(newTag);
                     });
                 }}
             >
@@ -97,5 +66,28 @@ const AddTagModalWindow = (props: { isOpen: boolean }) => {
         </Modal>
     );
 };
+
+const modalStyle = css({
+    textAlign: "center",
+    width: "50%",
+    height: "12rem",
+    margin: "10% auto",
+    border: "solid",
+    // borderColor: "white",
+    backgroundColor: "#fff",
+});
+
+const buttonStyle = css({
+    margin: 10,
+    width: "5rem",
+    height: "2rem",
+    border: "none",
+    borderRadius: 5,
+    // backgroundColor: "#6bb6ff",
+    color: "white",
+    ":hover": {
+        cursor: "pointer",
+    },
+});
 
 export default AddTagModalWindow;
