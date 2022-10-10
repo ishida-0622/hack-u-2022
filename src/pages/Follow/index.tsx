@@ -10,10 +10,8 @@ import addFollow from "utils/addFollow";
 import useUserData from "hooks/useUserData";
 import unFollow from "utils/unFollow";
 import Link from "components/atoms/Link";
-import Modal from "react-modal";
 import AddTagModalWindow from "components/organisms/AddTagModalWindow";
-
-Modal.setAppElement("#root");
+import FollowButton from "components/organisms/FollowButton";
 
 const Follow = () => {
     document.title = "推しフォロー";
@@ -40,61 +38,6 @@ const Follow = () => {
         const reg = new RegExp("^" + tag + ".*$");
         const arr = allTag.filter((val) => val.match(reg));
         setSearchResult(arr.slice(0, Math.min(10, arr.length)));
-    };
-
-    const FollowButton = (props: FollowButtonType) => {
-        let isFollow = follows.has(props.tag);
-        const [text, setText] = useState(isFollow ? "フォロー中" : "フォロー");
-        return (
-            <button
-                className={props.className}
-                css={[
-                    css({
-                        width: "6rem",
-                        margin: "0 0 0 auto",
-                        border: "none",
-                        borderRadius: 5,
-                        backgroundColor: "skyblue",
-                        color: "white",
-                        ":hover": {
-                            cursor: "pointer",
-                        },
-                    }),
-                    isFollow
-                        ? css({
-                              ":hover": {
-                                  backgroundColor: "red",
-                              },
-                          })
-                        : css({
-                              ":hover": {
-                                  backgroundColor: "#6bb6ff",
-                              },
-                          }),
-                ]}
-                onClick={() => {
-                    if (isFollow) {
-                        if (
-                            window.confirm(
-                                "フォローを解除してもよろしいですか？"
-                            )
-                        ) {
-                            unFollow(user!, Array.from(follows), [props.tag]);
-                            follows.delete(props.tag);
-                        }
-                    } else {
-                        addFollow(user!, props.tag);
-                        follows.add(props.tag);
-                    }
-                    isFollow = !isFollow;
-                }}
-                type="button"
-                onMouseOver={() => (isFollow ? setText("フォロー解除") : {})}
-                onMouseOut={() => setText(isFollow ? "フォロー中" : "フォロー")}
-            >
-                {text}
-            </button>
-        );
     };
 
     return (
@@ -128,7 +71,7 @@ const Follow = () => {
                         >
                             <Text
                                 css={css({
-                                    color: "skyblue",
+                                    color: "#1da1f2",
                                     width: "70%",
                                 })}
                             >
@@ -137,6 +80,15 @@ const Follow = () => {
                             <FollowButton
                                 tag={tag}
                                 css={css({ height: "1.6rem" })}
+                                isFollow={follows.has(tag)}
+                                functionActivatedWhenFollow={(tag) => {
+                                    addFollow(user!, tag);
+                                    follows.add(tag);
+                                }}
+                                functionActivatedWhenUnfollow={(tag) => {
+                                    unFollow(user!, Array.from(follows), [tag]);
+                                    follows.delete(tag);
+                                }}
                             />
                         </div>
                     ))}
@@ -167,12 +119,6 @@ const Follow = () => {
             </div>
         </Default>
     );
-};
-
-type FollowButtonType = {
-    readonly tag: string;
-    readonly className?: string;
-    readonly onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export default Follow;
