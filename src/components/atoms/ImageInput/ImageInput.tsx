@@ -9,15 +9,19 @@ type ImageInputType = {
 const ImageInput = (props: ImageInputType) => {
     return (
         <div>
-            <img
-                css={css({
-                    maxWidth: "30%",
-                    height: "10rem",
-                    width: "auto",
-                })}
-                src={props.resultImageUrl ? props.resultImageUrl : undefined}
-                alt=""
-            />
+            {props.resultImageUrl ? (
+                <img
+                    css={css({
+                        maxWidth: "30%",
+                        height: "10rem",
+                        width: "auto",
+                    })}
+                    src={props.resultImageUrl}
+                    alt=""
+                />
+            ) : (
+                <></>
+            )}
             <br />
             <label>
                 <input type="file" accept="image/*" onChange={props.onChange} />

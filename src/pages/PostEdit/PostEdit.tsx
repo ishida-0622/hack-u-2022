@@ -29,6 +29,7 @@ const PostEdit = () => {
     const [to, setTo] = useState<string[]>([]);
     const [searchBoxValue, setSearchBoxValue] = useState("");
     const [searchTags, setSearchTags] = useState<string[]>([]);
+    const [image, setImage] = useState<string | null>(null);
 
     useEffect(() => {
         const f = async () => {
@@ -110,6 +111,23 @@ const PostEdit = () => {
                         >
                             ネタバレ有り
                         </CheckBox>
+                        <ImageInput
+                            resultImageUrl={image}
+                            onChange={(e) => {
+                                const files = e.currentTarget.files;
+                                if (!files || files.length === 0) return;
+                                const file = files[0];
+                                if (file.size > 1024 ** 2) {
+                                    alert("サイズが大きすぎます");
+                                    return;
+                                }
+                                const reader = new FileReader();
+                                reader.onload = (e) => {
+                                    setImage(e.target?.result as string);
+                                };
+                                reader.readAsDataURL(file);
+                            }}
+                        />
                         <div>
                             <h3>
                                 「{post.recommender}」は
