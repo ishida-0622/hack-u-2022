@@ -12,15 +12,15 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { postType, postTypeConverter } from "types/postType";
 import { css } from "@emotion/react";
-import Button from "components/atoms/Button/Button";
+import Button from "components/atoms/Button";
 import useLoginUser from "hooks/useLoginUser";
 import addFollow from "utils/addFollow";
 import { userDataConverter } from "types/userDataType";
-import Default from "components/template/Default/Default";
-import Text from "components/atoms/Text/Text";
+import Default from "components/template/Default";
+import Text from "components/atoms/Text";
 import Modal from "react-modal";
-import Link from "components/atoms/Link/Link";
-import Image from "components/atoms/Image/Image";
+import Link from "components/atoms/Link";
+import Image from "components/atoms/Image";
 
 const RecommendedMessage = () => {
     document.title = "布教メッセージ";

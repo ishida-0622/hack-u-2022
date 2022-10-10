@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import useUserData from "hooks/useUserData";
-import Image from "components/atoms/Image/Image";
-import Default from "components/template/Default/Default";
+import Image from "components/atoms/Image";
+import Default from "components/template/Default";
 // import NowLoading from "components/atoms/NowLoading/NowLoading";
 // import { Navigate } from "react-router-dom";
 // import useLoginUser from "hooks/useLoginUser";

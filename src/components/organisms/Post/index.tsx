@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import Text from "components/atoms/Text/Text";
-import Image from "components/atoms/Image/Image";
+import Text from "components/atoms/Text";
+import Image from "components/atoms/Image";
 import { css } from "@emotion/react";
 import { ReactNode } from "react";
 

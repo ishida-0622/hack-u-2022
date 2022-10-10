@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Default from "components/template/Default/Default";
+import Default from "components/template/Default";
 
 const NotFound = () => {
     document.title = "Not Found";

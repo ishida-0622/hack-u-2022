@@ -1,25 +1,25 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Default from "components/template/Default/Default";
-import Form from "components/atoms/Form/Form";
-import Textarea from "components/atoms/Textarea/Textarea";
-import CheckBox from "components/atoms/CheckBox/CheckBox";
+import Default from "components/template/Default";
+import Form from "components/atoms/Form";
+import Textarea from "components/atoms/Textarea";
+import CheckBox from "components/atoms/CheckBox";
 import useUserData from "hooks/useUserData";
-import Tag from "components/organisms/Tag/Tag";
-import Button from "components/atoms/Button/Button";
+import Tag from "components/organisms/Tag";
+import Button from "components/atoms/Button";
 import useLoginUser from "hooks/useLoginUser";
 import { useState, useEffect } from "react";
-import Text from "components/atoms/Text/Text";
+import Text from "components/atoms/Text";
 import useAllTags from "hooks/useAllTags";
-import SearchBox from "components/molecules/SearchBox/SearchBox";
-import SearchResult from "components/organisms/SearchResult/SearchResult";
+import SearchBox from "components/molecules/SearchBox";
+import SearchResult from "components/organisms/SearchResult";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "firebaseConfig";
 import { postType } from "types/postType";
 import zenkakuToHankaku from "utils/zenkakuToHankaku";
-import NowLoading from "components/atoms/NowLoading/NowLoading";
-import ImageInput from "components/atoms/ImageInput/ImageInput";
+import NowLoading from "components/atoms/NowLoading";
+import ImageInput from "components/atoms/ImageInput";
 
 const PostCreate = () => {
     document.title = "布教する";

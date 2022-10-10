@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Link from "components/atoms/Link/Link";
+import Link from "components/atoms/Link";
 
 type SearchResultType = {
     text?: string;

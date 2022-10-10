@@ -1,21 +1,21 @@
 /** @jsxImportSource @emotion/react */
 import { useLocation, Navigate, useNavigate } from "react-router-dom";
-import Default from "components/template/Default/Default";
+import Default from "components/template/Default";
 import useLoginUser from "hooks/useLoginUser";
 import { css } from "@emotion/react";
 import { useState, useEffect } from "react";
 import { postType, postTypeConverter } from "types/postType";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "firebaseConfig";
-import Form from "components/atoms/Form/Form";
-import Textarea from "components/atoms/Textarea/Textarea";
-import Text from "components/atoms/Text/Text";
-import CheckBox from "components/atoms/CheckBox/CheckBox";
-import Button from "components/atoms/Button/Button";
-import SearchBox from "components/molecules/SearchBox/SearchBox";
-import SearchResult from "components/organisms/SearchResult/SearchResult";
+import Form from "components/atoms/Form";
+import Textarea from "components/atoms/Textarea";
+import Text from "components/atoms/Text";
+import CheckBox from "components/atoms/CheckBox";
+import Button from "components/atoms/Button";
+import SearchBox from "components/molecules/SearchBox";
+import SearchResult from "components/organisms/SearchResult";
 import useAllTags from "hooks/useAllTags";
-import ImageInput from "components/atoms/ImageInput/ImageInput";
+import ImageInput from "components/atoms/ImageInput";
 
 const PostEdit = () => {
     document.title = "投稿編集";

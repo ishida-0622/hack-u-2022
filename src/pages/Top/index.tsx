@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Default from "components/template/Default/Default";
-import Image from "components/atoms/Image/Image";
+import Default from "components/template/Default";
+import Image from "components/atoms/Image";
 import icon from "images/icon_trans.png";
 import useUserData from "hooks/useUserData";
 // import { useEffect } from "react";
-import NowLoading from "components/atoms/NowLoading/NowLoading";
+import NowLoading from "components/atoms/NowLoading";
 import { useNavigate } from "react-router-dom";
-import Button from "components/atoms/Button/Button";
+import Button from "components/atoms/Button";
 
 const Top = () => {
     document.title = "WAIFU sharing";

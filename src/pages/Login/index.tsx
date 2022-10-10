@@ -3,11 +3,11 @@ import { signInWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
 import { auth } from "firebaseConfig";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import LoginForm from "components/organisms/LoginForm/LoginForm";
-import Default from "components/template/Default/Default";
+import LoginForm from "components/organisms/LoginForm";
+import Default from "components/template/Default";
 import useLoginUser from "hooks/useLoginUser";
-import Link from "components/atoms/Link/Link";
-import Text from "components/atoms/Text/Text";
+import Link from "components/atoms/Link";
+import Text from "components/atoms/Text";
 import { css } from "@emotion/react";
 
 const Login = () => {

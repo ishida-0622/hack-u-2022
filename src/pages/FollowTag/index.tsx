@@ -1,10 +1,10 @@
-import Default from "components/template/Default/Default";
+import Default from "components/template/Default";
 import getFollows from "utils/getFollow";
-import FollowsForm from "components/organisms/FollowsForm/FollowsForm";
+import FollowsForm from "components/organisms/FollowsForm";
 import useLoginUser from "hooks/useLoginUser";
 import unFollow from "utils/unFollow";
 import { useEffect, useState } from "react";
-import Link from "components/atoms/Link/Link";
+import Link from "components/atoms/Link";
 
 const FollowTag = () => {
     document.title = "推し一覧";

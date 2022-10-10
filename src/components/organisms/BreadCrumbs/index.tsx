@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import Link from "components/atoms/Link/Link";
+import Link from "components/atoms/Link";
 import { css } from "@emotion/react";
 
 type BreadCrumbsType = {

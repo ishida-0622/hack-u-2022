@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
 import { css } from "@emotion/react";
-import Text from "components/atoms/Text/Text";
+import Text from "components/atoms/Text";
 import Modal from "react-modal";
-import Input from "components/atoms/Input/Input";
-import Button from "components/atoms/Button/Button";
+import Input from "components/atoms/Input";
+import Button from "components/atoms/Button";
 import addTag from "utils/addTag";
 
 Modal.setAppElement("#root");

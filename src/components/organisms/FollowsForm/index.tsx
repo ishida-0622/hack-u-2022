@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import Button from "components/atoms/Button/Button";
-import Link from "components/atoms/Link/Link";
+import Button from "components/atoms/Button";
+import Link from "components/atoms/Link";
 import { css } from "@emotion/react";
 
 type FollowsFormType = {

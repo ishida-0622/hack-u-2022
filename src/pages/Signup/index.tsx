@@ -3,13 +3,13 @@ import { createUserWithEmailAndPassword, AuthErrorCodes } from "firebase/auth";
 import { auth, db } from "firebaseConfig";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import SignupForm from "components/organisms/SignupForm/SignupForm";
-import Default from "components/template/Default/Default";
+import SignupForm from "components/organisms/SignupForm";
+import Default from "components/template/Default";
 import useLoginUser from "hooks/useLoginUser";
 import { setDoc, doc } from "firebase/firestore";
 import { userDataType } from "types/userDataType";
-import Text from "components/atoms/Text/Text";
-import Link from "components/atoms/Link/Link";
+import Text from "components/atoms/Text";
+import Link from "components/atoms/Link";
 import { css } from "@emotion/react";
 
 const Signup = () => {

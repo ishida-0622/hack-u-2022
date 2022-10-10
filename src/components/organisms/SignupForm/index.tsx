@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import Form from "components/atoms/Form/Form";
-import Input from "components/atoms/Input/Input";
-import Text from "components/atoms/Text/Text";
-import Button from "components/atoms/Button/Button";
+import Form from "components/atoms/Form";
+import Input from "components/atoms/Input";
+import Text from "components/atoms/Text";
+import Button from "components/atoms/Button";
 import { css } from "@emotion/react";
 import React from "react";
 
@@ -39,7 +39,9 @@ const SignupForm = ({
                     css={css({
                         fontSize: "40px",
                     })}
-                >Signup</h1>
+                >
+                    Signup
+                </h1>
                 <Input
                     type="text"
                     name="username"
@@ -57,7 +59,7 @@ const SignupForm = ({
                             outline: "solid 5px skyblue",
                         },
                     })}
-                    />
+                />
                 <br />
                 <Input
                     type="email"
@@ -76,7 +78,7 @@ const SignupForm = ({
                             outline: "solid 5px skyblue",
                         },
                     })}
-                    />
+                />
                 <br />
                 <Input
                     type="password"
@@ -96,7 +98,7 @@ const SignupForm = ({
                             outline: "solid 5px skyblue",
                         },
                     })}
-                    />
+                />
                 <br />
                 <Input
                     type="password"
@@ -119,22 +121,22 @@ const SignupForm = ({
                 />
                 <br />
                 <Button
-                type="submit"
-                css={css({
-                    border: "none",
-                    outline: "none",
-                    width: "200px",
-                    height: "46px",
-                    fontSize: "24px",
-                    color: "#ffffff",
-                    ":hover": {
-                        cursor: "pointer",
-                        opacity: "0.8",
-                    },
-                    background: "skyblue",
-                    borderRadius: "30px",
-                    marginBottom: "10px",
-                })}
+                    type="submit"
+                    css={css({
+                        border: "none",
+                        outline: "none",
+                        width: "200px",
+                        height: "46px",
+                        fontSize: "24px",
+                        color: "#ffffff",
+                        ":hover": {
+                            cursor: "pointer",
+                            opacity: "0.8",
+                        },
+                        background: "skyblue",
+                        borderRadius: "30px",
+                        marginBottom: "10px",
+                    })}
                 >
                     <Text>{buttonText}</Text>
                 </Button>

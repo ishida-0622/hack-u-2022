@@ -1,5 +1,5 @@
 import useLoginUser from "hooks/useLoginUser";
-import NowLoading from "components/atoms/NowLoading/NowLoading";
+import NowLoading from "components/atoms/NowLoading";
 import { Navigate } from "react-router-dom";
 import { ReactNode } from "react";
 

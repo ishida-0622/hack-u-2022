@@ -6,11 +6,11 @@ import { postTypeConverter } from "types/postType";
 import { useLocation, useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
 import useUserData from "hooks/useUserData";
-import Default from "components/template/Default/Default";
-import Tag from "components/organisms/Tag/Tag";
-import Text from "components/atoms/Text/Text";
-import Button from "components/atoms/Button/Button";
-import NowLoading from "components/atoms/NowLoading/NowLoading";
+import Default from "components/template/Default";
+import Tag from "components/organisms/Tag";
+import Text from "components/atoms/Text";
+import Button from "components/atoms/Button";
+import NowLoading from "components/atoms/NowLoading";
 
 const RecommendedTags = () => {
     document.title = "布教される";

@@ -1,16 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import useLoginUser from "hooks/useLoginUser";
-import Default from "components/template/Default/Default";
+import Default from "components/template/Default";
 import { useLocation, useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
 import { postType } from "types/postType";
 import getRecommend from "utils/getRecommend";
 // import Post from "components/organisms/Post/Post";
-import Button from "components/atoms/Button/Button";
-import NowLoading from "components/atoms/NowLoading/NowLoading";
-import Text from "components/atoms/Text/Text";
-import Link from "components/atoms/Link/Link";
+import Button from "components/atoms/Button";
+import NowLoading from "components/atoms/NowLoading";
+import Text from "components/atoms/Text";
+import Link from "components/atoms/Link";
 import Modal from "react-modal";
 
 const MyPostList = () => {

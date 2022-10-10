@@ -2,20 +2,20 @@
 import ReactDOM from "react-dom/client";
 import "index.css";
 import reportWebVitals from "reportWebVitals";
-import NotFound from "pages/NotFound/NotFound";
+import NotFound from "pages/NotFound";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Signup from "pages/Signup/Signup";
-import Login from "pages/Login/Login";
-import TagList from "pages/TagList/TagList";
-import Top from "pages/Top/Top";
-import RecommendedTags from "pages/RecommendedTags/RecommendedTags";
-import RecommendedMessage from "pages/RecommendedMessage/RecommendedMessage";
-import PostCreate from "pages/PostCreate/PostCreate";
-import MyPostList from "pages/MyPostList/MyPostList";
-import PostEdit from "pages/PostEdit/PostEdit";
-import FollowTag from "pages/FollowTag/FollowTag";
-import Follow from "pages/Follow/Follow";
-import Mypage from "pages/Mypage/Mypage";
+import Signup from "pages/Signup";
+import Login from "pages/Login";
+import TagList from "pages/TagList";
+import Top from "pages/Top";
+import RecommendedTags from "pages/RecommendedTags";
+import RecommendedMessage from "pages/RecommendedMessage";
+import PostCreate from "pages/PostCreate";
+import MyPostList from "pages/MyPostList";
+import PostEdit from "pages/PostEdit";
+import FollowTag from "pages/FollowTag";
+import Follow from "pages/Follow";
+import Mypage from "pages/Mypage";
 // import EditData from "pages/EditData/EditData";
 
 const root = ReactDOM.createRoot(

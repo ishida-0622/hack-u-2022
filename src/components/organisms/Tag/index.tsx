@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Link from "components/atoms/Link/Link";
+import Link from "components/atoms/Link";
 // import Text from "components/atoms/Text/Text";
 
 type TagType = {

@@ -1,17 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useEffect } from "react";
 import useLoginUser from "hooks/useLoginUser";
-import SearchBox from "components/molecules/SearchBox/SearchBox";
+import SearchBox from "components/molecules/SearchBox";
 import useAllTags from "hooks/useAllTags";
-import Default from "components/template/Default/Default";
+import Default from "components/template/Default";
 import { css } from "@emotion/react";
-import Text from "components/atoms/Text/Text";
+import Text from "components/atoms/Text";
 import addFollow from "utils/addFollow";
 import useUserData from "hooks/useUserData";
 import unFollow from "utils/unFollow";
-import Link from "components/atoms/Link/Link";
+import Link from "components/atoms/Link";
 import Modal from "react-modal";
-import AddTagModalWindow from "components/organisms/AddTagModalWindow/AddTagModalWindow";
+import AddTagModalWindow from "components/organisms/AddTagModalWindow";
 
 Modal.setAppElement("#root");
 
