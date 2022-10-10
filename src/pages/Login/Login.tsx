@@ -54,7 +54,7 @@ const Login = () => {
 
     return (
         <>
-            <Default notNav={true}>
+            <Default notNav={true} loginCheck={false}>
                 {user ? (
                     <Navigate to={"/"}></Navigate>
                 ) : (
