@@ -9,7 +9,7 @@ import Text from "components/atoms/Text";
 import addFollow from "utils/addFollow";
 import useUserData from "hooks/useUserData";
 import unFollow from "utils/unFollow";
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 import AddTagModalWindow from "components/organisms/AddTagModalWindow";
 import FollowButton from "components/organisms/FollowButton";
 
@@ -74,7 +74,7 @@ const Follow = () => {
                                     color: "#1da1f2",
                                     width: "70%",
                                 })}
-                                href={`/recommended-message?tag=${tag}`}
+                                to={`/recommended-message?tag=${tag}`}
                             >
                                 #{tag}
                             </Link>
@@ -98,7 +98,7 @@ const Follow = () => {
                     <Text>
                         推しが見つからない場合は
                         <Link
-                            href=""
+                            to=""
                             css={css({ ":hover": { cursor: "pointer" } })}
                             onClick={(e) => {
                                 e.preventDefault();

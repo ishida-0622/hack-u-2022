@@ -10,7 +10,7 @@ import getRecommend from "utils/getRecommend";
 import Button from "components/atoms/Button";
 import NowLoading from "components/atoms/NowLoading";
 import Text from "components/atoms/Text";
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 import Modal from "react-modal";
 
 const MyPostList = () => {
@@ -80,7 +80,7 @@ const MyPostList = () => {
                                     {post.data.message.length >= 200 ? (
                                         <>
                                             <Link
-                                                href=""
+                                                to=""
                                                 onClick={(e) => {
                                                     e.preventDefault();
                                                     setOpen(post.id);

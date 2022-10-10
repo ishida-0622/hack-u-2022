@@ -1,18 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 // import Text from "components/atoms/Text/Text";
 
 type TagType = {
     className?: string;
     tagName: string;
-    href?: string;
+    to: string;
     onClick?(event: React.MouseEvent<HTMLAnchorElement>): void;
 };
 
 const Tag = (props: TagType) => {
     return (
-        <Link css={TagStyle} href={props.href} onClick={props.onClick}>
+        <Link css={TagStyle} to={props.to} onClick={props.onClick}>
             {"#" + props.tagName}
         </Link>
     );

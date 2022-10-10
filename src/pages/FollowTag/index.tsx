@@ -4,7 +4,7 @@ import FollowsForm from "components/organisms/FollowsForm";
 import useLoginUser from "hooks/useLoginUser";
 import unFollow from "utils/unFollow";
 import { useEffect, useState } from "react";
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 
 const FollowTag = () => {
     document.title = "推し一覧";
@@ -49,7 +49,7 @@ const FollowTag = () => {
                         {tags.length === 0 ? (
                             <div>
                                 <h3>フォローしているタグがありません。</h3>
-                                <Link href={"/tags?mode=follow"}>
+                                <Link to={"/tags?mode=follow"}>
                                     推しを登録しに行く
                                 </Link>
                             </div>

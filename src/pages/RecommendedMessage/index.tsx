@@ -19,7 +19,7 @@ import { userDataConverter } from "types/userDataType";
 import Default from "components/template/Default";
 import Text from "components/atoms/Text";
 import Modal from "react-modal";
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 import Image from "components/atoms/Image";
 
 const RecommendedMessage = () => {
@@ -111,7 +111,7 @@ const RecommendedMessage = () => {
                                             })}
                                         >
                                             <Link
-                                                href=""
+                                                to=""
                                                 onClick={(e) => {
                                                     e.preventDefault();
                                                     setOpen(
@@ -181,7 +181,7 @@ const RecommendedMessage = () => {
                                             {val.message.length >= 200 ? (
                                                 <>
                                                     <Link
-                                                        href=""
+                                                        to=""
                                                         onClick={(e) => {
                                                             e.preventDefault();
                                                             setOpen(

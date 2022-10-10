@@ -102,7 +102,7 @@ const RecommendedTags = () => {
                                 <div key={val} css={css({ display: "flex" })}>
                                     <Tag
                                         tagName={val}
-                                        href={`/recommended-message?tag=${val}`}
+                                        to={`/recommended-message?tag=${val}`}
                                     ></Tag>
                                 </div>
                             ))

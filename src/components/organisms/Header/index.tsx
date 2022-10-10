@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import logout from "utils/logout";
 
@@ -8,7 +8,7 @@ const Header = ({ notNav = false }: { notNav?: boolean }) => {
         <>
             <header css={HeaderMain}>
                 <h1 css={HeaderH1}>
-                    <Link href="/" css={HeaderLink}>
+                    <Link to="/" css={HeaderLink}>
                         WAIFU sharing
                     </Link>
                 </h1>
@@ -18,18 +18,18 @@ const Header = ({ notNav = false }: { notNav?: boolean }) => {
                     <nav css={HeaderNav}>
                         <ul css={HeaderUl}>
                             <li css={HeaderLi}>
-                                <Link href="/post-create" css={HeaderLink}>
+                                <Link to="/post-create" css={HeaderLink}>
                                     布教する
                                 </Link>
                             </li>
                             <li css={HeaderLi}>
-                                <Link href="/recommended-tags" css={HeaderLink}>
+                                <Link to="/recommended-tags" css={HeaderLink}>
                                     布教される
                                 </Link>
                             </li>
                             <li css={HeaderLi}>
                                 <Link
-                                    href="#"
+                                    to="#"
                                     css={HeaderLink}
                                     onClick={() => logout()}
                                 >

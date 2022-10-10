@@ -9,7 +9,7 @@ import useLoginUser from "hooks/useLoginUser";
 import { setDoc, doc } from "firebase/firestore";
 import { userDataType } from "types/userDataType";
 import Text from "components/atoms/Text";
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 
 const Signup = () => {
@@ -101,7 +101,7 @@ const Signup = () => {
                         />
                         <Text>
                             アカウントをお持ちの方は
-                            <Link href="/login">こちら</Link>
+                            <Link to="/login">こちら</Link>
                         </Text>
                     </div>
                 )}

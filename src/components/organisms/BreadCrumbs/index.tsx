@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 
 type BreadCrumbsType = {
-    readonly contents?: string[][]; //[[href, pageName], [href, pageName], ...]
+    readonly contents?: string[][]; //[[to, pageName], [to, pageName], ...]
 };
 
 const BreadCrumbs = (props: BreadCrumbsType) => {
@@ -15,7 +15,7 @@ const BreadCrumbs = (props: BreadCrumbsType) => {
             <ol css={olStyle}>
                 {props.contents.map((value) => (
                     <li key={value[1]} css={liStyle}>
-                        <Link href={value[0]} css={linkStyle}>
+                        <Link to={value[0]} css={linkStyle}>
                             {value[1]}
                         </Link>
                     </li>
