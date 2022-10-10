@@ -20,7 +20,7 @@ const FollowButton = (props: {
     return (
         <Button
             className={props.className}
-            css={[buttonStyle, hoverStyle(isFollow)]}
+            css={[buttonStyle(isFollow), hoverStyle(isFollow)]}
             onClick={() => {
                 if (isFollow) {
                     if (
@@ -46,17 +46,18 @@ const FollowButton = (props: {
     );
 };
 
-const buttonStyle = css({
-    width: "6rem",
-    margin: "0 0 0 auto",
-    border: "none",
-    borderRadius: 5,
-    backgroundColor: "#1da1f2",
-    color: "white",
-    ":hover": {
-        cursor: "pointer",
-    },
-});
+const buttonStyle = (isFollow: boolean) =>
+    css({
+        width: "6rem",
+        margin: "0 0 0 auto",
+        border: "none",
+        borderRadius: 5,
+        backgroundColor: isFollow ? "#1877f2" : "#1da1f2",
+        color: "white",
+        ":hover": {
+            cursor: "pointer",
+        },
+    });
 
 const hoverStyle = (isFollow: boolean) =>
     css({
