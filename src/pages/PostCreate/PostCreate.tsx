@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Default from "components/template/Default/Default";
 import Form from "components/atoms/Form/Form";
 import Textarea from "components/atoms/Textarea/Textarea";
@@ -29,7 +29,7 @@ const PostCreate = () => {
     const [from, setFrom] = useState<string | null>(null);
     const [to, setTo] = useState<string[]>([]);
     const [userData] = useUserData();
-    const [user, load] = useLoginUser();
+    const [user] = useLoginUser();
     const [allTag] = useAllTags();
     const [searchTags, setSearchTags] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -99,11 +99,7 @@ const PostCreate = () => {
                 ["/#", "布教する"],
             ]}
         >
-            {!load ? (
-                <NowLoading />
-            ) : !user ? (
-                <Navigate to={"/login"}></Navigate>
-            ) : !follows ? (
+            {!follows ? (
                 <NowLoading />
             ) : follows.length === 0 ? (
                 <div css={css({ textAlign: "center" })}>
