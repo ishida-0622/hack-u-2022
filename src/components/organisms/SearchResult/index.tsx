@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 
 type SearchResultType = {
     text?: string;
@@ -19,7 +19,7 @@ const SearchResult = (props: SearchResultType) => {
             <Link
                 css={css({ textAlign: "left", color: "skyblue" })}
                 onClick={props.onClick}
-                href=""
+                to=""
             >
                 {props.text}
             </Link>

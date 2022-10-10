@@ -6,7 +6,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import LoginForm from "components/organisms/LoginForm";
 import Default from "components/template/Default";
 import useLoginUser from "hooks/useLoginUser";
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 import Text from "components/atoms/Text";
 import { css } from "@emotion/react";
 
@@ -66,7 +66,7 @@ const Login = () => {
                         />
                         <Text>
                             アカウントをお持ちでない方は
-                            <Link href="/signup">こちら</Link>
+                            <Link to="/signup">こちら</Link>
                         </Text>
                     </div>
                 )}

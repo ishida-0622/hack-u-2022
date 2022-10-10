@@ -3,7 +3,7 @@ import { db } from "firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { css } from "@emotion/react";
 import Default from "components/template/Default";
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useLoginUser from "hooks/useLoginUser";
 import AddTagModalWindow from "components/organisms/AddTagModalWindow";
@@ -53,9 +53,7 @@ const TagList = () => {
                                 >
                                     /
                                     <Link
-                                        href={
-                                            "/recommended-message?tag=" + value
-                                        }
+                                        to={"/recommended-message?tag=" + value}
                                         css={css({
                                             paddingLeft: "5px",
                                             textDecoration: "none",
@@ -75,7 +73,7 @@ const TagList = () => {
                             })}
                         >
                             <Link
-                                href=""
+                                to=""
                                 onClick={(e) => {
                                     e.preventDefault();
                                     setModalOpen(true);

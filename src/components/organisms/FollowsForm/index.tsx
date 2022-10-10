@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import Button from "components/atoms/Button";
-import Link from "components/atoms/Link";
+import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 
 type FollowsFormType = {
@@ -36,7 +36,7 @@ const FollowsForm = (props: FollowsFormType) => {
                                 // borderColor: "#258fb8",
                                 borderRadius: 10,
                             })}
-                            href={"/recommended-message?tag=" + props.tag}
+                            to={"/recommended-message?tag=" + props.tag}
                         >
                             #{props.tag}
                         </Link>
