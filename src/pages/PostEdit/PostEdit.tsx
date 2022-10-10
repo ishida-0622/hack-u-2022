@@ -15,7 +15,6 @@ import Button from "components/atoms/Button/Button";
 import SearchBox from "components/molecules/SearchBox/SearchBox";
 import SearchResult from "components/organisms/SearchResult/SearchResult";
 import useAllTags from "hooks/useAllTags";
-import NowLoading from "components/atoms/NowLoading/NowLoading";
 
 const PostEdit = () => {
     document.title = "投稿編集";
@@ -23,7 +22,7 @@ const PostEdit = () => {
     const search = useLocation().search;
     const postId = new URLSearchParams(search).get("id");
     const [allTag] = useAllTags();
-    const [user, load] = useLoginUser();
+    const [user] = useLoginUser();
     const [post, setPost] = useState<postType | undefined>(undefined);
     const [inputedMessage, setInputedMessage] = useState("");
     const [isSpoiler, setIsSpoiler] = useState(false);
@@ -86,11 +85,7 @@ const PostEdit = () => {
                 ["/#", "投稿編集"],
             ]}
         >
-            {!load ? (
-                <NowLoading />
-            ) : !user ? (
-                <Navigate to={"/login"} />
-            ) : !postId ? (
+            {!postId ? (
                 <Navigate to={"/my-posts"} />
             ) : !post ? (
                 <></>

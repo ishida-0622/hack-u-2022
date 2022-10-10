@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-// import Post from "components/organisms/Post/Post";
 import {
     getDocs,
     query,
@@ -10,7 +9,7 @@ import {
 } from "firebase/firestore";
 import { db } from "firebaseConfig";
 import { useEffect, useState } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { postType, postTypeConverter } from "types/postType";
 import { css } from "@emotion/react";
 import Button from "components/atoms/Button/Button";
@@ -18,7 +17,6 @@ import useLoginUser from "hooks/useLoginUser";
 import addFollow from "utils/addFollow";
 import { userDataConverter } from "types/userDataType";
 import Default from "components/template/Default/Default";
-import NowLoading from "components/atoms/NowLoading/NowLoading";
 import Text from "components/atoms/Text/Text";
 import Modal from "react-modal";
 import Link from "components/atoms/Link/Link";
@@ -27,7 +25,7 @@ import Image from "components/atoms/Image/Image";
 const RecommendedMessage = () => {
     document.title = "布教メッセージ";
     const navigate = useNavigate();
-    const [user, load] = useLoginUser();
+    const [user] = useLoginUser();
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
     const [isFollow, setIsFollow] = useState(false);
@@ -77,11 +75,7 @@ const RecommendedMessage = () => {
                 ["#", "布教メッセージ"],
             ]}
         >
-            {!load ? (
-                <NowLoading />
-            ) : !user ? (
-                <Navigate to={"/login"}></Navigate>
-            ) : !tag || posts === null ? (
+            {!tag || posts === null ? (
                 <></>
             ) : (
                 <>
@@ -299,7 +293,7 @@ const RecommendedMessage = () => {
                                 })}
                                 onClick={() => {
                                     if (!isFollow) {
-                                        addFollow(user, tag).then(() =>
+                                        addFollow(user!, tag).then(() =>
                                             setIsFollow(true)
                                         );
                                     }

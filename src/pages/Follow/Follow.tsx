@@ -1,8 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useEffect } from "react";
 import useLoginUser from "hooks/useLoginUser";
-import NowLoading from "components/atoms/NowLoading/NowLoading";
-import { Navigate } from "react-router-dom";
 import SearchBox from "components/molecules/SearchBox/SearchBox";
 import useAllTags from "hooks/useAllTags";
 import Default from "components/template/Default/Default";
@@ -19,7 +17,7 @@ Modal.setAppElement("#root");
 
 const Follow = () => {
     document.title = "推しフォロー";
-    const [user, load] = useLoginUser();
+    const [user] = useLoginUser();
     const [userData] = useUserData();
     const [modalIsOpen, setIsOpen] = useState(false);
     const [follows, setFollows] = useState<Set<string>>(new Set());
@@ -106,73 +104,67 @@ const Follow = () => {
                 ["/#", "推しフォロー"],
             ]}
         >
-            {!load ? (
-                <NowLoading />
-            ) : !user ? (
-                <Navigate to={"/login"} />
-            ) : (
-                <div css={css({ textAlign: "center" })}>
-                    <h1>あなたの推しをフォローしましょう</h1>
-                    <SearchBox
-                        value={searchBoxValue}
-                        placeholder={"推しを検索"}
-                        inputOnChange={(e) => {
-                            setSearchBoxValue(e.target.value);
-                            tagSearch(e.target.value);
-                        }}
-                    />
-                    <div
-                        css={css({
-                            width: "40%",
-                            margin: "10px auto",
-                            textAlign: "left",
-                        })}
-                    >
-                        {searchResult.map((tag) => (
-                            <div
-                                key={tag}
-                                css={css({ display: "flex", margin: "5px 0" })}
+            <div css={css({ textAlign: "center" })}>
+                <h1>あなたの推しをフォローしましょう</h1>
+                <SearchBox
+                    value={searchBoxValue}
+                    placeholder={"推しを検索"}
+                    inputOnChange={(e) => {
+                        setSearchBoxValue(e.target.value);
+                        tagSearch(e.target.value);
+                    }}
+                />
+                <div
+                    css={css({
+                        width: "40%",
+                        margin: "10px auto",
+                        textAlign: "left",
+                    })}
+                >
+                    {searchResult.map((tag) => (
+                        <div
+                            key={tag}
+                            css={css({ display: "flex", margin: "5px 0" })}
+                        >
+                            <Text
+                                css={css({
+                                    color: "skyblue",
+                                    width: "70%",
+                                })}
                             >
-                                <Text
-                                    css={css({
-                                        color: "skyblue",
-                                        width: "70%",
-                                    })}
-                                >
-                                    #{tag}
-                                </Text>
-                                <FollowButton
-                                    tag={tag}
-                                    css={css({ height: "1.6rem" })}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                    <div>
-                        <Text>
-                            推しが見つからない場合は
-                            <Link
-                                href=""
-                                css={css({ ":hover": { cursor: "pointer" } })}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    setIsOpen(true);
-                                }}
-                            >
-                                こちら
-                            </Link>
-                        </Text>
-                    </div>
-                    <AddTagModalWindow
-                        isOpen={modalIsOpen}
-                        setIsOpen={setIsOpen}
-                        func={(tag: string) => {
-                            allTag.push(tag);
-                            tagSearch(searchBoxValue);
-                        }}
-                    />
+                                #{tag}
+                            </Text>
+                            <FollowButton
+                                tag={tag}
+                                css={css({ height: "1.6rem" })}
+                            />
+                        </div>
+                    ))}
                 </div>
-            )}
+                <div>
+                    <Text>
+                        推しが見つからない場合は
+                        <Link
+                            href=""
+                            css={css({ ":hover": { cursor: "pointer" } })}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setIsOpen(true);
+                            }}
+                        >
+                            こちら
+                        </Link>
+                    </Text>
+                </div>
+                <AddTagModalWindow
+                    isOpen={modalIsOpen}
+                    setIsOpen={setIsOpen}
+                    func={(tag: string) => {
+                        allTag.push(tag);
+                        tagSearch(searchBoxValue);
+                    }}
+                />
+            </div>
         </Default>
     );
 };

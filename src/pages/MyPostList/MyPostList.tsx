@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import useLoginUser from "hooks/useLoginUser";
 import Default from "components/template/Default/Default";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
 import { postType } from "types/postType";
@@ -19,7 +19,7 @@ const MyPostList = () => {
     const [open, setOpen] = useState<string | null>(null);
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
-    const [user, load] = useLoginUser();
+    const [user] = useLoginUser();
     const [posts, setPosts] = useState<{ data: postType; id: string }[] | null>(
         null
     );
@@ -44,11 +44,7 @@ const MyPostList = () => {
                 ["/#", "投稿一覧"],
             ]}
         >
-            {!load ? (
-                <NowLoading />
-            ) : !user ? (
-                <Navigate to={"/login"}></Navigate>
-            ) : posts === null ? (
+            {posts === null ? (
                 <NowLoading />
             ) : posts.length ? (
                 <div css={css({ textAlign: "center" })}>
