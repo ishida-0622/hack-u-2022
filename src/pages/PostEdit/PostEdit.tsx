@@ -15,6 +15,7 @@ import Button from "components/atoms/Button/Button";
 import SearchBox from "components/molecules/SearchBox/SearchBox";
 import SearchResult from "components/organisms/SearchResult/SearchResult";
 import useAllTags from "hooks/useAllTags";
+import ImageInput from "components/atoms/ImageInput/ImageInput";
 
 const PostEdit = () => {
     document.title = "投稿編集";
