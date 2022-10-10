@@ -12,6 +12,7 @@ type ButtonType = {
     readonly onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     readonly onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
     readonly onMouseOver?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    readonly onMouseOut?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const Button = (props: ButtonType) => {
@@ -25,6 +26,7 @@ const Button = (props: ButtonType) => {
             onClick={props.onClick}
             onFocus={props.onFocus}
             onMouseOver={props.onMouseOver}
+            onMouseOut={props.onMouseOut}
             css={css({
                 border: "none",
                 borderRadius: 10,
@@ -35,8 +37,8 @@ const Button = (props: ButtonType) => {
                 },
             })}
         >
-            { props.children }
-        </button >
+            {props.children}
+        </button>
     );
 };
 
