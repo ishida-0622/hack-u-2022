@@ -69,15 +69,17 @@ const Follow = () => {
                             key={tag}
                             css={css({ display: "flex", margin: "5px 0" })}
                         >
-                            <Link
-                                css={css({
-                                    color: "#1da1f2",
-                                    width: "70%",
-                                })}
-                                to={`/recommended-message?tag=${tag}`}
-                            >
-                                #{tag}
-                            </Link>
+                            <span>
+                                <Link
+                                    css={css({
+                                        color: "#1da1f2",
+                                        width: "70%",
+                                    })}
+                                    to={`/recommended-message?tag=${tag}`}
+                                >
+                                    #{tag}
+                                </Link>
+                            </span>
                             <FollowButton
                                 tag={tag}
                                 css={css({ height: "1.6rem" })}
