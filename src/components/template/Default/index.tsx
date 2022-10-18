@@ -6,6 +6,7 @@ import { ReactNode } from "react";
 import LoginCheck from "components/organisms/LoginCheck";
 
 type DefaultType = {
+    readonly className?: string;
     readonly children?: ReactNode;
     readonly contents?: string[][];
     readonly notNav?: boolean;
@@ -13,6 +14,7 @@ type DefaultType = {
 };
 
 const Default = ({
+    className,
     children,
     contents,
     notNav,
@@ -21,7 +23,7 @@ const Default = ({
     return (
         <>
             <Header notNav={notNav} />
-            <main>
+            <main className={className}>
                 <BreadCrumbs contents={contents} />
                 {loginCheck ? (
                     <LoginCheck>{children}</LoginCheck>
