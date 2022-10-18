@@ -1,27 +1,24 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Default from "components/template/Default";
+import { Link } from "react-router-dom";
 
+/**
+ * 404ページ
+ */
 const NotFound = () => {
     document.title = "Not Found";
     return (
-        <Default>
-            <h1
-                css={css({
-                    textAlign: "center",
-                })}
-            >
-                404 NotFound
-            </h1>
-            <p
-                css={css({
-                    textAlign: "center",
-                })}
-            >
-                お探しのページは見つかりませんでした
-            </p>
+        <Default css={style}>
+            <h1>404 NotFound</h1>
+            <p>お探しのページは見つかりませんでした</p>
+            <Link to={"/"}>Topへ</Link>
         </Default>
     );
 };
+
+const style = css({
+    textAlign: "center",
+});
 
 export default NotFound;
