@@ -3,6 +3,9 @@ import { css } from "@emotion/react";
 import Button from "components/atoms/Button";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * フォローしていない場合のJSXを返す
+ */
 const NotFollows = () => {
     const navigate = useNavigate();
 
