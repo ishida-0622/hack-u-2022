@@ -1,10 +1,15 @@
 import useLoginUser from "hooks/useLoginUser";
 import NowLoading from "components/atoms/NowLoading";
 import { Navigate } from "react-router-dom";
-import { ReactNode } from "react";
+import { createContext, ReactNode, useLayoutEffect, useState } from "react";
+import { User } from "firebase/auth";
 
 const LoginCheck = (props: { children: ReactNode }) => {
     const [user, load] = useLoginUser();
+    const [userContext, setUserContext] = useState<User | null>(null);
+    useLayoutEffect(() => {
+        setUserContext(user);
+    }, [user]);
     return (
         <>
             {!load ? (
@@ -12,10 +17,13 @@ const LoginCheck = (props: { children: ReactNode }) => {
             ) : !user ? (
                 <Navigate to={"/login"} />
             ) : (
-                <>{props.children}</>
+                <LoginContext.Provider value={userContext}>
+                    {props.children}
+                </LoginContext.Provider>
             )}
         </>
     );
 };
 
 export default LoginCheck;
+export const LoginContext = createContext<User | null>(null);
