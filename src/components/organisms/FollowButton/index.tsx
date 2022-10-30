@@ -49,6 +49,7 @@ const FollowButton = (props: {
 const buttonStyle = (isFollow: boolean) =>
     css({
         width: "6rem",
+        height: "1.6rem",
         margin: "0 0 0 auto",
         border: "none",
         borderRadius: 5,
