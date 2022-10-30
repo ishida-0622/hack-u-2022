@@ -1,12 +1,10 @@
 import Input from "components/atoms/Input";
 
-type SearchBoxType = {
+const SearchBox = (props: {
     value: string;
     placeholder?: string;
     inputOnChange?(event: React.ChangeEvent<HTMLInputElement>): void;
-};
-
-const SearchBox = (props: SearchBoxType) => {
+}) => {
     return (
         <div>
             <Input
