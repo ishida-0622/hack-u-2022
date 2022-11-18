@@ -16,22 +16,22 @@ const Login = () => {
 
     const [user] = useLoginUser();
 
-    const [inputedEmail, setInputedEmail] = useState("");
-    const [inputedPassword, setInputedPassword] = useState("");
+    const [inputtedEmail, setInputtedEmail] = useState("");
+    const [inputtedPassword, setInputtedPassword] = useState("");
 
     const handlerChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInputedEmail(event.target.value);
+        setInputtedEmail(event.target.value);
     };
 
     const handlerChangePassword = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
-        setInputedPassword(event.target.value);
+        setInputtedPassword(event.target.value);
     };
 
     const handlerSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        login(inputedEmail, inputedPassword);
+        login(inputtedEmail, inputtedPassword);
     };
 
     const login = (email: string, pass: string) => {
