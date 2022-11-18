@@ -22,7 +22,8 @@ const PostEdit = () => {
     const navigate = useNavigate();
     const search = useLocation().search;
     const postId = new URLSearchParams(search).get("id");
-    const [allTag] = useAllTags();
+    const { allTags, getAllTags } = useAllTags();
+    getAllTags();
     const [user] = useLoginUser();
     const [post, setPost] = useState<postType | undefined>(undefined);
     const [inputedMessage, setInputedMessage] = useState("");
@@ -56,7 +57,7 @@ const PostEdit = () => {
 
     const tagSearch = (inputed: string) => {
         const reg = new RegExp("^" + inputed + ".*$");
-        const arr = allTag.filter((val) => val.match(reg));
+        const arr = allTags.filter((val) => val.match(reg));
         setSearchTags(arr.slice(0, Math.min(10, arr.length)));
     };
 
