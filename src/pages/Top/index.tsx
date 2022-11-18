@@ -8,6 +8,7 @@ import useUserData from "hooks/useUserData";
 import NowLoading from "components/atoms/NowLoading";
 import { useNavigate } from "react-router-dom";
 import Button from "components/atoms/Button";
+import { buttonStyle, buttonStyle2 } from "./style";
 
 const Top = () => {
     document.title = "WAIFU sharing";
@@ -67,38 +68,38 @@ const Top = () => {
                     </div>
 
                     <Button
-                        css={ButtonStyle}
+                        css={buttonStyle}
                         onClick={() => navigate("/post-create")}
                     >
                         布教する
                     </Button>
                     <Button
-                        css={ButtonStyle}
+                        css={buttonStyle}
                         onClick={() => navigate("/recommended-tags")}
                     >
                         布教される
                     </Button>
                     <br />
                     <Button
-                        css={ButtonStyle2}
+                        css={buttonStyle2}
                         onClick={() => navigate("/follow")}
                     >
                         フォローする
                     </Button>
                     <Button
-                        css={ButtonStyle2}
+                        css={buttonStyle2}
                         onClick={() => navigate("/my-posts")}
                     >
                         投稿一覧
                     </Button>
-                    <Button
-                        css={ButtonStyle2}
+                    {/* <Button
+                        css={buttonStyle2}
                         onClick={() => navigate("/tags")}
                     >
                         タグ一覧
-                    </Button>
+                    </Button> */}
                     <Button
-                        css={ButtonStyle2}
+                        css={buttonStyle2}
                         onClick={() => navigate("/follows")}
                     >
                         推し一覧
@@ -108,33 +109,5 @@ const Top = () => {
         </Default>
     );
 };
-
-const ButtonStyle = css({
-    border: "none",
-    borderRadius: 10,
-    width: "12rem",
-    height: "3rem",
-    backgroundColor: "skyblue",
-    color: "white",
-    margin: "0 1%",
-    fontSize: "1.5rem",
-    ":hover": {
-        cursor: "pointer",
-    },
-});
-
-const ButtonStyle2 = css({
-    border: "none",
-    borderRadius: 10,
-    width: "10rem",
-    height: "2.5rem",
-    backgroundColor: "skyblue",
-    color: "white",
-    margin: "0.5% 1% 0 1%",
-    fontSize: "1.3rem",
-    ":hover": {
-        cursor: "pointer",
-    },
-});
 
 export default Top;
