@@ -31,18 +31,19 @@ const PostCreate = () => {
     const [to, setTo] = useState<string[]>([]);
     const [userData] = useUserData();
     const [user] = useLoginUser();
-    const [allTag] = useAllTags();
+    const { allTags, getAllTags } = useAllTags();
+    getAllTags();
     const [searchTags, setSearchTags] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [searchBoxValue, setSearchBoxValue] = useState("");
     const [follows, setFollows] = useState<string[] | null>(null);
-    const [inputedMessage, setInputedMessage] = useState("");
+    const [inputtedMessage, setInputtedMessage] = useState("");
     const [isSpoiler, setIsSpoiler] = useState(false);
     const [image, setImage] = useState<string | null>(null);
 
-    const tagSearch = (inputed: string) => {
-        const reg = new RegExp("^" + inputed + ".*$");
-        const arr = allTag
+    const tagSearch = (inputted: string) => {
+        const reg = new RegExp("^" + inputted + ".*$");
+        const arr = allTags
             .filter((val) => val.match(reg))
             .filter((v) => v !== from);
         setSearchTags(arr.slice(0, Math.min(10, arr.length)));
@@ -60,14 +61,14 @@ const PostCreate = () => {
     }, []);
 
     useEffect(() => {
-        if (allTag.length === 0) return;
+        if (allTags.length === 0) return;
         if (tag) {
-            setSearchTags(allTag.filter((v) => v !== tag));
+            setSearchTags(allTags.filter((v) => v !== tag));
         } else {
-            setSearchTags(allTag);
+            setSearchTags(allTags);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [allTag]);
+    }, [allTags]);
 
     const postCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -77,7 +78,7 @@ const PostCreate = () => {
             author: userData.name,
             author_uid: user.uid,
             author_icon: userData.image_url,
-            message: inputedMessage,
+            message: inputtedMessage,
             image_url: image,
             is_spoiler: isSpoiler,
             recommender: from,
@@ -129,7 +130,7 @@ const PostCreate = () => {
                                     if (!from) {
                                         setFrom(val);
                                         setSearchTags(
-                                            allTag.filter((v) => v !== val)
+                                            allTags.filter((v) => v !== val)
                                         );
                                     }
                                 }}
@@ -275,7 +276,7 @@ const PostCreate = () => {
                     <Form>
                         <label>
                             <Textarea
-                                value={inputedMessage}
+                                value={inputtedMessage}
                                 name="message"
                                 rows={8}
                                 cols={50}
@@ -284,7 +285,7 @@ const PostCreate = () => {
                                     "○○が××なので△△です！\n特に□□系が好きな人におすすめ！"
                                 }
                                 onChange={(e) =>
-                                    setInputedMessage(e.target.value)
+                                    setInputtedMessage(e.target.value)
                                 }
                             />
                         </label>
