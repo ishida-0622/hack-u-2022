@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import React, { ReactNode } from "react";
+import { buttonStyle } from "./style";
 
-type ButtonType = {
+const Button = (props: {
     readonly className?: string;
     readonly name?: string;
     readonly value?: string;
@@ -13,9 +13,7 @@ type ButtonType = {
     readonly onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
     readonly onMouseOver?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     readonly onMouseOut?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-};
-
-const Button = (props: ButtonType) => {
+}) => {
     return (
         <button
             className={props.className}
@@ -27,15 +25,7 @@ const Button = (props: ButtonType) => {
             onFocus={props.onFocus}
             onMouseOver={props.onMouseOver}
             onMouseOut={props.onMouseOut}
-            css={css({
-                border: "none",
-                borderRadius: 10,
-                backgroundColor: "skyblue",
-                color: "white",
-                ":hover": {
-                    cursor: "pointer",
-                },
-            })}
+            css={buttonStyle}
         >
             {props.children}
         </button>
