@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "firebaseConfig";
-import { allTagConverter } from "types/allTagsType";
+import { allTagsConverter } from "types/allTagsType";
 import { FirebaseError } from "firebase/app";
 
 const useAllTags = () => {
@@ -12,7 +12,7 @@ const useAllTags = () => {
         try {
             const res = (
                 await getDoc(
-                    doc(db, "all_tags/all").withConverter(allTagConverter)
+                    doc(db, "all_tags/all").withConverter(allTagsConverter)
                 )
             ).data();
             setAllTags(res ? res.tags : []);
