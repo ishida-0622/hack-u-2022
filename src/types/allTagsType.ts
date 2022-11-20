@@ -9,16 +9,16 @@ export type allTagsType = {
     tags: string[];
 };
 
-export const allTagConverter: FirestoreDataConverter<allTagsType> = {
-    toFirestore: function (allTagData: allTagsType): DocumentData {
+export const allTagsConverter: FirestoreDataConverter<allTagsType> = {
+    toFirestore: (allTagData: allTagsType): DocumentData => {
         return {
             tags: allTagData.tags,
         };
     },
-    fromFirestore: function (
+    fromFirestore: (
         snapshot: QueryDocumentSnapshot<DocumentData>,
         options: SnapshotOptions
-    ): allTagsType {
+    ): allTagsType => {
         const data = snapshot.data(options);
         return {
             tags: data.tags,
