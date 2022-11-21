@@ -6,7 +6,7 @@ import { userDataConverter } from "types/userDataType";
 import { FirebaseError } from "firebase/app";
 
 const useFollowTags = () => {
-    const [tags, setTags] = useState<string[]>([]);
+    const [followTags, setFollowTags] = useState<string[]>([]);
     const [load, setLoad] = useState(false);
     const [error, setError] = useState("");
     const getFollowTags = useCallback(async () => {
@@ -25,8 +25,7 @@ const useFollowTags = () => {
             if (!userData) {
                 throw Error("user data is not found");
             }
-            setTags(userData.follows.sort());
-            setLoad(true);
+            setFollowTags(userData.follows.sort());
         } catch (e) {
             if (e instanceof FirebaseError) {
                 setError(e.code);
@@ -35,10 +34,11 @@ const useFollowTags = () => {
             } else {
                 setError("Error");
             }
+        } finally {
             setLoad(true);
         }
     }, []);
-    return { tags, getFollowTags, load, error };
+    return { followTags, getFollowTags, load, error };
 };
 
 export default useFollowTags;
