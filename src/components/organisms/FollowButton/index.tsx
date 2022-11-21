@@ -29,6 +29,8 @@ const FollowButton = (props: {
                         if (props.functionActivatedWhenUnfollow) {
                             props.functionActivatedWhenUnfollow(props.tag);
                         }
+                    } else {
+                        return;
                     }
                 } else {
                     if (props.functionActivatedWhenFollow) {
