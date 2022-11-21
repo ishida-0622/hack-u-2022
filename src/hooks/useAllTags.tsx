@@ -4,10 +4,15 @@ import { db } from "firebaseConfig";
 import { allTagsConverter } from "types/allTagsType";
 import { FirebaseError } from "firebase/app";
 
+/**
+ * DBからタグの一覧を取得する
+ * @returns タグ一覧, タグ取得関数, タグ取得処理が走ったか?, エラーメッセージ
+ */
 const useAllTags = () => {
-    const [allTags, setAllTags] = useState<string[]>([]);
-    const [load, setLoad] = useState(false);
-    const [error, setError] = useState("");
+    const [allTags, setAllTags] = useState<string[]>([]); // タグ一覧
+    const [load, setLoad] = useState(false); // タグ取得の処理が走ったか？
+    const [error, setError] = useState(""); // エラーメッセージ
+    // DBからタグの一覧を取得する
     const getAllTags = useCallback(async () => {
         try {
             const res = (
@@ -16,7 +21,6 @@ const useAllTags = () => {
                 )
             ).data();
             setAllTags(res ? res.tags : []);
-            setLoad(true);
         } catch (e) {
             if (e instanceof FirebaseError) {
                 setError(e.code);
@@ -25,6 +29,7 @@ const useAllTags = () => {
             } else {
                 setError("Error");
             }
+        } finally {
             setLoad(true);
         }
     }, []);
