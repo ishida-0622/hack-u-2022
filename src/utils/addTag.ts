@@ -1,7 +1,7 @@
 import zenkakuToHankaku from "utils/zenkakuToHankaku";
 import { getDoc, doc, updateDoc, setDoc } from "firebase/firestore";
 import { db } from "firebaseConfig";
-import { allTagConverter } from "types/allTagsType";
+import { allTagsConverter } from "types/allTagsType";
 import { tagType } from "types/tagType";
 
 const addTag = (tag: string): Promise<void> => {
@@ -11,7 +11,7 @@ const addTag = (tag: string): Promise<void> => {
             if (val.data() !== undefined) {
                 resolve();
             } else {
-                getDoc(doc(db, "all_tags/all").withConverter(allTagConverter))
+                getDoc(doc(db, "all_tags/all").withConverter(allTagsConverter))
                     .then((val) => {
                         updateDoc(val.ref, {
                             tags: val.data()!.tags.concat([replacedTag]).sort(),
