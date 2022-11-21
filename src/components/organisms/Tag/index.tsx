@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
-// import Text from "components/atoms/Text/Text";
+import { tagStyle } from "./style";
 
 type TagType = {
     className?: string;
@@ -12,20 +11,10 @@ type TagType = {
 
 const Tag = (props: TagType) => {
     return (
-        <Link css={TagStyle} to={props.to} onClick={props.onClick}>
+        <Link css={tagStyle} to={props.to} onClick={props.onClick}>
             {"#" + props.tagName}
         </Link>
     );
 };
-
-const TagStyle = css({
-    color: "skyblue",
-    backgroundColor: "white",
-    margin: "5px",
-    padding: 5,
-    border: "solid",
-    // borderColor: "#258fb8",
-    borderRadius: 10,
-});
 
 export default Tag;
