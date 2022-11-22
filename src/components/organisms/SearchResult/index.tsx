@@ -2,12 +2,10 @@
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 
-type SearchResultType = {
-    text?: string;
-    onClick?(event: React.MouseEvent<HTMLAnchorElement>): void;
-};
-
-const SearchResult = (props: SearchResultType) => {
+const SearchResult = (props: {
+    readonly text?: string;
+    readonly onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+}) => {
     return (
         <div
             css={css({
@@ -17,7 +15,7 @@ const SearchResult = (props: SearchResultType) => {
             })}
         >
             <Link
-                css={css({ textAlign: "left", color: "skyblue" })}
+                css={css({ textAlign: "left", color: "#1da1f2" })}
                 onClick={props.onClick}
                 to=""
             >

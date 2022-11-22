@@ -15,9 +15,9 @@ Modal.setAppElement("#root");
  * @returns モーダルウィンドウ
  */
 const AddTagModalWindow = (props: {
-    isOpen: boolean;
-    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    func?: (tag: string) => void;
+    readonly isOpen: boolean;
+    readonly setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    readonly func?: (tag: string) => void;
 }) => {
     const [newTag, setNewTag] = useState("");
 

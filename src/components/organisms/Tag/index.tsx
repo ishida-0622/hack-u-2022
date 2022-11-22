@@ -2,14 +2,12 @@
 import { Link } from "react-router-dom";
 import { tagStyle } from "./style";
 
-type TagType = {
-    className?: string;
-    tagName: string;
-    to: string;
-    onClick?(event: React.MouseEvent<HTMLAnchorElement>): void;
-};
-
-const Tag = (props: TagType) => {
+const Tag = (props: {
+    readonly className?: string;
+    readonly tagName: string;
+    readonly to: string;
+    readonly onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+}) => {
     return (
         <Link css={tagStyle} to={props.to} onClick={props.onClick}>
             {"#" + props.tagName}

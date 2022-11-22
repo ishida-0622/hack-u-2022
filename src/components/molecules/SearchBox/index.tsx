@@ -1,9 +1,11 @@
 import Input from "components/atoms/Input";
 
 const SearchBox = (props: {
-    value: string;
-    placeholder?: string;
-    inputOnChange?(event: React.ChangeEvent<HTMLInputElement>): void;
+    readonly value: string;
+    readonly placeholder?: string;
+    readonly inputOnChange?: (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void;
 }) => {
     return (
         <div>

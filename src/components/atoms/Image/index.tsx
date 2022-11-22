@@ -1,12 +1,10 @@
-type ImageType = {
-    className?: string;
-    imageUrl: string | undefined;
-    alt?: string;
-    width?: number|string;
-    height?: number|string;
-};
-
-const Image = (props: ImageType) => {
+const Image = (props: {
+    readonly className?: string;
+    readonly imageUrl: string | undefined;
+    readonly alt?: string;
+    readonly width?: number | string;
+    readonly height?: number | string;
+}) => {
     return (
         <img
             className={props.className}

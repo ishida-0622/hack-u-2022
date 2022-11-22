@@ -1,4 +1,4 @@
-type TextareaType = {
+const Textarea = (props: {
     readonly className?: string;
     readonly value?: string;
     readonly rows?: number;
@@ -9,9 +9,7 @@ type TextareaType = {
     readonly minLength?: number;
     readonly required?: boolean;
     readonly onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-};
-
-const Textarea = (props: TextareaType) => {
+}) => {
     return (
         <textarea
             className={props.className}

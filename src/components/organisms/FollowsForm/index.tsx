@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 
 type FollowsFormType = {
-    className?: string;
-    tag?: string;
-    onAddClick?: (event: React.FormEvent<HTMLButtonElement>) => void;
-    onUnfollowClick?: (event: React.FormEvent<HTMLButtonElement>) => void;
-    onEditClick?: (event: React.FormEvent<HTMLButtonElement>) => void;
+    readonly className?: string;
+    readonly tag?: string;
+    readonly onAddClick?: (event: React.FormEvent<HTMLButtonElement>) => void;
+    readonly onUnfollowClick?: (
+        event: React.FormEvent<HTMLButtonElement>
+    ) => void;
+    readonly onEditClick?: (event: React.FormEvent<HTMLButtonElement>) => void;
 };
 
 const FollowsForm = (props: FollowsFormType) => {

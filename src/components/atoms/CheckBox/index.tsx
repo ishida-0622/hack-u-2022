@@ -1,13 +1,11 @@
 import { ReactNode } from "react";
 
-type CheckBoxType = {
-    className?: string;
-    defaultChecked?: boolean;
-    onChange?(event: React.ChangeEvent<HTMLInputElement>): void;
-    children?: ReactNode;
-};
-
-const CheckBox = (props: CheckBoxType) => {
+const CheckBox = (props: {
+    readonly className?: string;
+    readonly defaultChecked?: boolean;
+    readonly onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    readonly children?: ReactNode;
+}) => {
     return (
         <label>
             <input

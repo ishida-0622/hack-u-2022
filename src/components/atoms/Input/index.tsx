@@ -1,4 +1,4 @@
-type InputType = {
+const Input = (props: {
     readonly id?: string;
     readonly className?: string;
     readonly name?: string;
@@ -18,9 +18,7 @@ type InputType = {
         | "hidden";
     readonly required?: boolean;
     readonly onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
-
-const Input = (props: InputType) => {
+}) => {
     return (
         <label htmlFor={props.id}>
             <input

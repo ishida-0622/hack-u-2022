@@ -1,15 +1,13 @@
 import { ReactNode } from "react";
 
-type FormType = {
+const Form = (props: {
     readonly className?: string;
     readonly name?: string;
     readonly action?: string;
     readonly method?: "GET" | "POST";
     readonly children?: ReactNode;
     readonly onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
-};
-
-const Form = (props: FormType) => {
+}) => {
     return (
         <form
             className={props.className}

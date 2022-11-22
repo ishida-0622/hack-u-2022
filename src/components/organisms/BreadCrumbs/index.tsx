@@ -2,11 +2,9 @@
 import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 
-type BreadCrumbsType = {
+const BreadCrumbs = (props: {
     readonly contents?: string[][]; //[[to, pageName], [to, pageName], ...]
-};
-
-const BreadCrumbs = (props: BreadCrumbsType) => {
+}) => {
     if (props.contents === undefined) {
         return <></>;
     }
@@ -27,7 +25,7 @@ const BreadCrumbs = (props: BreadCrumbsType) => {
 
 const divStyle = css({
     width: "100vw",
-    height: "24px",
+    // height: "24px",
     display: "table-cell",
     padding: "5px 0 5px 3%",
 });
