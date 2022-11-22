@@ -1,24 +1,15 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-type ImageInputType = {
-    className?: string;
-    resultImageUrl?: string | null;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+import { imgStyle } from "./style";
 
-const ImageInput = (props: ImageInputType) => {
+const ImageInput = (props: {
+    readonly className?: string;
+    readonly resultImageUrl?: string | null;
+    readonly onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}) => {
     return (
         <div>
             {props.resultImageUrl ? (
-                <img
-                    css={css({
-                        maxWidth: "30%",
-                        height: "10rem",
-                        width: "auto",
-                    })}
-                    src={props.resultImageUrl}
-                    alt=""
-                />
+                <img css={imgStyle} src={props.resultImageUrl} alt="" />
             ) : (
                 <></>
             )}
