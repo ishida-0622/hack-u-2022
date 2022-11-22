@@ -4,14 +4,7 @@ import Footer from "components/organisms/Footer";
 import BreadCrumbs from "components/organisms/BreadCrumbs";
 import { ReactNode } from "react";
 import LoginCheck from "components/organisms/LoginCheck";
-
-type DefaultType = {
-    readonly className?: string;
-    readonly children?: ReactNode;
-    readonly contents?: string[][];
-    readonly notNav?: boolean;
-    readonly loginCheck?: boolean;
-};
+import { css } from "@emotion/react";
 
 const Default = ({
     className,
@@ -19,11 +12,17 @@ const Default = ({
     contents,
     notNav,
     loginCheck = true,
-}: DefaultType) => {
+}: {
+    readonly className?: string;
+    readonly children?: ReactNode;
+    readonly contents?: string[][];
+    readonly notNav?: boolean;
+    readonly loginCheck?: boolean;
+}) => {
     return (
         <>
             <Header notNav={notNav} />
-            <main className={className}>
+            <main css={css({ paddingTop: "7%" })} className={className}>
                 <BreadCrumbs contents={contents} />
                 {loginCheck ? (
                     <LoginCheck>{children}</LoginCheck>

@@ -4,17 +4,15 @@ import Image from "components/atoms/Image";
 import { css } from "@emotion/react";
 import { ReactNode } from "react";
 
-type PostType = {
-    message: string;
-    author: string;
-    authorIcon?: string;
-    image?: string;
-    isSpoiler: boolean;
-    recommendedBy: string[];
-    children?: ReactNode;
-};
-
-const Post = (props: PostType) => {
+const Post = (props: {
+    readonly message: string;
+    readonly author: string;
+    readonly authorIcon?: string;
+    readonly image?: string;
+    readonly isSpoiler: boolean;
+    readonly recommendedBy: string[];
+    readonly children?: ReactNode;
+}) => {
     return (
         <div
             css={css({

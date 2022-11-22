@@ -1,12 +1,11 @@
 import { ReactNode } from "react";
-type SpanType = {
-    id?: string;
-    className?: string;
-    onClick?(event: React.MouseEvent<HTMLSpanElement>): void;
-    children?: ReactNode;
-};
 
-const Text = (props: SpanType) => {
+const Text = (props: {
+    readonly id?: string;
+    readonly className?: string;
+    readonly onClick?: (event: React.MouseEvent<HTMLSpanElement>) => void;
+    readonly children?: ReactNode;
+}) => {
     return (
         <span id={props.id} className={props.className} onClick={props.onClick}>
             {props.children}

@@ -9,11 +9,11 @@ import Button from "components/atoms/Button";
  * @returns フォローボタン
  */
 const FollowButton = (props: {
-    className?: string;
-    tag: string;
-    isFollow: boolean;
-    functionActivatedWhenFollow?: (tag: string) => void;
-    functionActivatedWhenUnfollow?: (tag: string) => void;
+    readonly className?: string;
+    readonly tag: string;
+    readonly isFollow: boolean;
+    readonly functionActivatedWhenFollow?: (tag: string) => void;
+    readonly functionActivatedWhenUnfollow?: (tag: string) => void;
 }) => {
     const [isFollow, setIsFollow] = useState(props.isFollow);
     const [text, setText] = useState(isFollow ? "フォロー中" : "フォロー");

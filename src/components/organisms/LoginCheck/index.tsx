@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 import { createContext, ReactNode, useLayoutEffect, useState } from "react";
 import { User } from "firebase/auth";
 
-const LoginCheck = (props: { children: ReactNode }) => {
+const LoginCheck = (props: { readonly children: ReactNode }) => {
     const [user, load] = useLoginUser();
     const [userContext, setUserContext] = useState<User | null>(null);
     useLayoutEffect(() => {

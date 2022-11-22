@@ -4,18 +4,6 @@ import Input from "components/atoms/Input";
 import Text from "components/atoms/Text";
 import Button from "components/atoms/Button";
 import { css } from "@emotion/react";
-import React from "react";
-
-type SignupFormType = {
-    className?: string;
-    action?: string;
-    buttonText?: string;
-    onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
-    usernameOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    emailOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    passwordOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    repasswordOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
 
 const SignupForm = ({
     className,
@@ -26,7 +14,24 @@ const SignupForm = ({
     emailOnChange,
     passwordOnChange,
     repasswordOnChange,
-}: SignupFormType) => {
+}: {
+    readonly className?: string;
+    readonly action?: string;
+    readonly buttonText?: string;
+    readonly onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
+    readonly usernameOnChange?: (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void;
+    readonly emailOnChange?: (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void;
+    readonly passwordOnChange?: (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void;
+    readonly repasswordOnChange?: (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void;
+}) => {
     return (
         <>
             <Form

@@ -5,15 +5,6 @@ import Text from "components/atoms/Text";
 import Button from "components/atoms/Button";
 import { css } from "@emotion/react";
 
-type LoginFormType = {
-    className?: string;
-    action?: string;
-    buttonText?: string;
-    onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
-    emailOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    passwordOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
-
 const LoginForm = ({
     className,
     action,
@@ -21,7 +12,18 @@ const LoginForm = ({
     onSubmit,
     emailOnChange,
     passwordOnChange,
-}: LoginFormType) => {
+}: {
+    readonly className?: string;
+    readonly action?: string;
+    readonly buttonText?: string;
+    readonly onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
+    readonly emailOnChange?: (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void;
+    readonly passwordOnChange?: (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => void;
+}) => {
     return (
         <>
             <Form
