@@ -4,8 +4,15 @@ import { db } from "firebaseConfig";
 import { allTagsConverter } from "types/allTagsType";
 import { tagType } from "types/tagType";
 
+/**
+ * タグを追加する
+ * @param tag 追加するタグ
+ * @returns DBにタグが追加されたら解決されるPromise
+ */
 const addTag = (tag: string): Promise<void> => {
+    // タグの全角アルファベット数字記号を半角に変更
     const replacedTag = zenkakuToHankaku(tag);
+
     return new Promise((resolve, reject) => {
         getDoc(doc(db, `tags/${tag}/followers/${tag}`)).then((val) => {
             if (val.data() !== undefined) {

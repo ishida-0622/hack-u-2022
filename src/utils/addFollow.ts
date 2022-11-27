@@ -4,6 +4,12 @@ import { userDataConverter } from "types/userDataType";
 import { User } from "firebase/auth";
 import { tagConverter } from "../types/tagType";
 
+/**
+ * タグをフォローする
+ * @param user ログイン中のユーザー
+ * @param tag フォローするタグ
+ * @returns フォロー処理が完了した時に解決されるPromise
+ */
 const addFollow = (user: User, tag: string): Promise<void> => {
     return new Promise((resolve, reject) => {
         getDoc(doc(db, `users/${user.uid}`).withConverter(userDataConverter))
