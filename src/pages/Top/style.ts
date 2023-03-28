@@ -10,6 +10,6 @@ export const buttonStyle = css({
 export const buttonStyle2 = css({
     width: "10rem",
     height: "2.5rem",
-    margin: "0.5% 1% 0 1%",
+    margin: "1% 1% 0 1%",
     fontSize: "1.3rem",
 });
