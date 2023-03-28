@@ -21,6 +21,7 @@ import zenkakuToHankaku from "utils/zenkakuToHankaku";
 import NowLoading from "components/atoms/NowLoading";
 import ImageInput from "components/atoms/ImageInput";
 import NotFollows from "./NotFollows";
+import useFollowTags from "hooks/useFollowTags";
 
 const PostCreate = () => {
     document.title = "布教する";
@@ -30,29 +31,26 @@ const PostCreate = () => {
     const [from, setFrom] = useState<string | null>(null);
     const [to, setTo] = useState<string[]>([]);
     const [userData] = useUserData();
-    const [user] = useLoginUser();
-    const { allTags, getAllTags } = useAllTags();
-    getAllTags();
+    const { allTags, getAllTags, load } = useAllTags();
+    if (!load) getAllTags();
     const [searchTags, setSearchTags] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [searchBoxValue, setSearchBoxValue] = useState("");
-    const [follows, setFollows] = useState<string[] | null>(null);
+    const { user } = useLoginUser();
+    const {
+        followTags,
+        getFollowTags,
+        isLoading: followTagsIsLoading,
+    } = useFollowTags();
+    if (followTagsIsLoading) getFollowTags();
     const [inputtedMessage, setInputtedMessage] = useState("");
     const [isSpoiler, setIsSpoiler] = useState(false);
     const [image, setImage] = useState<string | null>(null);
 
     const tagSearch = (inputted: string) => {
         const reg = new RegExp("^" + inputted + ".*$");
-        const arr = allTags
-            .filter((val) => val.match(reg))
-            .filter((v) => v !== from);
-        setSearchTags(arr.slice(0, Math.min(10, arr.length)));
+        setSearchTags(allTags.filter((val) => val.match(reg) && val !== from));
     };
-
-    useEffect(() => {
-        if (!userData) return;
-        setFollows(userData.follows.sort());
-    }, [userData]);
 
     useEffect(() => {
         if (tag) setFrom(tag);
@@ -73,7 +71,7 @@ const PostCreate = () => {
     const postCreate = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         if (!window.confirm("投稿しますか?")) return;
-        if (!user || !userData || from === null) return;
+        if (!(user && userData && from !== null)) return;
         const post: postType = {
             author: userData.name,
             author_uid: user.uid,
@@ -101,9 +99,9 @@ const PostCreate = () => {
                 ["/#", "布教する"],
             ]}
         >
-            {!follows ? (
+            {followTagsIsLoading ? (
                 <NowLoading />
-            ) : follows.length === 0 ? (
+            ) : followTags.length === 0 ? (
                 <NotFollows />
             ) : !from ? (
                 <div
@@ -120,7 +118,7 @@ const PostCreate = () => {
                             margin: "0 auto",
                         })}
                     >
-                        {follows.map((val) => (
+                        {followTags.map((val) => (
                             <Tag
                                 key={val}
                                 tagName={val}
@@ -244,7 +242,7 @@ const PostCreate = () => {
                         css={css({
                             width: "100%",
                             position: "fixed",
-                            bottom: 80,
+                            bottom: 40,
                         })}
                     >
                         <Button
@@ -317,7 +315,7 @@ const PostCreate = () => {
                             css={css({
                                 width: "100%",
                                 position: "fixed",
-                                bottom: 80,
+                                bottom: 40,
                             })}
                         >
                             <Button css={buttonStyle} onClick={() => setTo([])}>
@@ -345,7 +343,7 @@ const buttonStyle = css({
     height: 40,
     // backgroundColor: "#6bb6ff",
     color: "white",
-    margin: "1%",
+    margin: "0 1% 1% 1%",
 });
 
 export default PostCreate;

@@ -7,7 +7,7 @@ import { FirebaseError } from "firebase/app";
 
 const useFollowTags = () => {
     const [followTags, setFollowTags] = useState<string[]>([]);
-    const [load, setLoad] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
     const getFollowTags = useCallback(async () => {
         try {
@@ -35,10 +35,10 @@ const useFollowTags = () => {
                 setError("Error");
             }
         } finally {
-            setLoad(true);
+            setIsLoading(false);
         }
     }, []);
-    return { followTags, getFollowTags, load, error };
+    return { followTags, getFollowTags, isLoading, error };
 };
 
 export default useFollowTags;
