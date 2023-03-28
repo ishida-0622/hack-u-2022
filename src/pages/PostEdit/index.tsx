@@ -23,8 +23,7 @@ const PostEdit = () => {
     const search = useLocation().search;
     const postId = new URLSearchParams(search).get("id");
     const { allTags, getAllTags } = useAllTags();
-    getAllTags();
-    const [user] = useLoginUser();
+    const { user } = useLoginUser();
     const [post, setPost] = useState<postType | undefined>(undefined);
     const [inputedMessage, setInputedMessage] = useState("");
     const [isSpoiler, setIsSpoiler] = useState(false);
@@ -32,6 +31,10 @@ const PostEdit = () => {
     const [searchBoxValue, setSearchBoxValue] = useState("");
     const [searchTags, setSearchTags] = useState<string[]>([]);
     const [image, setImage] = useState<string | null>(null);
+
+    useEffect(() => {
+        getAllTags();
+    }, []);
 
     useEffect(() => {
         const f = async () => {

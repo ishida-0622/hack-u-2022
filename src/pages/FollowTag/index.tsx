@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const FollowTag = () => {
     document.title = "推し一覧";
-    const [user] = useLoginUser();
+    const { user } = useLoginUser();
     const [tags, setTags] = useState<string[] | null>(null);
     useEffect(() => {
         if (!user) return;
