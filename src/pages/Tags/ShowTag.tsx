@@ -12,8 +12,8 @@ import SearchBox from "components/molecules/SearchBox";
 
 const ShowTag = (props: { mode: "all" | "follow" | "notFollow" | null }) => {
     const [userData] = useUserData();
-    const { allTags, getAllTags } = useAllTags();
-    getAllTags();
+    const { allTags, getAllTags, load } = useAllTags();
+    if (!load) getAllTags();
     const [followTags, setFollowTags] = useState<string[]>([]);
     const [notFollowTags, setNotFollowTags] = useState<string[]>([]);
     const [showTags, setShowTags] = useState<string[]>([]);

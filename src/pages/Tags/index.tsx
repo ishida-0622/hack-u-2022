@@ -5,13 +5,12 @@ import "react-tabs/style/react-tabs.css";
 import Default from "components/template/Default";
 import { css } from "@emotion/react";
 import Text from "components/atoms/Text";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AddTagModalWindow from "components/organisms/AddTagModalWindow";
 import ShowTag from "./ShowTag";
 
 const Tags = () => {
     document.title = "タグ一覧";
-    const navigate = useNavigate();
     const [modalIsOpen, setIsOpen] = useState(false);
     const search = useLocation().search;
     const [mode, setMode] = useState<string | null>(null);
@@ -29,12 +28,8 @@ const Tags = () => {
             <div css={css({ textAlign: "center" })}>
                 <Tabs
                     onSelect={(i) =>
-                        navigate(
-                            i === 0
-                                ? "?mode=all"
-                                : i === 1
-                                ? "?mode=follow"
-                                : "?mode=not_follow"
+                        setMode(
+                            i === 0 ? "all" : i === 1 ? "follow" : "not_follow"
                         )
                     }
                 >
