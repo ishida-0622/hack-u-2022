@@ -16,41 +16,41 @@ const Signup = () => {
     document.title = "SignUp";
     const navigate = useNavigate();
 
-    const [user] = useLoginUser();
+    const { user } = useLoginUser();
 
-    const [inputedUsername, setInputedUsername] = useState("");
-    const [inputedEmail, setInputedEmail] = useState("");
-    const [inputedPassword, setInputedPassword] = useState("");
-    const [inputedRepassword, setInputedRepassword] = useState("");
+    const [inputtedUsername, setInputtedUsername] = useState("");
+    const [inputtedEmail, setInputtedEmail] = useState("");
+    const [inputtedPassword, setInputtedPassword] = useState("");
+    const [inputtedRepassword, setInputtedRepassword] = useState("");
 
     const handlerChangeUsername = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
-        setInputedUsername(event.target.value);
+        setInputtedUsername(event.target.value);
     };
 
     const handlerChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInputedEmail(event.target.value);
+        setInputtedEmail(event.target.value);
     };
 
     const handlerChangePassword = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
-        setInputedPassword(event.target.value);
+        setInputtedPassword(event.target.value);
     };
 
     const handlerChangeRepassword = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
-        setInputedRepassword(event.target.value);
+        setInputtedRepassword(event.target.value);
     };
 
     const handlerSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (inputedPassword !== inputedRepassword) {
+        if (inputtedPassword !== inputtedRepassword) {
             alert("パスワードが一致しません");
         } else {
-            signup(inputedUsername, inputedEmail, inputedPassword);
+            signup(inputtedUsername, inputtedEmail, inputtedPassword);
         }
     };
 
