@@ -4,7 +4,6 @@ import Default from "components/template/Default";
 import Image from "components/atoms/Image";
 import icon from "images/icon_trans.png";
 import useUserData from "hooks/useUserData";
-// import { useEffect } from "react";
 import NowLoading from "components/atoms/NowLoading";
 import { useNavigate } from "react-router-dom";
 import Button from "components/atoms/Button";
@@ -14,9 +13,7 @@ const Top = () => {
     document.title = "WAIFU sharing";
     const navigate = useNavigate();
     const [userData] = useUserData();
-    // useEffect(() => {
-    //     if (!userData) return;
-    // }, [userData]);
+
     return (
         <Default>
             {!userData ? (
@@ -46,7 +43,7 @@ const Top = () => {
                                 cursor: "pointer",
                             },
                         })}
-                        onClick={() => navigate("/follow")}
+                        onClick={() => navigate("/tags")}
                     >
                         フォローする
                     </Button>
@@ -58,7 +55,11 @@ const Top = () => {
                         display: "block",
                     })}
                 >
-                    <div>
+                    <div
+                        css={css({
+                            margin: "1% 0",
+                        })}
+                    >
                         <Image
                             imageUrl={icon}
                             width={"30%"}
@@ -82,7 +83,7 @@ const Top = () => {
                     <br />
                     <Button
                         css={buttonStyle2}
-                        onClick={() => navigate("/follow")}
+                        onClick={() => navigate("/tags")}
                     >
                         フォローする
                     </Button>
@@ -92,12 +93,6 @@ const Top = () => {
                     >
                         投稿一覧
                     </Button>
-                    {/* <Button
-                        css={buttonStyle2}
-                        onClick={() => navigate("/tags")}
-                    >
-                        タグ一覧
-                    </Button> */}
                     <Button
                         css={buttonStyle2}
                         onClick={() => navigate("/follows")}
