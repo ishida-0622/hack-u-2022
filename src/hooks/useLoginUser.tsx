@@ -2,7 +2,7 @@ import { User } from "firebase/auth";
 import { useState, useLayoutEffect } from "react";
 import getLoginUser from "utils/getLoginUser";
 
-const useLoginUser = (): [User | null, boolean] => {
+const useLoginUser = () => {
     const [user, setUser] = useState<User | null>(null);
     const [load, setLoad] = useState<boolean>(false);
     useLayoutEffect(() => {
@@ -12,7 +12,7 @@ const useLoginUser = (): [User | null, boolean] => {
         };
         f();
     }, []);
-    return [user, load];
+    return { user, load };
 };
 
 export default useLoginUser;
