@@ -5,7 +5,7 @@ import { createContext, ReactNode, useLayoutEffect, useState } from "react";
 import { User } from "firebase/auth";
 
 const LoginCheck = (props: { readonly children: ReactNode }) => {
-    const [user, load] = useLoginUser();
+    const { user, load } = useLoginUser();
     const [userContext, setUserContext] = useState<User | null>(null);
     useLayoutEffect(() => {
         setUserContext(user);

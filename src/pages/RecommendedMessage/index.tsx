@@ -25,7 +25,7 @@ import Image from "components/atoms/Image";
 const RecommendedMessage = () => {
     document.title = "布教メッセージ";
     const navigate = useNavigate();
-    const [user] = useLoginUser();
+    const { user } = useLoginUser();
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
     const [isFollow, setIsFollow] = useState(false);
@@ -279,7 +279,7 @@ const RecommendedMessage = () => {
                             css={css({
                                 width: "100%",
                                 position: "fixed",
-                                bottom: 80,
+                                bottom: 40,
                             })}
                         >
                             <Button
@@ -289,7 +289,7 @@ const RecommendedMessage = () => {
                                     height: 50,
                                     // backgroundColor: "skyblue",
                                     color: "white",
-                                    margin: "0 1% 0 0",
+                                    margin: "0 1% 1% 0",
                                 })}
                                 onClick={() => {
                                     if (!isFollow) {
@@ -310,7 +310,7 @@ const RecommendedMessage = () => {
                                     height: 50,
                                     // backgroundColor: "skyblue",
                                     color: "white",
-                                    margin: "0 0 0 1%",
+                                    margin: "0 0 1% 1%",
                                 })}
                                 onClick={() =>
                                     navigate(`/recommended-tags?tag=${tag}`)

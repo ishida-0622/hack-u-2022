@@ -14,7 +14,7 @@ const Login = () => {
     document.title = "Login";
     const navigate = useNavigate();
 
-    const [user] = useLoginUser();
+    const { user } = useLoginUser();
 
     const [inputtedEmail, setInputtedEmail] = useState("");
     const [inputtedPassword, setInputtedPassword] = useState("");

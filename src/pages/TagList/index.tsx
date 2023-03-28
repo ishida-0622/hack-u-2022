@@ -13,7 +13,7 @@ import { Navigate } from "react-router-dom";
 const TagList = () => {
     document.title = "タグ一覧";
     const [tags, setTags] = useState<string[]>([]);
-    const [user, load] = useLoginUser();
+    const { user, load } = useLoginUser();
     const [modalIsOpen, setModalOpen] = useState(false);
     useEffect(() => {
         taglist().then((val) => {

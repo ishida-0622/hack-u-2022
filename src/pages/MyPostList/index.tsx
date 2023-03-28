@@ -19,7 +19,7 @@ const MyPostList = () => {
     const [open, setOpen] = useState<string | null>(null);
     const search = useLocation().search;
     const tag = new URLSearchParams(search).get("tag");
-    const [user] = useLoginUser();
+    const { user } = useLoginUser();
     const [posts, setPosts] = useState<{ data: postType; id: string }[] | null>(
         null
     );
